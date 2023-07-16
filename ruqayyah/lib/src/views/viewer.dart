@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:ruqayyah/src/models/rukia.dart';
+import 'package:vibration/vibration.dart';
 
 class Viewer extends StatefulWidget {
   final String title;
@@ -27,6 +29,42 @@ class _ViewerState extends State<Viewer> {
     _pageController = PageController();
   }
 
+  void _onTap(Rukia item, int index) {
+    final count = item.count - 1;
+    rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
+    onCountVibration();
+    if (count <= 0) {
+      onDoneVibration();
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+    setState(() {});
+  }
+
+  Future<void> onCountVibration() async {
+    await Vibration.hasCustomVibrationsSupport().then(
+      (value) => {
+        if (value!)
+          {Vibration.vibrate(duration: 100)}
+        else
+          {HapticFeedback.lightImpact()}
+      },
+    );
+  }
+
+  Future<void> onDoneVibration() async {
+    await Vibration.hasCustomVibrationsSupport().then(
+      (value) => {
+        if (value!)
+          {Vibration.vibrate(duration: 300)}
+        else
+          {HapticFeedback.mediumImpact()}
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +79,7 @@ class _ViewerState extends State<Viewer> {
         itemBuilder: (context, index) {
           final item = rukiasToView[index];
           return InkWell(
-            onTap: () {
-              final count = item.count - 1;
-              rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
-              if (count <= 0) {
-                _pageController.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              }
-              setState(() {});
-            },
+            onTap: () => _onTap(item, index),
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Stack(
