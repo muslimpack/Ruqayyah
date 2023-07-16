@@ -43,6 +43,7 @@ class _AppState extends State<App> {
     return SafeArea(
       child: Scaffold(
         body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: _controller,
           children: [
             const AdabScreen(),
@@ -76,9 +77,9 @@ class _AppState extends State<App> {
           shadowColor: Colors.deepOrange,
           items: const [
             TabItem(icon: Icons.question_mark, title: 'آداب الرقية'),
-            TabItem(icon: Icons.short_text, title: 'الرقية الموجزة'),
-            TabItem(icon: Icons.short_text, title: 'الرقية المتوسطة'),
-            TabItem(icon: Icons.short_text, title: 'الرقية المطولة'),
+            TabItem(icon: Icons.short_text, title: 'الموجزة'),
+            TabItem(icon: Icons.short_text, title: 'المتوسطة'),
+            TabItem(icon: Icons.short_text, title: 'المطولة'),
             TabItem(icon: Icons.info, title: 'عنا'),
           ],
           onTap: (int i) {
