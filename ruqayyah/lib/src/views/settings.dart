@@ -23,14 +23,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          SwitchListTile(
-            title: const Text("الوضع المظلم"),
-            value: settingsHelper.isDark,
-            onChanged: (value) {
-              settingsHelper.changeIsDarkStatus(value: value);
-              setState(() {});
-            },
-          ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.speaker_group),
