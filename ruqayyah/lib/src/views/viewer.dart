@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ruqayyah/src/models/rukia.dart';
+import 'package:ruqayyah/src/shared/functions/app_print.dart';
 import 'package:ruqayyah/src/utils/effect_manager.dart';
 
 class Viewer extends StatefulWidget {
@@ -29,36 +30,43 @@ class _ViewerState extends State<Viewer> {
   }
 
   Future<void> _onTap(Rukia item, int index) async {
-    final count = item.count - 1;
-    rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
-    await EffectManager.onCount();
-    if (count <= 0) {
-      await EffectManager.onSingleDone();
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+    if (item.count > 0) {
+      final count = item.count - 1;
+
+      if (count >= 0) {
+        rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
+        await EffectManager.onCount();
+      }
+
+      if (count == 0) {
+        await EffectManager.onSingleDone();
+        _pageController.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
     }
 
-    checkProgress();
+    await checkProgress();
     setState(() {});
   }
 
   double totalProgress = 0.0;
 
   Future<void> checkProgress() async {
-    int totalNum = 0;
     int done = 0;
-    totalNum = rukiasToView.length;
     for (var i = 0; i < rukiasToView.length; i++) {
       if (rukiasToView[i].count == 0) {
         done++;
       }
     }
-    totalProgress = done / totalNum;
+    totalProgress = done / (rukiasToView.length);
     if (totalProgress == 1) {
       await EffectManager.onAllDone();
     }
+
+    appPrint('$totalProgress = $done / ${rukiasToView.length}');
+    setState(() {});
   }
 
   @override
