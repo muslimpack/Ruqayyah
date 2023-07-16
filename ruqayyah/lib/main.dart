@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ruqayyah/app.dart';
+import 'package:ruqayyah/src/views/app.dart';
 import 'package:ruqayyah/services.dart';
 
 void main() async {
