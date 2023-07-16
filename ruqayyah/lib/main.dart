@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepOrange,
           brightness: Brightness.dark,
         ),
+        fontFamily: "Uthmanic",
         useMaterial3: true,
       ),
       home: const App(),
