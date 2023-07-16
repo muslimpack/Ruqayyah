@@ -19,6 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   audioplayers: ^4.1.0
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
