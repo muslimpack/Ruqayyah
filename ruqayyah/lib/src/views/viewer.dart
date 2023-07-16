@@ -62,7 +62,7 @@ class _ViewerState extends State<Viewer> {
                       child: Text(
                         item.count.toString(),
                         style: const TextStyle(
-                          fontSize: 150,
+                          fontSize: 300,
                           fontWeight: FontWeight.bold,
                           color: Colors.deepOrange,
                         ),
