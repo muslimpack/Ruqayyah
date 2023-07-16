@@ -69,7 +69,9 @@ class _AppState extends State<App> {
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Theme.of(context).highlightColor,
+          activeColor: Colors.deepOrange,
+          shadowColor: Colors.deepOrange,
           items: const [
             TabItem(icon: Icons.short_text, title: 'الرقية الموجزة'),
             TabItem(icon: Icons.short_text, title: 'الرقية المتوسطة'),
