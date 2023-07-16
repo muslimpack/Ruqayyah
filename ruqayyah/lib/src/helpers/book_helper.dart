@@ -13,7 +13,7 @@ class RukiaDBHelper {
   /* ************* Variables ************* */
 
   static const String dbName = "Ruqayyah.db";
-  static const int dbVersion = 3;
+  static const int dbVersion = 1;
 
   /* ************* Singleton Constructor ************* */
 
