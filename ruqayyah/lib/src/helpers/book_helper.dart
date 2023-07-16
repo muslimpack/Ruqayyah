@@ -7,9 +7,9 @@ import 'package:ruqayyah/src/models/rukia.dart';
 import 'package:ruqayyah/src/shared/functions/app_print.dart';
 import 'package:sqflite/sqflite.dart';
 
-AzkarDatabaseHelper azkarDatabaseHelper = AzkarDatabaseHelper();
+RukiaDBHelper rukiaDBHelper = RukiaDBHelper();
 
-class AzkarDatabaseHelper {
+class RukiaDBHelper {
   /* ************* Variables ************* */
 
   static const String dbName = "Ruqayyah.db";
@@ -17,15 +17,15 @@ class AzkarDatabaseHelper {
 
   /* ************* Singleton Constructor ************* */
 
-  static AzkarDatabaseHelper? _databaseHelper;
+  static RukiaDBHelper? _instance;
   static Database? _database;
 
-  factory AzkarDatabaseHelper() {
-    _databaseHelper ??= AzkarDatabaseHelper._createInstance();
-    return _databaseHelper!;
+  factory RukiaDBHelper() {
+    _instance ??= RukiaDBHelper._createInstance();
+    return _instance!;
   }
 
-  AzkarDatabaseHelper._createInstance();
+  RukiaDBHelper._createInstance();
 
   Future<Database> get database async {
     _database ??= await _initDatabase();
