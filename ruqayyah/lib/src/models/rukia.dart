@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class Rukia {
+class Rukia extends Equatable {
   final int id;
   final int order;
   final String zikr;
@@ -10,7 +12,7 @@ class Rukia {
   final int? almujaza;
   final int? almutawasita;
   final int? almutawala;
-  Rukia({
+  const Rukia({
     required this.id,
     required this.order,
     required this.zikr,
@@ -74,4 +76,18 @@ class Rukia {
 
   factory Rukia.fromJson(String source) =>
       Rukia.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  List<Object?> get props {
+    return [
+      id,
+      order,
+      zikr,
+      count,
+      source,
+      almujaza,
+      almutawasita,
+      almutawala,
+    ];
+  }
 }
