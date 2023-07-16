@@ -72,7 +72,7 @@ class _AppState extends State<App> {
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
-          backgroundColor: Theme.of(context).highlightColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           activeColor: Colors.deepOrange,
           shadowColor: Colors.deepOrange,
           items: const [
