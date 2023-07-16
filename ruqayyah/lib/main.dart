@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ruqayyah/app.dart';
 import 'package:ruqayyah/services.dart';
 
@@ -17,6 +18,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ruqayyah',
       debugShowCheckedModeBanner: false,
+      locale: const Locale('ar', 'EG'),
+
+      //
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepOrange,
