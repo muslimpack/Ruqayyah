@@ -50,6 +50,10 @@ class _ViewerState extends State<Viewer> {
       );
     }
 
+    if (done / rukiasToView.length == 1) {
+      EffectManager.onAllDone();
+    }
+
     setState(() {});
   }
 
@@ -84,7 +88,7 @@ class _ViewerState extends State<Viewer> {
                       child: Text(
                         item.count.toString(),
                         style: const TextStyle(
-                          fontSize: 300,
+                          fontSize: 450,
                           fontWeight: FontWeight.bold,
                           color: Colors.deepOrange,
                         ),
