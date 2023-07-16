@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ruqayyah/src/views/app.dart';
 import 'package:ruqayyah/services.dart';
+import 'package:ruqayyah/src/views/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Uthmanic",
         useMaterial3: true,
       ),
-      home: const App(),
+      home: const SplashScreen(),
     );
   }
 }
