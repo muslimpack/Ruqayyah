@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/helpers/settings_helper.dart';
 import 'package:ruqayyah/src/views/about.dart';
 import 'package:ruqayyah/src/views/effects_manager.dart';
 
