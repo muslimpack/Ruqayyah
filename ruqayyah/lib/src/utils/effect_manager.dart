@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
+import 'package:ruqayyah/src/helpers/settings_helper.dart';
 import 'package:vibration/vibration.dart';
 
 class EffectManager {
@@ -29,20 +30,26 @@ class EffectManager {
   ///**********************
   static final player = AudioPlayer();
   static Future<void> onCountSound() async {
+    if (!settingsHelper.isOnCountSoundAllowed) return;
     await player.play(
       AssetSource('sounds/count.mp3'),
+      volume: settingsHelper.soundEffectVolume,
     );
   }
 
   static Future<void> onSingleDoneSound() async {
+    if (!settingsHelper.isSingleDoneSoundAllowed) return;
     await player.play(
       AssetSource('sounds/single_done.mp3'),
+      volume: settingsHelper.soundEffectVolume,
     );
   }
 
   static Future<void> onAllDoneSound() async {
+    if (!settingsHelper.isAllDoneSoundAllowed) return;
     await player.play(
       AssetSource('sounds/all_done.mp3'),
+      volume: settingsHelper.soundEffectVolume,
     );
   }
 
@@ -51,6 +58,7 @@ class EffectManager {
   ///**********************
 
   static Future<void> onCountVibration() async {
+    if (!settingsHelper.isOnCountVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
         if (value!)
@@ -62,6 +70,7 @@ class EffectManager {
   }
 
   static Future<void> onSingleDoneVibration() async {
+    if (!settingsHelper.isSingleDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
         if (value!)
@@ -73,6 +82,7 @@ class EffectManager {
   }
 
   static Future<void> onAllDoneVibration() async {
+    if (!settingsHelper.isAllDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
         if (value!) {Vibration.vibrate()} else {HapticFeedback.heavyImpact()}

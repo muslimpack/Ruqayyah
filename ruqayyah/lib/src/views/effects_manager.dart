@@ -71,11 +71,11 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               title: Text("صوت عند كل مرة"),
             ),
             value: settingsHelper.isOnCountSoundAllowed,
-            onChanged: (value) {
+            onChanged: (value) async {
               settingsHelper.changeOnCountStatus(value: value);
 
               if (value) {
-                EffectManager.onCountSound();
+                await EffectManager.onCountSound();
               }
 
               setState(() {});
@@ -92,11 +92,11 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               title: Text("الإهتزاز عند انتهاء كل ذكر"),
             ),
             value: settingsHelper.isSingleDoneVibrateAllowed,
-            onChanged: (value) {
+            onChanged: (value) async {
               settingsHelper.changeSingleDoneVibrateStatus(value: value);
 
               if (value) {
-                EffectManager.onSingleDoneVibration();
+                await EffectManager.onSingleDoneVibration();
               }
               setState(() {});
             },
@@ -112,11 +112,11 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               title: Text("صوت عند انتهاء كل ذكر"),
             ),
             value: settingsHelper.isSingleDoneSoundAllowed,
-            onChanged: (value) {
+            onChanged: (value) async {
               settingsHelper.changeSingleDoneSoundStatus(value: value);
 
               if (value) {
-                EffectManager.onAllDoneSound();
+                await EffectManager.onAllDoneSound();
               }
               setState(() {});
             },
