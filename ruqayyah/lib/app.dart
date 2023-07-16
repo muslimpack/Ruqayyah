@@ -49,21 +49,21 @@ class _AppState extends State<App> {
             else
               Viewer(
                 rukias: rukias.where((e) => e.almujaza == 1).toList(),
-                title: "الموجزة",
+                title: "الرقية الموجزة",
               ),
             if (isLoading)
               const SizedBox()
             else
               Viewer(
                 rukias: rukias.where((e) => e.almutawasita == 1).toList(),
-                title: "المتوسطة",
+                title: "الرقية المتوسطة",
               ),
             if (isLoading)
               const SizedBox()
             else
               Viewer(
                 rukias: rukias.where((e) => e.almutawala == 1).toList(),
-                title: "المطولة",
+                title: "الرقية المطولة",
               ),
             const About(),
           ],
@@ -71,9 +71,9 @@ class _AppState extends State<App> {
         bottomNavigationBar: ConvexAppBar(
           backgroundColor: Colors.deepOrange,
           items: const [
-            TabItem(icon: Icons.short_text, title: 'موجزة'),
-            TabItem(icon: Icons.short_text, title: 'متوسطة'),
-            TabItem(icon: Icons.short_text, title: 'مطولة'),
+            TabItem(icon: Icons.short_text, title: 'الرقية الموجزة'),
+            TabItem(icon: Icons.short_text, title: 'الرقية المتوسطة'),
+            TabItem(icon: Icons.short_text, title: 'الرقية المطولة'),
             TabItem(icon: Icons.info, title: 'عنا'),
           ],
           onTap: (int i) {
