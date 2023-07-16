@@ -22,7 +22,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          const Divider(),
           ListTile(
             leading: const Icon(Icons.speaker_group),
             title: const Text("مدير المؤثرات"),
