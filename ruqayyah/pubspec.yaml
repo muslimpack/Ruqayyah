@@ -21,6 +21,8 @@ dependencies:
   path: ^1.8.3
   sqflite: ^2.2.8+4
   vibration: ^1.8.1
+  material_design_icons_flutter: ^7.0.7296
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_lints: ^2.0.0

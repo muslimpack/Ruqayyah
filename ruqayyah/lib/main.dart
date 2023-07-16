@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Ruqayyah',
       debugShowCheckedModeBanner: false,
       locale: const Locale('ar', 'EG'),
-
+      supportedLocales: const [Locale('ar', 'EG')],
       //
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
