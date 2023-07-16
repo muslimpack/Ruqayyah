@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/helpers/book_helper.dart';
 import 'package:ruqayyah/src/models/rukia.dart';
 import 'package:ruqayyah/src/shared/functions/app_print.dart';
-import 'package:ruqayyah/src/views/about.dart';
 import 'package:ruqayyah/src/views/adab.dart';
+import 'package:ruqayyah/src/views/settings.dart';
 import 'package:ruqayyah/src/views/viewer.dart';
 
 class App extends StatefulWidget {
@@ -68,7 +68,7 @@ class _AppState extends State<App> {
                 rukias: rukias.where((e) => e.almutawala == 1).toList(),
                 title: "الرقية المطولة",
               ),
-            const About(),
+            const SettingsScreen(),
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
@@ -80,7 +80,7 @@ class _AppState extends State<App> {
             TabItem(icon: Icons.short_text, title: 'الموجزة'),
             TabItem(icon: Icons.short_text, title: 'المتوسطة'),
             TabItem(icon: Icons.short_text, title: 'المطولة'),
-            TabItem(icon: Icons.info, title: 'عنا'),
+            TabItem(icon: Icons.settings, title: 'الإعدادات'),
           ],
           onTap: (int i) {
             _controller.animateToPage(
