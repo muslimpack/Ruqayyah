@@ -20,8 +20,8 @@ class EffectManager {
   }
 
   static Future<void> onAllDone() async {
-    await onSingleDoneVibration();
-    await onSingleDoneSound();
+    await onAllDoneVibration();
+    await onAllDoneSound();
   }
 
   ///**********************
