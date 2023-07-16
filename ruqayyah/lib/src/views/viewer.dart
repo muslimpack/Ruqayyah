@@ -28,22 +28,37 @@ class _ViewerState extends State<Viewer> {
     _pageController = PageController();
   }
 
-  void _onTap(Rukia item, int index) {
+  Future<void> _onTap(Rukia item, int index) async {
     final count = item.count - 1;
     rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
-    EffectManager.onCountVibration();
+    await EffectManager.onCount();
     if (count <= 0) {
-      EffectManager.onSingleDoneVibration();
+      await EffectManager.onSingleDone();
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
 
-    if (!rukiasToView.any((e) => e.count > 0)) {
-      EffectManager.onAllDoneVibration();
-    }
+    checkProgress();
     setState(() {});
+  }
+
+  double totalProgress = 0.0;
+
+  Future<void> checkProgress() async {
+    int totalNum = 0;
+    int done = 0;
+    totalNum = rukiasToView.length;
+    for (var i = 0; i < rukiasToView.length; i++) {
+      if (rukiasToView[i].count == 0) {
+        done++;
+      }
+    }
+    totalProgress = done / totalNum;
+    if (totalProgress == 1) {
+      await EffectManager.onAllDone();
+    }
   }
 
   @override
@@ -52,6 +67,12 @@ class _ViewerState extends State<Viewer> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(10),
+          child: LinearProgressIndicator(
+            value: totalProgress,
+          ),
+        ),
       ),
       body: PageView.builder(
         controller: _pageController,
@@ -60,7 +81,7 @@ class _ViewerState extends State<Viewer> {
         itemBuilder: (context, index) {
           final item = rukiasToView[index];
           return InkWell(
-            onTap: () => _onTap(item, index),
+            onTap: () async => _onTap(item, index),
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Stack(
