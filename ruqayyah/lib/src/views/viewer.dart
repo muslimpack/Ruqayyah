@@ -97,6 +97,7 @@ class _ViewerState extends State<Viewer> {
                   ),
                   Center(
                     child: ListView(
+                      physics: const ClampingScrollPhysics(),
                       children: [
                         Text(
                           item.zikr,
