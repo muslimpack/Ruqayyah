@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/models/rukia.dart';
 
 class Viewer extends StatefulWidget {
+  final String title;
   final List<Rukia> rukias;
   const Viewer({
     super.key,
     required this.rukias,
+    required this.title,
   });
 
   @override
@@ -28,6 +30,10 @@ class _ViewerState extends State<Viewer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
       body: PageView.builder(
         controller: _pageController,
         scrollDirection: Axis.vertical,
@@ -64,7 +70,7 @@ class _ViewerState extends State<Viewer> {
                     ),
                   ),
                   Center(
-                    child: Column(
+                    child: ListView(
                       children: [
                         Text(
                           item.zikr,
@@ -72,6 +78,16 @@ class _ViewerState extends State<Viewer> {
                           style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Text(
+                            item.source,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                       ],

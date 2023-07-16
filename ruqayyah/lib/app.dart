@@ -46,15 +46,24 @@ class _AppState extends State<App> {
             if (isLoading)
               const SizedBox()
             else
-              Viewer(rukias: rukias.where((e) => e.almujaza == 1).toList()),
+              Viewer(
+                rukias: rukias.where((e) => e.almujaza == 1).toList(),
+                title: "الموجزة",
+              ),
             if (isLoading)
               const SizedBox()
             else
-              Viewer(rukias: rukias.where((e) => e.almutawasita == 1).toList()),
+              Viewer(
+                rukias: rukias.where((e) => e.almutawasita == 1).toList(),
+                title: "المتوسطة",
+              ),
             if (isLoading)
               const SizedBox()
             else
-              Viewer(rukias: rukias.where((e) => e.almutawala == 1).toList()),
+              Viewer(
+                rukias: rukias.where((e) => e.almutawala == 1).toList(),
+                title: "المطولة",
+              ),
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
