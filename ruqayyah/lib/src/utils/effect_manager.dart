@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
 import 'package:vibration/vibration.dart';
 
@@ -10,24 +11,40 @@ class EffectManager {
 
   static Future<void> onCount() async {
     await onCountVibration();
+    await onCountSound();
   }
 
   static Future<void> onSingleDone() async {
     await onSingleDoneVibration();
+    await onSingleDoneSound();
   }
 
   static Future<void> onAllDone() async {
     await onSingleDoneVibration();
+    await onSingleDoneSound();
   }
 
   ///**********************
   /// Sound
   ///**********************
-  static Future<void> onCountSound() async {}
+  static final player = AudioPlayer();
+  static Future<void> onCountSound() async {
+    await player.play(
+      AssetSource('sounds/count.mp3'),
+    );
+  }
 
-  static Future<void> onSingleDoneSound() async {}
+  static Future<void> onSingleDoneSound() async {
+    await player.play(
+      AssetSource('sounds/single_done.mp3'),
+    );
+  }
 
-  static Future<void> onAllDoneSound() async {}
+  static Future<void> onAllDoneSound() async {
+    await player.play(
+      AssetSource('sounds/all_done.mp3'),
+    );
+  }
 
   ///**********************
   /// Vibration
