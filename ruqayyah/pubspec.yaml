@@ -38,6 +38,7 @@ flutter:
     - assets/db/
     - assets/sounds/
     - assets/images/
+    - assets/json/
 
   fonts:
     - family: Uthmanic

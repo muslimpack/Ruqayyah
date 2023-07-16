@@ -4,6 +4,7 @@ import 'package:ruqayyah/src/helpers/book_helper.dart';
 import 'package:ruqayyah/src/models/rukia.dart';
 import 'package:ruqayyah/src/shared/functions/app_print.dart';
 import 'package:ruqayyah/src/views/about.dart';
+import 'package:ruqayyah/src/views/adab.dart';
 import 'package:ruqayyah/src/views/viewer.dart';
 
 class App extends StatefulWidget {
@@ -44,6 +45,7 @@ class _AppState extends State<App> {
         body: PageView(
           controller: _controller,
           children: [
+            const AdabScreen(),
             if (isLoading)
               const SizedBox()
             else
@@ -73,6 +75,7 @@ class _AppState extends State<App> {
           activeColor: Colors.deepOrange,
           shadowColor: Colors.deepOrange,
           items: const [
+            TabItem(icon: Icons.question_mark, title: 'آداب الرقية'),
             TabItem(icon: Icons.short_text, title: 'الرقية الموجزة'),
             TabItem(icon: Icons.short_text, title: 'الرقية المتوسطة'),
             TabItem(icon: Icons.short_text, title: 'الرقية المطولة'),
