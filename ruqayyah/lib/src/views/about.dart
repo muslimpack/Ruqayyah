@@ -25,10 +25,10 @@ class About extends StatelessWidget {
         children: [
           const SizedBox(height: 15),
           ListTile(
-            // leading: Image.asset(
-            //   'assets/images/app_icon.png',
-            //   scale: 3,
-            // ),
+            leading: Image.asset(
+              'assets/images/logo.png',
+              scale: 3,
+            ),
             title: Text(
               "${"تطبيق رقية الإصدار"} $appVersion",
               style: const TextStyle(fontFamily: "Cairo"),
