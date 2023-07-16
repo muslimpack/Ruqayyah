@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:ruqayyah/src/models/rukia.dart';
-import 'package:vibration/vibration.dart';
+import 'package:ruqayyah/src/utils/effect_manager.dart';
 
 class Viewer extends StatefulWidget {
   final String title;
@@ -32,37 +31,19 @@ class _ViewerState extends State<Viewer> {
   void _onTap(Rukia item, int index) {
     final count = item.count - 1;
     rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
-    onCountVibration();
+    EffectManager.onCountVibration();
     if (count <= 0) {
-      onDoneVibration();
+      EffectManager.onSingleDoneVibration();
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
+
+    if (!rukiasToView.any((e) => e.count > 0)) {
+      EffectManager.onAllDoneVibration();
+    }
     setState(() {});
-  }
-
-  Future<void> onCountVibration() async {
-    await Vibration.hasCustomVibrationsSupport().then(
-      (value) => {
-        if (value!)
-          {Vibration.vibrate(duration: 100)}
-        else
-          {HapticFeedback.lightImpact()}
-      },
-    );
-  }
-
-  Future<void> onDoneVibration() async {
-    await Vibration.hasCustomVibrationsSupport().then(
-      (value) => {
-        if (value!)
-          {Vibration.vibrate(duration: 300)}
-        else
-          {HapticFeedback.mediumImpact()}
-      },
-    );
   }
 
   @override
