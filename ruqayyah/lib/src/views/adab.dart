@@ -27,7 +27,6 @@ class _AdabScreenState extends State<AdabScreen> {
       appPrint(list);
       adab = list.map((e) => e as String).toList();
     } catch (e) {
-      appPrint(e);
       adab = [];
     }
 
