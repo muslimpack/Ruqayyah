@@ -49,9 +49,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند كل مرة"),
             ),
-            value: settingsHelper.isTallyVibrateAllowed,
+            value: settingsHelper.isOnCountVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeTallyVibrateStatus(value: value);
+              settingsHelper.changeOnCountVibrateStatus(value: value);
 
               if (value) {
                 EffectManager.onCountVibration();
@@ -70,9 +70,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند كل مرة"),
             ),
-            value: settingsHelper.isTallySoundAllowed,
+            value: settingsHelper.isOnCountSoundAllowed,
             onChanged: (value) {
-              settingsHelper.changeTallySoundStatus(value: value);
+              settingsHelper.changeOnCountStatus(value: value);
 
               if (value) {
                 EffectManager.onCountSound();
@@ -91,9 +91,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isZikrDoneVibrateAllowed,
+            value: settingsHelper.isSingleDoneVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeZikrDoneVibrateStatus(value: value);
+              settingsHelper.changeSingleDoneVibrateStatus(value: value);
 
               if (value) {
                 EffectManager.onSingleDoneVibration();
@@ -111,9 +111,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isZikrDoneSoundAllowed,
+            value: settingsHelper.isSingleDoneSoundAllowed,
             onChanged: (value) {
-              settingsHelper.changeZikrDoneSoundStatus(value: value);
+              settingsHelper.changeSingleDoneSoundStatus(value: value);
 
               if (value) {
                 EffectManager.onAllDoneSound();
@@ -131,9 +131,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllAzkarFinishedVibrateAllowed,
+            value: settingsHelper.isAllDoneVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllAzkarFinishedVibrateStatus(
+              settingsHelper.changeAllDoneVibrateStatus(
                 value: value,
               );
 
@@ -153,9 +153,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllAzkarFinishedSoundAllowed,
+            value: settingsHelper.isAllDoneSoundAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllAzkarFinishedSoundStatus(value: value);
+              settingsHelper.changeAllDoneSoundStatus(value: value);
 
               if (value) {
                 EffectManager.onAllDoneSound();
