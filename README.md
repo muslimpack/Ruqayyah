@@ -18,3 +18,13 @@
 - الرقية المختصرة
 - الرقية المتوسطة
 - الرقية المطولة
+<div align="center">
+
+# صور من التطبيق
+
+<p align="center">
+  <img src="https://github.com/muslimpack/Ruqayyah/assets/50374022/2cc6edd4-bdfc-4581-9b45-9e8a8f25c86f" height="400" >
+  <img src="https://github.com/muslimpack/Ruqayyah/assets/50374022/78b49de2-6c20-4b07-8d83-b80b37c24957" height="400" >
+  <img src="https://github.com/muslimpack/Ruqayyah/assets/50374022/ea9bf01f-275a-4a46-9309-74f7de740623" height="400" >
+  <img src="https://github.com/muslimpack/Ruqayyah/assets/50374022/55645c32-3af5-4a89-8c40-e6c4896c8543" height="400" >
+</p>
