@@ -13,7 +13,7 @@ class RukiaDBHelper {
   /* ************* Variables ************* */
 
   static const String dbName = "Ruqayyah.db";
-  static const int dbVersion = 1;
+  static const int dbVersion = 2;
 
   /* ************* Singleton Constructor ************* */
 
@@ -50,6 +50,7 @@ class RukiaDBHelper {
 
     await database.getVersion().then((currentVersion) async {
       if (currentVersion < dbVersion) {
+        appPrint("[DB] New Version Detected");
         database.close();
 
         //delete the old database so you can copy the new one
