@@ -13,7 +13,7 @@ class RukiaDBHelper {
   /* ************* Variables ************* */
 
   static const String dbName = "Ruqayyah.db";
-  static const int dbVersion = 2;
+  static const int dbVersion = 3;
 
   /* ************* Singleton Constructor ************* */
 
@@ -101,7 +101,8 @@ class RukiaDBHelper {
   Future<List<Rukia>> getAll() async {
     final Database db = await database;
 
-    final List<Map<String, dynamic>> maps = await db.query('book');
+    final List<Map<String, dynamic>> maps =
+        await db.rawQuery('SELECT * FROM book ORDER BY `order` ASC');
 
     return List.generate(maps.length, (i) {
       return Rukia.fromMap(maps[i]);
