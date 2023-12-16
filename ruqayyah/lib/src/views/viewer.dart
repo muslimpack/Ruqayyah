@@ -106,6 +106,7 @@ class _ViewerState extends State<Viewer> {
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             fontFamily: "Kitab",
+                            height: 2,
                           ),
                         ),
                         Padding(
