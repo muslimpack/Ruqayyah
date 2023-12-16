@@ -105,6 +105,7 @@ class _ViewerState extends State<Viewer> {
                           style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
+                            fontFamily: "Kitab",
                           ),
                         ),
                         Padding(
@@ -114,6 +115,7 @@ class _ViewerState extends State<Viewer> {
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
+                              fontFamily: "Kitab",
                             ),
                           ),
                         ),

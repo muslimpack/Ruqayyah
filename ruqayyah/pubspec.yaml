@@ -48,3 +48,6 @@ flutter:
     - family: Cairo
       fonts:
         - asset: assets/fonts/Cairo-Regular.ttf
+    - family: Kitab
+      fonts:
+        - asset: assets/fonts/kitab.ttf
