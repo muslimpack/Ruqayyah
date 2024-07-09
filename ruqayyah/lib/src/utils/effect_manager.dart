@@ -64,7 +64,7 @@ class EffectManager {
         if (value!)
           {Vibration.vibrate(duration: 100)}
         else
-          {HapticFeedback.lightImpact()}
+          {HapticFeedback.lightImpact()},
       },
     );
   }
@@ -76,7 +76,7 @@ class EffectManager {
         if (value!)
           {Vibration.vibrate(duration: 300)}
         else
-          {HapticFeedback.mediumImpact()}
+          {HapticFeedback.mediumImpact()},
       },
     );
   }
@@ -85,7 +85,7 @@ class EffectManager {
     if (!settingsHelper.isAllDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
-        if (value!) {Vibration.vibrate()} else {HapticFeedback.heavyImpact()}
+        if (value!) {Vibration.vibrate()} else {HapticFeedback.heavyImpact()},
       },
     );
   }
