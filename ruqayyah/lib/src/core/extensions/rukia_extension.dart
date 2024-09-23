@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/core/constants/text_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_rich_text.dart';
 import 'package:ruqayyah/src/core/extensions/extension_string.dart';
@@ -94,15 +93,15 @@ extension RukiaExt on Rukia {
 
       final List<String> verse = [];
 
-      final alhashrFinalAyah =
-          currentVerse.key.startSura == 59 && currentVerse.key.startAyah == 22;
+      // final alhashrFinalAyah =
+      //     currentVerse.key.startSura == 59 && currentVerse.key.startAyah == 22;
 
-      final bool notHaveEstaaza = alhashrFinalAyah;
-      if (i == 0 && !notHaveEstaaza) verse.addAll([kEstaaza, "\n\n"]);
+      // final bool notHaveEstaaza = alhashrFinalAyah;
+      // if (i == 0 && !notHaveEstaaza) verse.addAll([kEstaaza, "\n\n"]);
 
-      verse.add(kArBasmallah);
+      // verse.add(kArBasmallah);
 
-      verse.add(" ﴿ ${currentVerse.value.trim()} ﴾");
+      verse.add("﴿ ${currentVerse.value.trim()} ﴾");
 
       if (i != verses.length - 1) verse.add("\n\n");
 
