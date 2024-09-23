@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ruqayyah/src/core/constants/const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart'
     as service_locator;
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
@@ -11,6 +12,8 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
 Future initServices() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await phoneBars();
   await service_locator.initSL();
 
@@ -20,7 +23,7 @@ Future initServices() async {
   }
 
   try {
-    await GetStorage.init();
+    await GetStorage.init(kAppStorageKey);
   } catch (e) {
     appPrint(e);
   }
