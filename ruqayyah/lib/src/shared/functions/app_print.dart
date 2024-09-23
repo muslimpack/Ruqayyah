@@ -1,12 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 
 void appPrint(Object? object) {
   if (kDebugMode) {
-    print(stylizeText(text: "[Ruqayyah] ${object!}"));
+    log(stylizeText(text: "$object"), name: "Ruqayyah");
   }
 }
 
-String? stylizeText({required String? text}) {
+String stylizeText({required String? text}) {
   return "\x1B[32m${text!}";
 }
 
