@@ -8,8 +8,8 @@ import 'package:sqflite/sqflite.dart';
 class RukiaDBHelper {
   /* ************* Variables ************* */
 
-  static const String dbName = "Ruqayyah.db";
-  static const int dbVersion = 3;
+  static const String dbName = "rukia.db";
+  static const int dbVersion = 1;
 
   /* ************* Singleton Constructor ************* */
 
