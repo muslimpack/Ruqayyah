@@ -96,7 +96,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
         itemCount: rukiasToView.length,
         itemBuilder: (context, index) {
           final item = rukiasToView[index];
-          return InkWell(
+          return GestureDetector(
             onTap: () async => _onTap(index),
             child: Stack(
               children: [
