@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ruqayyah/generated/l10n.dart';
+import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/dashboard_screen.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepOrange,
+            seedColor: kAppMainColor,
             brightness: Brightness.dark,
           ),
           fontFamily: "Cairo",
