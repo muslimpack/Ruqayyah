@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 
@@ -38,11 +39,11 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     if (item.count > 0 && count >= 0) {
       rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
       if (count == 0) done += 1;
-      await EffectManager.onCount();
+      await sl<EffectsManager>().onCount();
     }
 
     if (count <= 0) {
-      await EffectManager.onSingleDone();
+      await sl<EffectsManager>().onSingleDone();
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -50,7 +51,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     }
 
     if (done / rukiasToView.length == 1) {
-      EffectManager.onAllDone();
+      sl<EffectsManager>().onAllDone();
     }
 
     setState(() {});

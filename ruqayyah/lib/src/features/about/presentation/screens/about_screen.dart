@@ -30,7 +30,7 @@ class AboutScreen extends StatelessWidget {
               scale: 3,
             ),
             title: Text(
-              "${"تطبيق رقية الإصدار"} $appVersion",
+              "${"تطبيق رقية الإصدار"} $kAppVersion",
               style: const TextStyle(fontFamily: "Cairo"),
             ),
             subtitle: const Text(

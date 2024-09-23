@@ -1,6 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/core/functions/app_print.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/data/repository/book_helper.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/adab_screen.dart';
@@ -27,12 +27,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _getData() async {
-    try {
-      rukias = await rukiaDBHelper.getAll();
-    } catch (e) {
-      rukias = [];
-      appPrint(e);
-    }
+    rukias = await sl<RukiaDBHelper>().getAll();
+
     setState(() {
       isLoading = false;
     });

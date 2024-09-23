@@ -1,9 +1,9 @@
 import 'package:get_storage/get_storage.dart';
 
-EffectsRepo effectsRepo = EffectsRepo();
-
 class EffectsRepo {
-  final box = GetStorage();
+  final GetStorage box;
+
+  const EffectsRepo(this.box);
 
   ///********************
   /// Sounds

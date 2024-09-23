@@ -3,24 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
 import 'package:vibration/vibration.dart';
 
-class EffectManager {
-  factory EffectManager() {
-    return instance;
-  }
-  EffectManager._();
-  static EffectManager instance = EffectManager._();
+class EffectsManager {
+  final EffectsRepo effectsRepo;
 
-  static Future<void> onCount() async {
+  EffectsManager(this.effectsRepo);
+
+  Future<void> onCount() async {
     await onCountVibration();
     await onCountSound();
   }
 
-  static Future<void> onSingleDone() async {
+  Future<void> onSingleDone() async {
     await onSingleDoneVibration();
     await onSingleDoneSound();
   }
 
-  static Future<void> onAllDone() async {
+  Future<void> onAllDone() async {
     await onAllDoneVibration();
     await onAllDoneSound();
   }
@@ -28,8 +26,8 @@ class EffectManager {
   ///**********************
   /// Sound
   ///**********************
-  static final player = AudioPlayer();
-  static Future<void> onCountSound() async {
+  final player = AudioPlayer();
+  Future<void> onCountSound() async {
     if (!effectsRepo.isOnCountSoundAllowed) return;
     await player.play(
       AssetSource('sounds/count.mp3'),
@@ -37,7 +35,7 @@ class EffectManager {
     );
   }
 
-  static Future<void> onSingleDoneSound() async {
+  Future<void> onSingleDoneSound() async {
     if (!effectsRepo.isSingleDoneSoundAllowed) return;
     await player.play(
       AssetSource('sounds/single_done.mp3'),
@@ -45,7 +43,7 @@ class EffectManager {
     );
   }
 
-  static Future<void> onAllDoneSound() async {
+  Future<void> onAllDoneSound() async {
     if (!effectsRepo.isAllDoneSoundAllowed) return;
     await player.play(
       AssetSource('sounds/all_done.mp3'),
@@ -57,7 +55,7 @@ class EffectManager {
   /// Vibration
   ///**********************
 
-  static Future<void> onCountVibration() async {
+  Future<void> onCountVibration() async {
     if (!effectsRepo.isOnCountVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
@@ -69,7 +67,7 @@ class EffectManager {
     );
   }
 
-  static Future<void> onSingleDoneVibration() async {
+  Future<void> onSingleDoneVibration() async {
     if (!effectsRepo.isSingleDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
@@ -81,7 +79,7 @@ class EffectManager {
     );
   }
 
-  static Future<void> onAllDoneVibration() async {
+  Future<void> onAllDoneVibration() async {
     if (!effectsRepo.isAllDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
