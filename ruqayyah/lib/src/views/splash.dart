@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/features/home/presentation/screens/app.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/dashboard_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const App();
+            return const DashboardScreen();
           },
         ),
       );

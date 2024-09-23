@@ -3,8 +3,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:ruqayyah/src/core/constants/const.dart';
 import 'package:ruqayyah/src/core/functions/open_url.dart';
 
-class About extends StatelessWidget {
-  const About({
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({
     super.key,
   });
 

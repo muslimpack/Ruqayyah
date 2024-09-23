@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 
-class Viewer extends StatefulWidget {
+class RukiaViewerScreen extends StatefulWidget {
   final String title;
   final List<Rukia> rukias;
-  const Viewer({
+  const RukiaViewerScreen({
     super.key,
     required this.rukias,
     required this.title,
   });
 
   @override
-  State<Viewer> createState() => _ViewerState();
+  State<RukiaViewerScreen> createState() => _RukiaViewerScreenState();
 }
 
-class _ViewerState extends State<Viewer> {
+class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   late final List<Rukia> rukiasToView;
   late final PageController _pageController;
 
