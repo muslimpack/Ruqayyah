@@ -26,6 +26,14 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     super.initState();
     rukiasToView = List.from(widget.rukias.map((e) => e.copyWith()).toList());
     _pageController = PageController();
+
+    _pageController.addListener(_pageChange);
+  }
+
+  void _pageChange() {
+    setState(() {
+      currentPage = _pageController.page?.toInt() ?? 0;
+    });
   }
 
   int done = 0;
@@ -57,12 +65,20 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     setState(() {});
   }
 
+  int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text("${rukiasToView.length} : $currentPage"),
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(10),
           child: LinearProgressIndicator(
@@ -95,33 +111,30 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                       ),
                     ),
                   ),
-                  Center(
-                    child: ListView(
-                      physics: const ClampingScrollPhysics(),
-                      children: [
-                        Text(
-                          item.zikr,
+                  ListView(
+                    physics: const ClampingScrollPhysics(),
+                    children: [
+                      Text(
+                        item.zikr,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Kitab",
+                          height: 2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          item.source,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Kitab",
-                            height: 2,
+                            fontSize: 15,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Text(
-                            item.source,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontFamily: "Kitab",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
