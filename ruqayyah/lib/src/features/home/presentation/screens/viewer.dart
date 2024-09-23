@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
-import 'package:ruqayyah/src/models/rukia.dart';
-import 'package:ruqayyah/src/utils/effect_manager.dart';
+import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 
 class Viewer extends StatefulWidget {
   final String title;

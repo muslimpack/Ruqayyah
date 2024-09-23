@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ruqayyah/src/shared/functions/app_print.dart';
+import 'package:ruqayyah/src/core/functions/app_print.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});

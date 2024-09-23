@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/views/app.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/app.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

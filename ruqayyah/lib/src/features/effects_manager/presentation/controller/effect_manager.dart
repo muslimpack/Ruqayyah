@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
-import 'package:ruqayyah/src/helpers/settings_helper.dart';
+import 'package:ruqayyah/src/features/settings/data/repository/settings_helper.dart';
 import 'package:vibration/vibration.dart';
 
 class EffectManager {

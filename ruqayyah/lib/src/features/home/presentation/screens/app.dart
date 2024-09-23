@@ -1,11 +1,11 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/helpers/book_helper.dart';
-import 'package:ruqayyah/src/models/rukia.dart';
-import 'package:ruqayyah/src/shared/functions/app_print.dart';
-import 'package:ruqayyah/src/views/adab.dart';
-import 'package:ruqayyah/src/views/settings.dart';
-import 'package:ruqayyah/src/views/viewer.dart';
+import 'package:ruqayyah/src/core/functions/app_print.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/home/data/repository/book_helper.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/adab.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/viewer.dart';
+import 'package:ruqayyah/src/features/settings/presentation/screens/settings.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

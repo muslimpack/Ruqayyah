@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/helpers/settings_helper.dart';
-import 'package:ruqayyah/src/utils/effect_manager.dart';
+import 'package:ruqayyah/src/features/settings/data/repository/settings_helper.dart';
+import 'package:ruqayyah/src/core/utils/effect_manager.dart';
 
 class EffectManagerScreen extends StatefulWidget {
   const EffectManagerScreen({super.key});

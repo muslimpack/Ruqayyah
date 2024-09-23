@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:ruqayyah/src/shared/const.dart';
-import 'package:ruqayyah/src/shared/functions/open_url.dart';
+import 'package:ruqayyah/src/core/constants/const.dart';
+import 'package:ruqayyah/src/core/functions/open_url.dart';
 
 class About extends StatelessWidget {
   const About({
