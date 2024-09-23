@@ -3,7 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:ruqayyah/src/core/constants/const.dart';
 import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
-import 'package:ruqayyah/src/features/home/data/repository/book_helper.dart';
+import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
 import 'package:ruqayyah/src/features/ui/data/repository/ui_repo.dart';
 
 final sl = GetIt.instance;
