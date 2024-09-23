@@ -12,23 +12,29 @@ class InstructionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        isThreeLine: true,
-        leading: Card(
-          color: Colors.deepOrange,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(minWidth: 15),
-              child: Text(instruction.order.toString()),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Card(
+              color: Colors.deepOrange,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: 15),
+                  child: Text(instruction.order.toString()),
+                ),
+              ),
             ),
-          ),
-        ),
-        subtitle: Text(
-          instruction.instruction,
-          style: const TextStyle(
-            fontSize: 20,
-          ),
+            Text(
+              instruction.instruction,
+              style: const TextStyle(
+                fontSize: 20,
+                fontFamily: "kitab",
+              ),
+            ),
+          ],
         ),
       ),
     );
