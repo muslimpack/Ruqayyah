@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ruqayyah/src/core/constants/const.dart';
+import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/dashboard_screen.dart';
 import 'package:ruqayyah/src/features/ui/presentation/components/desktop_window_wrapper.dart';
@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: kAppName,
+      onGenerateTitle: (context) => S.of(context).appTitle,
       debugShowCheckedModeBanner: false,
       locale: const Locale('ar', 'EG'),
-      supportedLocales: const [Locale('ar', 'EG')],
-      //
+      supportedLocales: S.delegate.supportedLocales,
       localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

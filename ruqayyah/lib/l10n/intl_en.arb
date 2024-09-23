@@ -1,0 +1,9 @@
+{
+    "appTitle": "Rukia",
+    "fontDecreaeSize": "Decreae font size",
+  "fontIncreaeSize": "Increae font size",
+  "fontResetSize": "Reset font size",
+  "fontSettings": "Font Settings",
+  "fontType": "Font Type",
+    "showDiacritics": "Show Diacritics"
+}
