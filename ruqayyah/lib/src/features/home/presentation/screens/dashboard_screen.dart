@@ -27,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _getData() async {
-    rukias = await sl<RukiaDBHelper>().getAll();
+    rukias = await sl<RukiaDBHelper>().getAllRukiaBook();
 
     setState(() {
       isLoading = false;
