@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
   final String title;
@@ -113,15 +114,10 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                   padding: const EdgeInsets.all(20),
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    Text(
-                      item.zikr,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Kitab",
-                        height: 2,
-                      ),
+                    RukiaContentBuilder(
+                      rukia: item,
+                      fontSize: 30,
+                      enableDiacritics: true,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20),
