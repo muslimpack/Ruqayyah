@@ -23,12 +23,12 @@ dependencies:
   icons_launcher: ^3.0.0
   material_design_icons_flutter: ^7.0.7296
   path: ^1.9.0
+  path_provider: ^2.1.4
   sqflite: ^2.3.3
   sqflite_common_ffi: ^2.3.3
   url_launcher: ^6.3.0
   vibration: ^2.0.0
   window_manager: ^0.4.2
-  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_lints: ^4.0.0

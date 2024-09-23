@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
-import 'package:ruqayyah/src/features/ui/data/repository/local_repo.dart';
+import 'package:ruqayyah/src/features/ui/data/repository/ui_repo.dart';
 import 'package:ruqayyah/src/features/ui/presentation/components/windows_app_bar.dart';
 import 'package:window_manager/window_manager.dart';
 

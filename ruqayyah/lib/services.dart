@@ -6,7 +6,7 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart'
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
 import 'package:ruqayyah/src/core/functions/app_print.dart';
-import 'package:ruqayyah/src/features/ui/data/repository/local_repo.dart';
+import 'package:ruqayyah/src/features/ui/data/repository/ui_repo.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
