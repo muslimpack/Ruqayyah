@@ -6,6 +6,7 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
+import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
@@ -77,6 +78,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        leading: const FontSettingsIconButton(),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
