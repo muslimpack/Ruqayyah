@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/views/about.dart';
-import 'package:ruqayyah/src/views/effects_manager.dart';
+import 'package:ruqayyah/src/features/about/presentation/screens/about_screen.dart';
+import 'package:ruqayyah/src/features/effects_manager/presentation/screens/effects_manager_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -47,7 +47,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const About();
+                    return const AboutScreen();
                   },
                 ),
               );

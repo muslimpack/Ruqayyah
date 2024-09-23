@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ruqayyah/src/shared/functions/app_print.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});
@@ -21,14 +20,10 @@ class _AdabScreenState extends State<AdabScreen> {
   }
 
   Future<void> _getData() async {
-    try {
-      final String data = await rootBundle.loadString('assets/json/adab.json');
-      final list = json.decode(data) as List<dynamic>;
-      appPrint(list);
-      adab = list.map((e) => e as String).toList();
-    } catch (e) {
-      adab = [];
-    }
+    final String data = await rootBundle.loadString('assets/json/adab.json');
+    final list = json.decode(data) as List<dynamic>;
+
+    adab = list.map((e) => e as String).toList();
 
     isLoading = false;
     setState(() {});
@@ -63,7 +58,6 @@ class _AdabScreenState extends State<AdabScreen> {
                             (index + 1).toString(),
                             style: const TextStyle(
                               fontSize: 20,
-                              fontFamily: "Cairo",
                             ),
                           ),
                         ),
@@ -72,7 +66,6 @@ class _AdabScreenState extends State<AdabScreen> {
                             adab[index],
                             style: const TextStyle(
                               fontSize: 20,
-                              fontFamily: "Cairo",
                             ),
                           ),
                         ),

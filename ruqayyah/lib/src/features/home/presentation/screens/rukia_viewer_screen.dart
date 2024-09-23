@@ -1,23 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 
-import 'package:ruqayyah/src/models/rukia.dart';
-import 'package:ruqayyah/src/utils/effect_manager.dart';
-
-class Viewer extends StatefulWidget {
+class RukiaViewerScreen extends StatefulWidget {
   final String title;
   final List<Rukia> rukias;
-  const Viewer({
+  const RukiaViewerScreen({
     super.key,
     required this.rukias,
     required this.title,
   });
 
   @override
-  State<Viewer> createState() => _ViewerState();
+  State<RukiaViewerScreen> createState() => _RukiaViewerScreenState();
 }
 
-class _ViewerState extends State<Viewer> {
+class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   late final List<Rukia> rukiasToView;
   late final PageController _pageController;
 
@@ -26,6 +26,14 @@ class _ViewerState extends State<Viewer> {
     super.initState();
     rukiasToView = List.from(widget.rukias.map((e) => e.copyWith()).toList());
     _pageController = PageController();
+
+    _pageController.addListener(_pageChange);
+  }
+
+  void _pageChange() {
+    setState(() {
+      currentPage = _pageController.page?.toInt() ?? 0;
+    });
   }
 
   int done = 0;
@@ -39,11 +47,11 @@ class _ViewerState extends State<Viewer> {
     if (item.count > 0 && count >= 0) {
       rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
       if (count == 0) done += 1;
-      await EffectManager.onCount();
+      await sl<EffectsManager>().onCount();
     }
 
     if (count <= 0) {
-      await EffectManager.onSingleDone();
+      await sl<EffectsManager>().onSingleDone();
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -51,11 +59,13 @@ class _ViewerState extends State<Viewer> {
     }
 
     if (done / rukiasToView.length == 1) {
-      EffectManager.onAllDone();
+      sl<EffectsManager>().onAllDone();
     }
 
     setState(() {});
   }
+
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +73,12 @@ class _ViewerState extends State<Viewer> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text("${rukiasToView.length} : $currentPage"),
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(10),
           child: LinearProgressIndicator(
@@ -95,33 +111,30 @@ class _ViewerState extends State<Viewer> {
                       ),
                     ),
                   ),
-                  Center(
-                    child: ListView(
-                      physics: const ClampingScrollPhysics(),
-                      children: [
-                        Text(
-                          item.zikr,
+                  ListView(
+                    physics: const ClampingScrollPhysics(),
+                    children: [
+                      Text(
+                        item.zikr,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Kitab",
+                          height: 2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          item.source,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Kitab",
-                            height: 2,
+                            fontSize: 15,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Text(
-                            item.source,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontFamily: "Kitab",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -8,7 +8,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  audioplayers: ^6.0.0
+  audioplayers: ^6.1.0
   bloc: ^8.1.4
   convex_bottom_bar: ^3.2.0
   cupertino_icons: ^1.0.2
@@ -18,13 +18,14 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_localizations:
     sdk: flutter
+  get_it: ^8.0.0
   get_storage: ^2.1.1
-  icons_launcher: ^2.1.7
+  icons_launcher: ^3.0.0
   material_design_icons_flutter: ^7.0.7296
   path: ^1.9.0
   sqflite: ^2.3.3
   url_launcher: ^6.3.0
-  vibration: ^1.8.1
+  vibration: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^4.0.0

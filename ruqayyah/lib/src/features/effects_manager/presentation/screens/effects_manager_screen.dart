@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/helpers/settings_helper.dart';
-import 'package:ruqayyah/src/utils/effect_manager.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
+import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 
 class EffectManagerScreen extends StatefulWidget {
   const EffectManagerScreen({super.key});
@@ -30,9 +31,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
             ),
             title: const Text("مستوى صوت المؤثرات"),
             subtitle: Slider(
-              value: settingsHelper.soundEffectVolume,
+              value: sl<EffectsRepo>().soundEffectVolume,
               onChanged: (value) {
-                settingsHelper.changeSoundEffectVolume(value);
+                sl<EffectsRepo>().changeSoundEffectVolume(value);
                 setState(() {});
               },
             ),
@@ -49,12 +50,12 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند كل مرة"),
             ),
-            value: settingsHelper.isOnCountVibrateAllowed,
+            value: sl<EffectsRepo>().isOnCountVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeOnCountVibrateStatus(value: value);
+              sl<EffectsRepo>().changeOnCountVibrateStatus(value: value);
 
               if (value) {
-                EffectManager.onCountVibration();
+                sl<EffectsManager>().onCountVibration();
               }
 
               setState(() {});
@@ -70,12 +71,12 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند كل مرة"),
             ),
-            value: settingsHelper.isOnCountSoundAllowed,
+            value: sl<EffectsRepo>().isOnCountSoundAllowed,
             onChanged: (value) async {
-              settingsHelper.changeOnCountStatus(value: value);
+              sl<EffectsRepo>().changeOnCountStatus(value: value);
 
               if (value) {
-                await EffectManager.onCountSound();
+                await sl<EffectsManager>().onCountSound();
               }
 
               setState(() {});
@@ -91,12 +92,12 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isSingleDoneVibrateAllowed,
+            value: sl<EffectsRepo>().isSingleDoneVibrateAllowed,
             onChanged: (value) async {
-              settingsHelper.changeSingleDoneVibrateStatus(value: value);
+              sl<EffectsRepo>().changeSingleDoneVibrateStatus(value: value);
 
               if (value) {
-                await EffectManager.onSingleDoneVibration();
+                await sl<EffectsManager>().onSingleDoneVibration();
               }
               setState(() {});
             },
@@ -111,12 +112,12 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isSingleDoneSoundAllowed,
+            value: sl<EffectsRepo>().isSingleDoneSoundAllowed,
             onChanged: (value) async {
-              settingsHelper.changeSingleDoneSoundStatus(value: value);
+              sl<EffectsRepo>().changeSingleDoneSoundStatus(value: value);
 
               if (value) {
-                await EffectManager.onAllDoneSound();
+                await sl<EffectsManager>().onAllDoneSound();
               }
               setState(() {});
             },
@@ -131,14 +132,14 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllDoneVibrateAllowed,
+            value: sl<EffectsRepo>().isAllDoneVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllDoneVibrateStatus(
+              sl<EffectsRepo>().changeAllDoneVibrateStatus(
                 value: value,
               );
 
               if (value) {
-                EffectManager.onAllDoneVibration();
+                sl<EffectsManager>().onAllDoneVibration();
               }
               setState(() {});
             },
@@ -153,12 +154,12 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllDoneSoundAllowed,
+            value: sl<EffectsRepo>().isAllDoneSoundAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllDoneSoundStatus(value: value);
+              sl<EffectsRepo>().changeAllDoneSoundStatus(value: value);
 
               if (value) {
-                EffectManager.onAllDoneSound();
+                sl<EffectsManager>().onAllDoneSound();
               }
               setState(() {});
             },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:ruqayyah/src/shared/const.dart';
-import 'package:ruqayyah/src/shared/functions/open_url.dart';
+import 'package:ruqayyah/src/core/constants/const.dart';
+import 'package:ruqayyah/src/core/functions/open_url.dart';
 
-class About extends StatelessWidget {
-  const About({
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({
     super.key,
   });
 
@@ -15,7 +15,6 @@ class About extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           "عنا",
-          style: TextStyle(fontFamily: "Uthmanic"),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
@@ -30,12 +29,10 @@ class About extends StatelessWidget {
               scale: 3,
             ),
             title: Text(
-              "${"تطبيق رقية الإصدار"} $appVersion",
-              style: const TextStyle(fontFamily: "Cairo"),
+              "${"تطبيق رقية الإصدار"} $kAppVersion",
             ),
             subtitle: const Text(
               "مجاني وخالي من الإعلانات ومفتوح المصدر",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
           ),
           const Divider(),
@@ -43,7 +40,6 @@ class About extends StatelessWidget {
             leading: Icon(MdiIcons.handClap),
             title: const Text(
               "نرجو الدعاء لنا ولوالدينا",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
           ),
           const Divider(),
@@ -51,11 +47,9 @@ class About extends StatelessWidget {
             leading: const Icon(Icons.menu_book),
             title: const Text(
               "الرقية الشرعية من القرآن الكريم والسنة النبوية",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             subtitle: const Text(
               "د. خالد بن عبدالرحمن الجريسي",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             onTap: () {
               openURL(
@@ -68,7 +62,6 @@ class About extends StatelessWidget {
             leading: Icon(MdiIcons.github),
             title: const Text(
               "رابط البرنامج مفتوح المصدر",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             onTap: () async {
               await openURL(

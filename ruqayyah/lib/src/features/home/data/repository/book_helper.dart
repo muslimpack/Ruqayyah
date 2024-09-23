@@ -3,11 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
-import 'package:ruqayyah/src/models/rukia.dart';
-import 'package:ruqayyah/src/shared/functions/app_print.dart';
+import 'package:ruqayyah/src/core/functions/app_print.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:sqflite/sqflite.dart';
-
-RukiaDBHelper rukiaDBHelper = RukiaDBHelper();
 
 class RukiaDBHelper {
   /* ************* Variables ************* */
