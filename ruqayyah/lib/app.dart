@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ruqayyah/src/views/splash.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/dashboard_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Uthmanic",
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const DashboardScreen(),
     );
   }
 }
