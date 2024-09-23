@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
@@ -12,6 +10,7 @@ class Rukia extends Equatable {
   final int? almujaza;
   final int? almutawasita;
   final int? almutawala;
+  final String hokm;
   const Rukia({
     required this.id,
     required this.order,
@@ -21,6 +20,7 @@ class Rukia extends Equatable {
     required this.almujaza,
     required this.almutawasita,
     required this.almutawala,
+    required this.hokm,
   });
 
   Rukia copyWith({
@@ -32,6 +32,7 @@ class Rukia extends Equatable {
     int? almujaza,
     int? almutawasita,
     int? almutawala,
+    String? hokm,
   }) {
     return Rukia(
       id: id ?? this.id,
@@ -42,6 +43,7 @@ class Rukia extends Equatable {
       almujaza: almujaza ?? this.almujaza,
       almutawasita: almutawasita ?? this.almutawasita,
       almutawala: almutawala ?? this.almutawala,
+      hokm: hokm ?? this.hokm,
     );
   }
 
@@ -55,6 +57,7 @@ class Rukia extends Equatable {
       'almujaza': almujaza,
       'almutawasita': almutawasita,
       'almutawala': almutawala,
+      'hokm': hokm,
     };
   }
 
@@ -69,13 +72,9 @@ class Rukia extends Equatable {
       almutawasita:
           map['almutawasita'] != null ? map['almutawasita'] as int : null,
       almutawala: map['almutawala'] != null ? map['almutawala'] as int : null,
+      hokm: map['hokm'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory Rukia.fromJson(String source) =>
-      Rukia.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   List<Object?> get props {
@@ -88,6 +87,7 @@ class Rukia extends Equatable {
       almujaza,
       almutawasita,
       almutawala,
+      hokm,
     ];
   }
 }
