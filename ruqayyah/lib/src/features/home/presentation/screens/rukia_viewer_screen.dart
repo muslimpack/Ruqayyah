@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
+import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
   final String title;
@@ -116,8 +118,10 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                   children: [
                     RukiaContentBuilder(
                       rukia: item,
-                      fontSize: 30,
-                      enableDiacritics: true,
+                      fontSize:
+                          context.watch<SettingsCubit>().state.fontSize * 10,
+                      enableDiacritics:
+                          context.watch<SettingsCubit>().state.showDiacritics,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20),
