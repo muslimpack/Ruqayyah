@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
+import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});
@@ -11,7 +11,7 @@ class AdabScreen extends StatefulWidget {
 }
 
 class _AdabScreenState extends State<AdabScreen> {
-  late final List<String> adab;
+  late final List<Instruction> adab;
   bool isLoading = true;
   @override
   void initState() {
@@ -20,10 +20,7 @@ class _AdabScreenState extends State<AdabScreen> {
   }
 
   Future<void> _getData() async {
-    final String data = await rootBundle.loadString('assets/json/adab.json');
-    final list = json.decode(data) as List<dynamic>;
-
-    adab = list.map((e) => e as String).toList();
+    adab = await sl<RukiaDBHelper>().getAllInstructions();
 
     isLoading = false;
     setState(() {});
@@ -42,6 +39,7 @@ class _AdabScreenState extends State<AdabScreen> {
               padding: const EdgeInsets.all(10),
               itemCount: adab.length,
               itemBuilder: (context, index) {
+                final instruction = adab[index];
                 return Card(
                   child: Padding(
                     padding: const EdgeInsets.all(15),
@@ -55,7 +53,7 @@ class _AdabScreenState extends State<AdabScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            (index + 1).toString(),
+                            instruction.order.toString(),
                             style: const TextStyle(
                               fontSize: 20,
                             ),
@@ -63,7 +61,7 @@ class _AdabScreenState extends State<AdabScreen> {
                         ),
                         Expanded(
                           child: Text(
-                            adab[index],
+                            instruction.instruction,
                             style: const TextStyle(
                               fontSize: 20,
                             ),
