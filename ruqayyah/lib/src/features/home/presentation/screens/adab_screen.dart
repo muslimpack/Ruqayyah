@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/home/presentation/components/instruction_card.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});
@@ -36,41 +37,10 @@ class _AdabScreenState extends State<AdabScreen> {
       body: isLoading
           ? const SizedBox()
           : ListView.builder(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10).copyWith(bottom: 50),
               itemCount: adab.length,
               itemBuilder: (context, index) {
-                final instruction = adab[index];
-                return Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            instruction.order.toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            instruction.instruction,
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return InstructionCard(instruction: adab[index]);
               },
             ),
     );
