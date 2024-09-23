@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
-import 'package:ruqayyah/src/features/settings/data/repository/settings_helper.dart';
 
 class EffectManagerScreen extends StatefulWidget {
   const EffectManagerScreen({super.key});
@@ -30,9 +30,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
             ),
             title: const Text("مستوى صوت المؤثرات"),
             subtitle: Slider(
-              value: settingsHelper.soundEffectVolume,
+              value: effectsRepo.soundEffectVolume,
               onChanged: (value) {
-                settingsHelper.changeSoundEffectVolume(value);
+                effectsRepo.changeSoundEffectVolume(value);
                 setState(() {});
               },
             ),
@@ -49,9 +49,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند كل مرة"),
             ),
-            value: settingsHelper.isOnCountVibrateAllowed,
+            value: effectsRepo.isOnCountVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeOnCountVibrateStatus(value: value);
+              effectsRepo.changeOnCountVibrateStatus(value: value);
 
               if (value) {
                 EffectManager.onCountVibration();
@@ -70,9 +70,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند كل مرة"),
             ),
-            value: settingsHelper.isOnCountSoundAllowed,
+            value: effectsRepo.isOnCountSoundAllowed,
             onChanged: (value) async {
-              settingsHelper.changeOnCountStatus(value: value);
+              effectsRepo.changeOnCountStatus(value: value);
 
               if (value) {
                 await EffectManager.onCountSound();
@@ -91,9 +91,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isSingleDoneVibrateAllowed,
+            value: effectsRepo.isSingleDoneVibrateAllowed,
             onChanged: (value) async {
-              settingsHelper.changeSingleDoneVibrateStatus(value: value);
+              effectsRepo.changeSingleDoneVibrateStatus(value: value);
 
               if (value) {
                 await EffectManager.onSingleDoneVibration();
@@ -111,9 +111,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند انتهاء كل ذكر"),
             ),
-            value: settingsHelper.isSingleDoneSoundAllowed,
+            value: effectsRepo.isSingleDoneSoundAllowed,
             onChanged: (value) async {
-              settingsHelper.changeSingleDoneSoundStatus(value: value);
+              effectsRepo.changeSingleDoneSoundStatus(value: value);
 
               if (value) {
                 await EffectManager.onAllDoneSound();
@@ -131,9 +131,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("الإهتزاز عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllDoneVibrateAllowed,
+            value: effectsRepo.isAllDoneVibrateAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllDoneVibrateStatus(
+              effectsRepo.changeAllDoneVibrateStatus(
                 value: value,
               );
 
@@ -153,9 +153,9 @@ class _EffectManagerScreenState extends State<EffectManagerScreen> {
               ),
               title: Text("صوت عند الانتهاء من جميع الأذكار"),
             ),
-            value: settingsHelper.isAllDoneSoundAllowed,
+            value: effectsRepo.isAllDoneSoundAllowed,
             onChanged: (value) {
-              settingsHelper.changeAllDoneSoundStatus(value: value);
+              effectsRepo.changeAllDoneSoundStatus(value: value);
 
               if (value) {
                 EffectManager.onAllDoneSound();

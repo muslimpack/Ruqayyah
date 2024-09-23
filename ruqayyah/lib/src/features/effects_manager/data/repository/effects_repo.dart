@@ -1,16 +1,9 @@
 import 'package:get_storage/get_storage.dart';
 
-SettingsHelper settingsHelper = SettingsHelper();
+EffectsRepo effectsRepo = EffectsRepo();
 
-class SettingsHelper {
+class EffectsRepo {
   final box = GetStorage();
-
-  ///********************
-  /// Theme
-  ///********************
-  bool get isDark => box.read('isDark') ?? false;
-
-  void changeIsDarkStatus({required bool value}) => box.write('isDark', value);
 
   ///********************
   /// Sounds
