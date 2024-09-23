@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepOrange,
           brightness: Brightness.dark,
         ),
-        fontFamily: "Uthmanic",
+        fontFamily: "Cairo",
         useMaterial3: true,
       ),
       home: const DashboardScreen(),

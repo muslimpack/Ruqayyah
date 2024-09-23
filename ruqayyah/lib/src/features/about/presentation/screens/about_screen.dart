@@ -15,7 +15,6 @@ class AboutScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           "عنا",
-          style: TextStyle(fontFamily: "Uthmanic"),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
@@ -31,11 +30,9 @@ class AboutScreen extends StatelessWidget {
             ),
             title: Text(
               "${"تطبيق رقية الإصدار"} $kAppVersion",
-              style: const TextStyle(fontFamily: "Cairo"),
             ),
             subtitle: const Text(
               "مجاني وخالي من الإعلانات ومفتوح المصدر",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
           ),
           const Divider(),
@@ -43,7 +40,6 @@ class AboutScreen extends StatelessWidget {
             leading: Icon(MdiIcons.handClap),
             title: const Text(
               "نرجو الدعاء لنا ولوالدينا",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
           ),
           const Divider(),
@@ -51,11 +47,9 @@ class AboutScreen extends StatelessWidget {
             leading: const Icon(Icons.menu_book),
             title: const Text(
               "الرقية الشرعية من القرآن الكريم والسنة النبوية",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             subtitle: const Text(
               "د. خالد بن عبدالرحمن الجريسي",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             onTap: () {
               openURL(
@@ -68,7 +62,6 @@ class AboutScreen extends StatelessWidget {
             leading: Icon(MdiIcons.github),
             title: const Text(
               "رابط البرنامج مفتوح المصدر",
-              style: TextStyle(fontFamily: "Cairo"),
             ),
             onTap: () async {
               await openURL(

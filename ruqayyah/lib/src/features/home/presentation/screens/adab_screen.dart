@@ -58,7 +58,6 @@ class _AdabScreenState extends State<AdabScreen> {
                             (index + 1).toString(),
                             style: const TextStyle(
                               fontSize: 20,
-                              fontFamily: "Cairo",
                             ),
                           ),
                         ),
@@ -67,7 +66,6 @@ class _AdabScreenState extends State<AdabScreen> {
                             adab[index],
                             style: const TextStyle(
                               fontSize: 20,
-                              fontFamily: "Cairo",
                             ),
                           ),
                         ),
