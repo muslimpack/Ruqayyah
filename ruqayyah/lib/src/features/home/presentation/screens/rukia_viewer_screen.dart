@@ -94,50 +94,48 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
           final item = rukiasToView[index];
           return InkWell(
             onTap: () async => _onTap(index),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Stack(
-                children: [
-                  Center(
-                    child: Opacity(
-                      opacity: .2,
-                      child: Text(
-                        item.count.toString(),
-                        style: const TextStyle(
-                          fontSize: 450,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange,
-                        ),
+            child: Stack(
+              children: [
+                Center(
+                  child: Opacity(
+                    opacity: .2,
+                    child: Text(
+                      item.count.toString(),
+                      style: const TextStyle(
+                        fontSize: 450,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepOrange,
                       ),
                     ),
                   ),
-                  ListView(
-                    physics: const ClampingScrollPhysics(),
-                    children: [
-                      Text(
-                        item.zikr,
+                ),
+                ListView(
+                  padding: const EdgeInsets.all(20),
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    Text(
+                      item.zikr,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Kitab",
+                        height: 2,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        item.source,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Kitab",
-                          height: 2,
+                          fontSize: 15,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          item.source,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           );
         },
