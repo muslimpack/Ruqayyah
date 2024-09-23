@@ -1,7 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
+import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/home/presentation/components/instruction_card.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});
@@ -11,7 +12,7 @@ class AdabScreen extends StatefulWidget {
 }
 
 class _AdabScreenState extends State<AdabScreen> {
-  late final List<String> adab;
+  late final List<Instruction> adab;
   bool isLoading = true;
   @override
   void initState() {
@@ -20,10 +21,7 @@ class _AdabScreenState extends State<AdabScreen> {
   }
 
   Future<void> _getData() async {
-    final String data = await rootBundle.loadString('assets/json/adab.json');
-    final list = json.decode(data) as List<dynamic>;
-
-    adab = list.map((e) => e as String).toList();
+    adab = await sl<RukiaDBHelper>().getAllInstructions();
 
     isLoading = false;
     setState(() {});
@@ -39,40 +37,10 @@ class _AdabScreenState extends State<AdabScreen> {
       body: isLoading
           ? const SizedBox()
           : ListView.builder(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10).copyWith(bottom: 50),
               itemCount: adab.length,
               itemBuilder: (context, index) {
-                return Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            (index + 1).toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            adab[index],
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return InstructionCard(instruction: adab[index]);
               },
             ),
     );

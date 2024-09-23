@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
   final String title;
@@ -94,50 +95,43 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
           final item = rukiasToView[index];
           return InkWell(
             onTap: () async => _onTap(index),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Stack(
-                children: [
-                  Center(
-                    child: Opacity(
-                      opacity: .2,
-                      child: Text(
-                        item.count.toString(),
-                        style: const TextStyle(
-                          fontSize: 450,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange,
-                        ),
+            child: Stack(
+              children: [
+                Center(
+                  child: Opacity(
+                    opacity: .2,
+                    child: Text(
+                      item.count.toString(),
+                      style: const TextStyle(
+                        fontSize: 450,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepOrange,
                       ),
                     ),
                   ),
-                  ListView(
-                    physics: const ClampingScrollPhysics(),
-                    children: [
-                      Text(
-                        item.zikr,
+                ),
+                ListView(
+                  padding: const EdgeInsets.all(20),
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    RukiaContentBuilder(
+                      rukia: item,
+                      fontSize: 30,
+                      enableDiacritics: true,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        item.source,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Kitab",
-                          height: 2,
+                          fontSize: 15,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          item.source,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           );
         },

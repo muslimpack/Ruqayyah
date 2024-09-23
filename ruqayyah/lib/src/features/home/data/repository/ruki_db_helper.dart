@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:ruqayyah/src/core/utils/db_helper.dart';
+import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:sqflite/sqflite.dart';
 
 class RukiaDBHelper {
   /* ************* Variables ************* */
 
-  static const String dbName = "Ruqayyah.db";
-  static const int dbVersion = 3;
+  static const String dbName = "rukia.db";
+  static const int dbVersion = 1;
 
   /* ************* Singleton Constructor ************* */
 
@@ -32,7 +33,7 @@ class RukiaDBHelper {
   /* ************* Functions ************* */
   ///
 
-  Future<List<Rukia>> getAll() async {
+  Future<List<Rukia>> getAllRukiaBook() async {
     final Database db = await database;
 
     final List<Map<String, dynamic>> maps =
@@ -40,6 +41,17 @@ class RukiaDBHelper {
 
     return List.generate(maps.length, (i) {
       return Rukia.fromMap(maps[i]);
+    });
+  }
+
+  Future<List<Instruction>> getAllInstructions() async {
+    final Database db = await database;
+
+    final List<Map<String, dynamic>> maps =
+        await db.rawQuery('SELECT * FROM instructions ORDER BY `order` ASC');
+
+    return List.generate(maps.length, (i) {
+      return Instruction.fromMap(maps[i]);
     });
   }
 
