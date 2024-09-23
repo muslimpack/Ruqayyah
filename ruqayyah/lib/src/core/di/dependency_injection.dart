@@ -5,6 +5,9 @@ import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_re
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
 import 'package:ruqayyah/src/features/quran/data/repository/uthmani_db_helper.dart';
+import 'package:ruqayyah/src/features/settings/data/repository/app_settings_repo.dart';
+import 'package:ruqayyah/src/features/settings/data/repository/rukia_text_repo.dart';
+import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 import 'package:ruqayyah/src/features/ui/data/repository/ui_repo.dart';
 
 final sl = GetIt.instance;
@@ -14,6 +17,8 @@ Future<void> initSL() async {
   sl.registerLazySingleton(() => GetStorage(kAppStorageKey));
   sl.registerLazySingleton(() => EffectsRepo(sl()));
   sl.registerLazySingleton(() => UIRepo(sl()));
+  sl.registerLazySingleton(() => RukiaTextRepo(sl()));
+  sl.registerLazySingleton(() => AppSettingsRepo(sl()));
 
   ///MARK: Init Repo
   sl.registerLazySingleton(() => RukiaDBHelper());
@@ -25,6 +30,7 @@ Future<void> initSL() async {
   ///MARK: Init BLOC
 
   /// Singleton BLoC
+  sl.registerLazySingleton(() => SettingsCubit(sl(), sl(), sl(), sl()));
 
   /// Factory BLoC
 }

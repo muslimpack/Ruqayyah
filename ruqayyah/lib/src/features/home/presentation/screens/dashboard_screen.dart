@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
@@ -69,8 +70,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         bottomNavigationBar: ConvexAppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          activeColor: Colors.deepOrange,
-          shadowColor: Colors.deepOrange,
+          activeColor: kAppMainColor,
+          shadowColor: kAppMainColor,
           items: const [
             TabItem(icon: Icons.question_mark, title: 'آداب الرقية'),
             TabItem(icon: Icons.short_text, title: 'الموجزة'),

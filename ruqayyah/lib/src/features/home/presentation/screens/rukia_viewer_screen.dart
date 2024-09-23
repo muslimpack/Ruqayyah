@@ -1,9 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
+import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
+import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
   final String title;
@@ -74,6 +78,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        leading: const FontSettingsIconButton(),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -93,20 +98,17 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
         itemCount: rukiasToView.length,
         itemBuilder: (context, index) {
           final item = rukiasToView[index];
-          return InkWell(
+          return GestureDetector(
             onTap: () async => _onTap(index),
             child: Stack(
               children: [
                 Center(
-                  child: Opacity(
-                    opacity: .2,
-                    child: Text(
-                      item.count.toString(),
-                      style: const TextStyle(
-                        fontSize: 450,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepOrange,
-                      ),
+                  child: Text(
+                    item.count.toString(),
+                    style: TextStyle(
+                      fontSize: 450,
+                      fontWeight: FontWeight.bold,
+                      color: kAppMainColor.withOpacity(.05),
                     ),
                   ),
                 ),
@@ -116,8 +118,10 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                   children: [
                     RukiaContentBuilder(
                       rukia: item,
-                      fontSize: 30,
-                      enableDiacritics: true,
+                      fontSize:
+                          context.watch<SettingsCubit>().state.fontSize * 10,
+                      enableDiacritics:
+                          context.watch<SettingsCubit>().state.showDiacritics,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20),

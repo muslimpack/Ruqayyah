@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
+import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class InstructionCard extends StatelessWidget {
   const InstructionCard({
@@ -18,7 +21,7 @@ class InstructionCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
-              color: Colors.deepOrange,
+              color: kAppMainColor,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: ConstrainedBox(
@@ -29,8 +32,8 @@ class InstructionCard extends StatelessWidget {
             ),
             Text(
               instruction.instruction,
-              style: const TextStyle(
-                fontSize: 20,
+              style: TextStyle(
+                fontSize: context.watch<SettingsCubit>().state.fontSize * 10,
                 fontFamily: "kitab",
               ),
             ),
