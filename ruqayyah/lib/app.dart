@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ruqayyah/generated/l10n.dart';
+import 'package:ruqayyah/scroll_behavior.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         onGenerateTitle: (context) => S.of(context).appTitle,
+        scrollBehavior: AppScrollBehavior(),
         debugShowCheckedModeBanner: false,
         locale: const Locale('ar', 'EG'),
         supportedLocales: S.delegate.supportedLocales,
