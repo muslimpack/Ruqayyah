@@ -34,11 +34,23 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   void initState() {
     super.initState();
 
+    _start();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    WakelockPlus.disable();
+    sl<VolumeButtonManager>().dispose();
+    super.dispose();
+  }
+
+  Future _start() async {
     _pageController = PageController();
     _pageController.addListener(_pageChange);
 
     if (sl<AppSettingsRepo>().enableWakeLock) {
-      WakelockPlus.enable();
+      await WakelockPlus.enable();
     }
 
     sl<VolumeButtonManager>().toggleActivation(
@@ -50,24 +62,22 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
       onVolumeDownPressed: () => _onTap(currentPage),
     );
 
-    _loadData();
-  }
+    await _loadData();
 
-  @override
-  void dispose() {
-    _pageController.dispose();
-    WakelockPlus.disable();
-    sl<VolumeButtonManager>().dispose();
-    super.dispose();
+    setState(() {
+      isLoading = false;
+    });
   }
 
   Future _loadData() async {
     rukiasToView =
         await sl<RukiaDBHelper>().getRukiaListByType(widget.rukiaType);
+  }
 
-    setState(() {
-      isLoading = false;
-    });
+  Future _reset() async {
+    await _loadData();
+    _pageController.jumpTo(0);
+    setState(() {});
   }
 
   void _pageChange() {
@@ -110,7 +120,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) return const SizedBox();
+    if (isLoading) return const Center(child: CircularProgressIndicator());
 
     return Scaffold(
       appBar: AppBar(
@@ -163,8 +173,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                     ),
                     IconButton(
                       onPressed: () {
-                        _pageController.jumpTo(0);
-                        _loadData();
+                        _reset();
                       },
                       icon: const Icon(Icons.repeat),
                     ),
