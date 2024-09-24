@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Azkar Filters`
+  String get azkarFilters {
+    return Intl.message(
+      'Azkar Filters',
+      name: 'azkarFilters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Effect Manager`
   String get effectManager {
     return Intl.message(

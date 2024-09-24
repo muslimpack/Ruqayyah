@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/features/about/presentation/screens/about_screen.dart';
+import 'package:ruqayyah/src/features/azkar_filters/presentation/screens/select_zikr_hokm_screen.dart';
+import 'package:ruqayyah/src/features/azkar_filters/presentation/screens/select_zikr_source_screen.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/screens/effects_manager_screen.dart';
 import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
@@ -23,6 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text(S.of(context).settings),
       ),
       body: ListView(
+        padding: const EdgeInsets.only(bottom: 50),
         children: [
           Title(title: S.of(context).general),
           const SettingsGeneralSection(),
@@ -36,6 +39,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 MaterialPageRoute(
                   builder: (context) {
                     return const EffectsManagerScreen();
+                  },
+                ),
+              );
+            },
+          ),
+          const Divider(),
+          Title(title: S.of(context).azkarFilters),
+          ListTile(
+            leading: const Icon(Icons.library_books),
+            title: Text(S.of(context).selectAzkarSource),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ZikrSourceFilterScreen();
+                  },
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.library_books),
+            title: Text(S.of(context).selectAzkarHokmFilters),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ZikrHokmFilterScreen();
                   },
                 ),
               );

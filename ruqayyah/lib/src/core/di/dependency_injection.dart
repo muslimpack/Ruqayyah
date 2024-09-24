@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ruqayyah/src/core/constants/const.dart';
 import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
+import 'package:ruqayyah/src/features/azkar_filters/data/repository/azakr_filters_repo.dart';
+import 'package:ruqayyah/src/features/azkar_filters/presentation/controller/cubit/azkar_filters_cubit.dart';
 import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
@@ -20,6 +22,7 @@ Future<void> initSL() async {
   sl.registerLazySingleton(() => UIRepo(sl()));
   sl.registerLazySingleton(() => RukiaTextRepo(sl()));
   sl.registerLazySingleton(() => AppSettingsRepo(sl()));
+  sl.registerLazySingleton(() => AzkarFiltersRepo(sl()));
 
   ///MARK: Init Repo
   sl.registerLazySingleton(() => RukiaDBHelper());
@@ -33,6 +36,7 @@ Future<void> initSL() async {
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => SettingsCubit(sl(), sl(), sl(), sl()));
+  sl.registerLazySingleton(() => AzkarFiltersCubit(sl()));
 
   /// Factory BLoC
 }

@@ -1,6 +1,7 @@
 {
   "aboutUs": "About Us",
   "appTitle": "Rukia",
+  "azkarFilters": "Azkar Filters",
   "effectManager": "Effect Manager",
   "enableAzkarFilters": "Enable Azkar filters",
   "enableWakeLock": "Enable wake lock",
