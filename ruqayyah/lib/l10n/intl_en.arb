@@ -5,5 +5,13 @@
   "fontResetSize": "Reset font size",
   "fontSettings": "Font Settings",
   "fontType": "Font Type",
-    "showDiacritics": "Show Diacritics"
+    "showDiacritics": "Show Diacritics",
+      "soundEffectAtEveryPraise": "Sound effect at every praise",
+  "soundEffectAtSingleZikrEnd": "Sound effect at single zikr end",
+  "soundEffectVolume": "Sound Effect volume",
+  "soundEffectWhenAllZikrEnd": "Sound effect when all zikr end",
+    "phoneVibrationAtEveryPraise": "Phone vibration at every praise",
+  "phoneVibrationAtSingleZikrEnd": "Phone vibration at single zikr end",
+  "phoneVibrationWhenAllZikrEnd": "Phone vibration when all zikr end",
+   "effectManager": "Effect Manager"
 }

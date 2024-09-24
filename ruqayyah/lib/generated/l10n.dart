@@ -119,6 +119,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Sound effect at every praise`
+  String get soundEffectAtEveryPraise {
+    return Intl.message(
+      'Sound effect at every praise',
+      name: 'soundEffectAtEveryPraise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sound effect at single zikr end`
+  String get soundEffectAtSingleZikrEnd {
+    return Intl.message(
+      'Sound effect at single zikr end',
+      name: 'soundEffectAtSingleZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sound Effect volume`
+  String get soundEffectVolume {
+    return Intl.message(
+      'Sound Effect volume',
+      name: 'soundEffectVolume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sound effect when all zikr end`
+  String get soundEffectWhenAllZikrEnd {
+    return Intl.message(
+      'Sound effect when all zikr end',
+      name: 'soundEffectWhenAllZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration at every praise`
+  String get phoneVibrationAtEveryPraise {
+    return Intl.message(
+      'Phone vibration at every praise',
+      name: 'phoneVibrationAtEveryPraise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration at single zikr end`
+  String get phoneVibrationAtSingleZikrEnd {
+    return Intl.message(
+      'Phone vibration at single zikr end',
+      name: 'phoneVibrationAtSingleZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration when all zikr end`
+  String get phoneVibrationWhenAllZikrEnd {
+    return Intl.message(
+      'Phone vibration when all zikr end',
+      name: 'phoneVibrationWhenAllZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effect Manager`
+  String get effectManager {
+    return Intl.message(
+      'Effect Manager',
+      name: 'effectManager',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

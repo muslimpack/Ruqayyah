@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Rukia"),
+        "effectManager": MessageLookupByLibrary.simpleMessage("Effect Manager"),
         "fontDecreaeSize":
             MessageLookupByLibrary.simpleMessage("Decreae font size"),
         "fontIncreaeSize":
@@ -31,7 +32,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reset font size"),
         "fontSettings": MessageLookupByLibrary.simpleMessage("Font Settings"),
         "fontType": MessageLookupByLibrary.simpleMessage("Font Type"),
+        "phoneVibrationAtEveryPraise": MessageLookupByLibrary.simpleMessage(
+            "Phone vibration at every praise"),
+        "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "Phone vibration at single zikr end"),
+        "phoneVibrationWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "Phone vibration when all zikr end"),
         "showDiacritics":
-            MessageLookupByLibrary.simpleMessage("Show Diacritics")
+            MessageLookupByLibrary.simpleMessage("Show Diacritics"),
+        "soundEffectAtEveryPraise": MessageLookupByLibrary.simpleMessage(
+            "Sound effect at every praise"),
+        "soundEffectAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "Sound effect at single zikr end"),
+        "soundEffectVolume":
+            MessageLookupByLibrary.simpleMessage("Sound Effect volume"),
+        "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "Sound effect when all zikr end")
       };
 }

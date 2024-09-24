@@ -26,13 +26,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           ListTile(
             leading: const Icon(Icons.speaker_group),
-            title: const Text("مدير المؤثرات"),
+            title: Text(S.of(context).effectManager),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const EffectManagerScreen();
+                    return const EffectsManagerScreen();
                   },
                 ),
               );

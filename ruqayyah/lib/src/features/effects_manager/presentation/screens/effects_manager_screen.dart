@@ -1,171 +1,148 @@
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/core/di/dependency_injection.dart';
-import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
-import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ruqayyah/generated/l10n.dart';
+import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
-class EffectManagerScreen extends StatefulWidget {
-  const EffectManagerScreen({super.key});
+class EffectsManagerScreen extends StatelessWidget {
+  const EffectsManagerScreen({super.key});
 
-  @override
-  State<EffectManagerScreen> createState() => _EffectManagerScreenState();
-}
-
-class _EffectManagerScreenState extends State<EffectManagerScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          "مدير المؤثرات",
-        ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-      ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          ListTile(
-            leading: const Icon(
-              Icons.volume_up,
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              S.of(context).effectManager,
             ),
-            title: const Text("مستوى صوت المؤثرات"),
-            subtitle: Slider(
-              value: sl<EffectsRepo>().soundEffectVolume,
-              onChanged: (value) {
-                sl<EffectsRepo>().changeSoundEffectVolume(value);
-                setState(() {});
-              },
-            ),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            elevation: 0,
           ),
-
-          const Divider(),
-
-          /// Tally Sound Allowed Vibrate
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.vibration,
+          body: ListView(
+            padding: const EdgeInsets.all(10),
+            children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.volume_up,
+                ),
+                title: Text(S.of(context).soundEffectVolume),
+                subtitle: Slider(
+                  value: state.zikrEffects.soundEffectVolume,
+                  onChanged: (value) {
+                    context.read<SettingsCubit>().zikrEffectChangeVolume(value);
+                  },
+                ),
               ),
-              title: Text("الإهتزاز عند كل مرة"),
-            ),
-            value: sl<EffectsRepo>().isOnCountVibrateAllowed,
-            onChanged: (value) {
-              sl<EffectsRepo>().changeOnCountVibrateStatus(value: value);
 
-              if (value) {
-                sl<EffectsManager>().onCountVibration();
-              }
-
-              setState(() {});
-            },
-          ),
-
-          /// Tally Sound Allowed
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.speaker,
+              /// Tally Sound Allowed
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.speaker,
+                  ),
+                  title: Text(S.of(context).soundEffectAtEveryPraise),
+                ),
+                value: state.zikrEffects.soundOnCount,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlaySoundEveryPraise(activate: value);
+                },
               ),
-              title: Text("صوت عند كل مرة"),
-            ),
-            value: sl<EffectsRepo>().isOnCountSoundAllowed,
-            onChanged: (value) async {
-              sl<EffectsRepo>().changeOnCountStatus(value: value);
 
-              if (value) {
-                await sl<EffectsManager>().onCountSound();
-              }
-
-              setState(() {});
-            },
-          ),
-
-          /// Zikr Done Sound Allowed Vibrate
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.vibration,
+              /// Zikr Done Sound Allowed
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.speaker,
+                  ),
+                  title: Text(S.of(context).soundEffectAtSingleZikrEnd),
+                ),
+                value: state.zikrEffects.soundEveryZikr,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlaySoundEveryZikr(activate: value);
+                },
               ),
-              title: Text("الإهتزاز عند انتهاء كل ذكر"),
-            ),
-            value: sl<EffectsRepo>().isSingleDoneVibrateAllowed,
-            onChanged: (value) async {
-              sl<EffectsRepo>().changeSingleDoneVibrateStatus(value: value);
 
-              if (value) {
-                await sl<EffectsManager>().onSingleDoneVibration();
-              }
-              setState(() {});
-            },
-          ),
-
-          /// Zikr Done Sound Allowed
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.speaker,
+              /// Azkar Done Sound Allowed
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.speaker,
+                  ),
+                  title: Text(S.of(context).soundEffectWhenAllZikrEnd),
+                ),
+                value: state.zikrEffects.soundOnAllDone,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlaySoundEveryTitle(activate: value);
+                },
               ),
-              title: Text("صوت عند انتهاء كل ذكر"),
-            ),
-            value: sl<EffectsRepo>().isSingleDoneSoundAllowed,
-            onChanged: (value) async {
-              sl<EffectsRepo>().changeSingleDoneSoundStatus(value: value);
+              const Divider(),
 
-              if (value) {
-                await sl<EffectsManager>().onAllDoneSound();
-              }
-              setState(() {});
-            },
-          ),
-
-          /// Azkar Done Sound Allowed vibrate
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.vibration,
+              /// Tally Sound Allowed Vibrate
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.vibration,
+                  ),
+                  title: Text(S.of(context).phoneVibrationAtEveryPraise),
+                ),
+                value: state.zikrEffects.vibrateOnCount,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlayVibrationEveryPraise(
+                        activate: value,
+                      );
+                },
               ),
-              title: Text("الإهتزاز عند الانتهاء من جميع الأذكار"),
-            ),
-            value: sl<EffectsRepo>().isAllDoneVibrateAllowed,
-            onChanged: (value) {
-              sl<EffectsRepo>().changeAllDoneVibrateStatus(
-                value: value,
-              );
 
-              if (value) {
-                sl<EffectsManager>().onAllDoneVibration();
-              }
-              setState(() {});
-            },
-          ),
-
-          /// Azkar Done Sound Allowed
-          SwitchListTile(
-            title: const ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: Icon(
-                Icons.speaker,
+              /// Zikr Done Sound Allowed Vibrate
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.vibration,
+                  ),
+                  title: Text(S.of(context).phoneVibrationAtSingleZikrEnd),
+                ),
+                value: state.zikrEffects.vibrateEveryZikr,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlayVibrationEveryZikr(activate: value);
+                },
               ),
-              title: Text("صوت عند الانتهاء من جميع الأذكار"),
-            ),
-            value: sl<EffectsRepo>().isAllDoneSoundAllowed,
-            onChanged: (value) {
-              sl<EffectsRepo>().changeAllDoneSoundStatus(value: value);
 
-              if (value) {
-                sl<EffectsManager>().onAllDoneSound();
-              }
-              setState(() {});
-            },
+              /// Azkar Done Sound Allowed vibrate
+              SwitchListTile(
+                title: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(
+                    Icons.vibration,
+                  ),
+                  title: Text(S.of(context).phoneVibrationWhenAllZikrEnd),
+                ),
+                value: state.zikrEffects.vibrateOnAllDone,
+                onChanged: (value) {
+                  context
+                      .read<SettingsCubit>()
+                      .zikrEffectChangePlayVibrationEveryTitle(activate: value);
+                },
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -4,5 +4,13 @@
   "fontIncreaeSize": "زيادة حجم الخط",
   "fontResetSize": "إعادة تعيين حجم الخط",
   "fontSettings": "إعدادات الخط",
-   "showDiacritics": "عرض التشكيل"
+   "showDiacritics": "عرض التشكيل",
+     "soundEffectAtEveryPraise": "اشعار صوتي عند كل تسبيحة",
+  "soundEffectAtSingleZikrEnd": "اشعار صوتي عند انتهاء كل ذكر",
+  "soundEffectVolume": "حجم الصوت",
+  "soundEffectWhenAllZikrEnd": "اشعار صوتي عند انتهاء جميع الأذكار",
+    "phoneVibrationAtEveryPraise": "اهتزاز الهاتف عند كل تسبيحة",
+  "phoneVibrationAtSingleZikrEnd": "اهتزاز الهاتف عند انتهاء كل ذكر",
+  "phoneVibrationWhenAllZikrEnd": "اهتزاز الهاتف عند انتهاء جميع الأذكار",
+    "effectManager": "إدارة المؤثرات"
 }

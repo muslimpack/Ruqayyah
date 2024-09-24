@@ -23,12 +23,26 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("رقية"),
+        "effectManager": MessageLookupByLibrary.simpleMessage("إدارة المؤثرات"),
         "fontDecreaeSize": MessageLookupByLibrary.simpleMessage("قلل حجم الخط"),
         "fontIncreaeSize":
             MessageLookupByLibrary.simpleMessage("زيادة حجم الخط"),
         "fontResetSize":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين حجم الخط"),
         "fontSettings": MessageLookupByLibrary.simpleMessage("إعدادات الخط"),
-        "showDiacritics": MessageLookupByLibrary.simpleMessage("عرض التشكيل")
+        "phoneVibrationAtEveryPraise":
+            MessageLookupByLibrary.simpleMessage("اهتزاز الهاتف عند كل تسبيحة"),
+        "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "اهتزاز الهاتف عند انتهاء كل ذكر"),
+        "phoneVibrationWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "اهتزاز الهاتف عند انتهاء جميع الأذكار"),
+        "showDiacritics": MessageLookupByLibrary.simpleMessage("عرض التشكيل"),
+        "soundEffectAtEveryPraise":
+            MessageLookupByLibrary.simpleMessage("اشعار صوتي عند كل تسبيحة"),
+        "soundEffectAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "اشعار صوتي عند انتهاء كل ذكر"),
+        "soundEffectVolume": MessageLookupByLibrary.simpleMessage("حجم الصوت"),
+        "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
+            "اشعار صوتي عند انتهاء جميع الأذكار")
       };
 }
