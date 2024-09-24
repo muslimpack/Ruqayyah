@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "appTitle": MessageLookupByLibrary.simpleMessage("رقية"),
         "effectManager": MessageLookupByLibrary.simpleMessage("إدارة المؤثرات"),
+        "enableAzkarFilters":
+            MessageLookupByLibrary.simpleMessage("تفعيل تصفية الأذكار"),
         "enableWakeLock":
             MessageLookupByLibrary.simpleMessage("إبقاء الشاشة نشطة"),
         "fontDecreaeSize": MessageLookupByLibrary.simpleMessage("قلل حجم الخط"),
@@ -40,6 +42,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
             "إرشادات عامة تُراعى عند الرقية "),
         "github": MessageLookupByLibrary.simpleMessage("الكود المصدري للمشروع"),
+        "hokmAthar": MessageLookupByLibrary.simpleMessage("أثر"),
+        "hokmDaeif": MessageLookupByLibrary.simpleMessage("ضعيف"),
+        "hokmHasan": MessageLookupByLibrary.simpleMessage("حسن"),
+        "hokmMawdue": MessageLookupByLibrary.simpleMessage("موضوع"),
+        "hokmSahih": MessageLookupByLibrary.simpleMessage("صحيح"),
         "longRukia": MessageLookupByLibrary.simpleMessage("الرقية المطولة"),
         "longRukiaShort": MessageLookupByLibrary.simpleMessage("المطولة"),
         "mediumRukia": MessageLookupByLibrary.simpleMessage("الرقية المتوسطة"),
@@ -59,6 +66,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
             "الرقية الشرعية من القرآن الكريم والسنة النبوية"),
         "ruqyahEtiquette": MessageLookupByLibrary.simpleMessage("آداب الرقية"),
+        "selectAzkarHokmFilters":
+            MessageLookupByLibrary.simpleMessage("اختيار حكم الأذكار"),
+        "selectAzkarSource":
+            MessageLookupByLibrary.simpleMessage("اختيار مصدر الأذكار"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "shortRukia": MessageLookupByLibrary.simpleMessage("الرقية الموجزة"),
         "shortRukiaShort": MessageLookupByLibrary.simpleMessage("الموجزة"),
@@ -70,6 +81,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "soundEffectVolume": MessageLookupByLibrary.simpleMessage("حجم الصوت"),
         "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
             "اشعار صوتي عند انتهاء جميع الأذكار"),
+        "sourceAbuDawood": MessageLookupByLibrary.simpleMessage("سنن أبي داود"),
+        "sourceAdDarami": MessageLookupByLibrary.simpleMessage("مسند الدارمي"),
+        "sourceAhmad": MessageLookupByLibrary.simpleMessage("مسند أحمد"),
+        "sourceAnNasai": MessageLookupByLibrary.simpleMessage("سنن النسائي"),
+        "sourceAtTirmidhi": MessageLookupByLibrary.simpleMessage("سنن الترمذي"),
+        "sourceAthar": MessageLookupByLibrary.simpleMessage("أثر"),
+        "sourceBayhaqi": MessageLookupByLibrary.simpleMessage("سنن البيهقي"),
+        "sourceHakim": MessageLookupByLibrary.simpleMessage(
+            "المستدرك على الصحيحين للحاكم النيسابوري"),
+        "sourceIbnMajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
+        "sourceIbnSunny": MessageLookupByLibrary.simpleMessage(
+            "عمل اليوم والليلة لابن السني"),
+        "sourceMalik": MessageLookupByLibrary.simpleMessage("موطأ مالك"),
+        "sourceQuran": MessageLookupByLibrary.simpleMessage("القرآن"),
+        "sourceSahihBukhari":
+            MessageLookupByLibrary.simpleMessage("صحيح البخاري"),
+        "sourceSahihMuslim": MessageLookupByLibrary.simpleMessage("صحيح مسلم"),
         "version": MessageLookupByLibrary.simpleMessage("الإصدار")
       };
 }

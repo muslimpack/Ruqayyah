@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Rukia"),
         "effectManager": MessageLookupByLibrary.simpleMessage("Effect Manager"),
+        "enableAzkarFilters":
+            MessageLookupByLibrary.simpleMessage("Enable Azkar filters"),
         "enableWakeLock":
             MessageLookupByLibrary.simpleMessage("Enable wake lock"),
         "fontDecreaeSize":
@@ -41,6 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
             "General guidelines for Ruqyah"),
         "github": MessageLookupByLibrary.simpleMessage("Github source code"),
+        "hokmAthar": MessageLookupByLibrary.simpleMessage("Athar"),
+        "hokmDaeif": MessageLookupByLibrary.simpleMessage("Weak"),
+        "hokmHasan": MessageLookupByLibrary.simpleMessage("Good"),
+        "hokmMawdue": MessageLookupByLibrary.simpleMessage("Fabricated"),
+        "hokmSahih": MessageLookupByLibrary.simpleMessage("Authentic"),
         "longRukia": MessageLookupByLibrary.simpleMessage("Long Rukia"),
         "longRukiaShort": MessageLookupByLibrary.simpleMessage("Long"),
         "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Rukia"),
@@ -61,6 +68,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Al-Ruqyah Al-Shar\'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah"),
         "ruqyahEtiquette":
             MessageLookupByLibrary.simpleMessage("Ruqyah Etiquette"),
+        "selectAzkarHokmFilters":
+            MessageLookupByLibrary.simpleMessage("Select hokm of Azakr"),
+        "selectAzkarSource":
+            MessageLookupByLibrary.simpleMessage("Select source of Azkar"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shortRukia": MessageLookupByLibrary.simpleMessage("Short Rukia"),
         "shortRukiaShort": MessageLookupByLibrary.simpleMessage("Short"),
@@ -74,6 +85,31 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sound Effect volume"),
         "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
             "Sound effect when all zikr end"),
+        "sourceAbuDawood":
+            MessageLookupByLibrary.simpleMessage("Sunan Abi Dawud"),
+        "sourceAdDarami":
+            MessageLookupByLibrary.simpleMessage("Sunan al-Darimi"),
+        "sourceAhmad":
+            MessageLookupByLibrary.simpleMessage("Musnad Ahmad ibn Hanbal"),
+        "sourceAnNasai": MessageLookupByLibrary.simpleMessage(
+            "Al-Sunan al-Sughra by al-Nasa\'i"),
+        "sourceAtTirmidhi":
+            MessageLookupByLibrary.simpleMessage("Sunan al-Tirmidhi"),
+        "sourceAthar": MessageLookupByLibrary.simpleMessage("Athr"),
+        "sourceBayhaqi":
+            MessageLookupByLibrary.simpleMessage("Sunan al-Bayhaqi"),
+        "sourceHakim": MessageLookupByLibrary.simpleMessage(
+            "Al-Mustadrak ala al-Sahihayn"),
+        "sourceIbnMajah":
+            MessageLookupByLibrary.simpleMessage("Sunan IbnMajah"),
+        "sourceIbnSunny": MessageLookupByLibrary.simpleMessage("IbnSunny"),
+        "sourceMalik":
+            MessageLookupByLibrary.simpleMessage("Muwatta Imam Malik"),
+        "sourceQuran": MessageLookupByLibrary.simpleMessage("Quran"),
+        "sourceSahihBukhari":
+            MessageLookupByLibrary.simpleMessage("Sahih al-Bukhari"),
+        "sourceSahihMuslim":
+            MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
         "version": MessageLookupByLibrary.simpleMessage("Version")
       };
 }
