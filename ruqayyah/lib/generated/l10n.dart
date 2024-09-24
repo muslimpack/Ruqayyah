@@ -50,11 +50,31 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `About Us`
+  String get aboutUs {
+    return Intl.message(
+      'About Us',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rukia`
   String get appTitle {
     return Intl.message(
       'Rukia',
       name: 'appTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effect Manager`
+  String get effectManager {
+    return Intl.message(
+      'Effect Manager',
+      name: 'effectManager',
       desc: '',
       args: [],
     );
@@ -110,6 +130,86 @@ class S {
     );
   }
 
+  /// `Free, ad-free and open source app`
+  String get freeAdFreeAndOpenSourceApp {
+    return Intl.message(
+      'Free, ad-free and open source app',
+      name: 'freeAdFreeAndOpenSourceApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Github source code`
+  String get github {
+    return Intl.message(
+      'Github source code',
+      name: 'github',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration at every praise`
+  String get phoneVibrationAtEveryPraise {
+    return Intl.message(
+      'Phone vibration at every praise',
+      name: 'phoneVibrationAtEveryPraise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration at single zikr end`
+  String get phoneVibrationAtSingleZikrEnd {
+    return Intl.message(
+      'Phone vibration at single zikr end',
+      name: 'phoneVibrationAtSingleZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone vibration when all zikr end`
+  String get phoneVibrationWhenAllZikrEnd {
+    return Intl.message(
+      'Phone vibration when all zikr end',
+      name: 'phoneVibrationWhenAllZikrEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pray for us and our parents.`
+  String get prayForUsAndParents {
+    return Intl.message(
+      'Pray for us and our parents.',
+      name: 'prayForUsAndParents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dr. Khalid bin Abdulrahman Al-Juraisi`
+  String get rukiaBookAuthor {
+    return Intl.message(
+      'Dr. Khalid bin Abdulrahman Al-Juraisi',
+      name: 'rukiaBookAuthor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Ruqyah Al-Shar'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah`
+  String get rukiaBookTitle {
+    return Intl.message(
+      'Al-Ruqyah Al-Shar\'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah',
+      name: 'rukiaBookTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Show Diacritics`
   String get showDiacritics {
     return Intl.message(
@@ -160,41 +260,11 @@ class S {
     );
   }
 
-  /// `Phone vibration at every praise`
-  String get phoneVibrationAtEveryPraise {
+  /// `الإصدار`
+  String get version {
     return Intl.message(
-      'Phone vibration at every praise',
-      name: 'phoneVibrationAtEveryPraise',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Phone vibration at single zikr end`
-  String get phoneVibrationAtSingleZikrEnd {
-    return Intl.message(
-      'Phone vibration at single zikr end',
-      name: 'phoneVibrationAtSingleZikrEnd',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Phone vibration when all zikr end`
-  String get phoneVibrationWhenAllZikrEnd {
-    return Intl.message(
-      'Phone vibration when all zikr end',
-      name: 'phoneVibrationWhenAllZikrEnd',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Effect Manager`
-  String get effectManager {
-    return Intl.message(
-      'Effect Manager',
-      name: 'effectManager',
+      'الإصدار',
+      name: 'version',
       desc: '',
       args: [],
     );

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Rukia"),
         "effectManager": MessageLookupByLibrary.simpleMessage("Effect Manager"),
         "fontDecreaeSize":
@@ -32,12 +33,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reset font size"),
         "fontSettings": MessageLookupByLibrary.simpleMessage("Font Settings"),
         "fontType": MessageLookupByLibrary.simpleMessage("Font Type"),
+        "freeAdFreeAndOpenSourceApp": MessageLookupByLibrary.simpleMessage(
+            "Free, ad-free and open source app"),
+        "github": MessageLookupByLibrary.simpleMessage("Github source code"),
         "phoneVibrationAtEveryPraise": MessageLookupByLibrary.simpleMessage(
             "Phone vibration at every praise"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
             "Phone vibration at single zikr end"),
         "phoneVibrationWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
             "Phone vibration when all zikr end"),
+        "prayForUsAndParents": MessageLookupByLibrary.simpleMessage(
+            "Pray for us and our parents."),
+        "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
+            "Dr. Khalid bin Abdulrahman Al-Juraisi"),
+        "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
+            "Al-Ruqyah Al-Shar\'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah"),
         "showDiacritics":
             MessageLookupByLibrary.simpleMessage("Show Diacritics"),
         "soundEffectAtEveryPraise": MessageLookupByLibrary.simpleMessage(
@@ -47,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "soundEffectVolume":
             MessageLookupByLibrary.simpleMessage("Sound Effect volume"),
         "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
-            "Sound effect when all zikr end")
+            "Sound effect when all zikr end"),
+        "version": MessageLookupByLibrary.simpleMessage("الإصدار")
       };
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/constants/const.dart';
 import 'package:ruqayyah/src/core/functions/open_url.dart';
 
@@ -13,8 +14,8 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "عنا",
+        title: Text(
+          S.of(context).aboutUs,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
@@ -29,27 +30,27 @@ class AboutScreen extends StatelessWidget {
               scale: 3,
             ),
             title: Text(
-              "${"تطبيق رقية الإصدار"} $kAppVersion",
+              "${S.of(context).appTitle} ${S.of(context).version} $kAppVersion",
             ),
-            subtitle: const Text(
-              "مجاني وخالي من الإعلانات ومفتوح المصدر",
+            subtitle: Text(
+              S.of(context).freeAdFreeAndOpenSourceApp,
             ),
           ),
           const Divider(),
           ListTile(
             leading: Icon(MdiIcons.handClap),
-            title: const Text(
-              "نرجو الدعاء لنا ولوالدينا",
+            title: Text(
+              S.of(context).prayForUsAndParents,
             ),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.menu_book),
-            title: const Text(
-              "الرقية الشرعية من القرآن الكريم والسنة النبوية",
+            title: Text(
+              S.of(context).rukiaBookTitle,
             ),
-            subtitle: const Text(
-              "د. خالد بن عبدالرحمن الجريسي",
+            subtitle: Text(
+              S.of(context).rukiaBookAuthor,
             ),
             onTap: () {
               openURL(
@@ -60,8 +61,8 @@ class AboutScreen extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: Icon(MdiIcons.github),
-            title: const Text(
-              "رابط البرنامج مفتوح المصدر",
+            title: Text(
+              S.of(context).github,
             ),
             onTap: () async {
               await openURL(

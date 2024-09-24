@@ -44,8 +44,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.info_rounded),
-            title: const Text(
-              "عنا",
+            title: Text(
+              S.of(context).aboutUs,
             ),
             onTap: () {
               Navigator.push(
