@@ -28,6 +28,7 @@ dependencies:
   sqflite_common_ffi: ^2.3.3
   url_launcher: ^6.3.0
   vibration: ^2.0.0
+  wakelock_plus: ^1.2.8
   window_manager: ^0.4.2
 
 dev_dependencies:

@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Enable wake lock`
+  String get enableWakeLock {
+    return Intl.message(
+      'Enable wake lock',
+      name: 'enableWakeLock',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Decreae font size`
   String get fontDecreaeSize {
     return Intl.message(
@@ -135,6 +145,16 @@ class S {
     return Intl.message(
       'Free, ad-free and open source app',
       name: 'freeAdFreeAndOpenSourceApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message(
+      'General',
+      name: 'general',
       desc: '',
       args: [],
     );

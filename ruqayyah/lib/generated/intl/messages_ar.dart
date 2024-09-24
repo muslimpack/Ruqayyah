@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "appTitle": MessageLookupByLibrary.simpleMessage("رقية"),
         "effectManager": MessageLookupByLibrary.simpleMessage("إدارة المؤثرات"),
+        "enableWakeLock":
+            MessageLookupByLibrary.simpleMessage("إبقاء الشاشة نشطة"),
         "fontDecreaeSize": MessageLookupByLibrary.simpleMessage("قلل حجم الخط"),
         "fontIncreaeSize":
             MessageLookupByLibrary.simpleMessage("زيادة حجم الخط"),
@@ -34,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontType": MessageLookupByLibrary.simpleMessage("نوع الخط"),
         "freeAdFreeAndOpenSourceApp": MessageLookupByLibrary.simpleMessage(
             "تطبيق مجاني خالي من الإعلانات ومفتوح المصدر"),
+        "general": MessageLookupByLibrary.simpleMessage("عام"),
         "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
             "إرشادات عامة تُراعى عند الرقية "),
         "github": MessageLookupByLibrary.simpleMessage("الكود المصدري للمشروع"),

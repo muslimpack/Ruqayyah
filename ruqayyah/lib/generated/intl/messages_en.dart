@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Rukia"),
         "effectManager": MessageLookupByLibrary.simpleMessage("Effect Manager"),
+        "enableWakeLock":
+            MessageLookupByLibrary.simpleMessage("Enable wake lock"),
         "fontDecreaeSize":
             MessageLookupByLibrary.simpleMessage("Decreae font size"),
         "fontIncreaeSize":
@@ -35,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontType": MessageLookupByLibrary.simpleMessage("Font Type"),
         "freeAdFreeAndOpenSourceApp": MessageLookupByLibrary.simpleMessage(
             "Free, ad-free and open source app"),
+        "general": MessageLookupByLibrary.simpleMessage("General"),
         "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
             "General guidelines for Ruqyah"),
         "github": MessageLookupByLibrary.simpleMessage("Github source code"),

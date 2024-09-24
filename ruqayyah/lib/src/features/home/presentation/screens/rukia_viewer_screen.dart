@@ -6,7 +6,9 @@ import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/rukia_card.dart';
+import 'package:ruqayyah/src/features/settings/data/repository/app_settings_repo.dart';
 import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
   final RukiaTypeEnum rukiaType;
@@ -34,12 +36,16 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     _pageController = PageController();
     _pageController.addListener(_pageChange);
 
+    if (sl<AppSettingsRepo>().enableWakeLock) {
+      WakelockPlus.enable();
+    }
     _loadData();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    WakelockPlus.disable();
     super.dispose();
   }
 
