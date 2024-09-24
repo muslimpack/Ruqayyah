@@ -20,9 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text(
-          "الإعدادات",
-        ),
+        title: Text(S.of(context).settings),
       ),
       body: ListView(
         children: [
