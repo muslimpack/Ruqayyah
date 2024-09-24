@@ -6,6 +6,7 @@ import 'package:ruqayyah/scroll_behavior.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
+import 'package:ruqayyah/src/features/azkar_filters/presentation/controller/cubit/azkar_filters_cubit.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/dashboard_screen.dart';
 import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 import 'package:ruqayyah/src/features/ui/presentation/components/desktop_window_wrapper.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<SettingsCubit>(),
         ),
+        BlocProvider(create: (_) => sl<AzkarFiltersCubit>()),
       ],
       child: MaterialApp(
         onGenerateTitle: (context) => S.of(context).appTitle,
