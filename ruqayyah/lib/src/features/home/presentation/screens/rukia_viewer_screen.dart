@@ -20,7 +20,7 @@ class RukiaViewerScreen extends StatefulWidget {
 }
 
 class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
-  late final List<Rukia> rukiasToView;
+  late List<Rukia> rukiasToView;
   late final PageController _pageController;
 
   int currentPage = 0;
@@ -112,16 +112,59 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
           ),
         ),
       ),
-      body: PageView.builder(
-        controller: _pageController,
-        scrollDirection: Axis.vertical,
-        itemCount: rukiasToView.length,
-        itemBuilder: (context, index) {
-          return RukiaCard(
-            rukia: rukiasToView[index],
-            onTap: () => _onTap(index),
-          );
-        },
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            scrollDirection: Axis.vertical,
+            itemCount: rukiasToView.length,
+            itemBuilder: (context, index) {
+              return RukiaCard(
+                rukia: rukiasToView[index],
+                onTap: () => _onTap(index),
+              );
+            },
+          ),
+          Opacity(
+            opacity: .5,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Card(
+                margin: const EdgeInsets.all(10).copyWith(bottom: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        _pageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                      icon: const Icon(Icons.arrow_upward),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        _pageController.jumpTo(0);
+                        _loadData();
+                      },
+                      icon: const Icon(Icons.repeat),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                      icon: const Icon(Icons.arrow_downward),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
