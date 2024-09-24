@@ -1,9 +1,12 @@
 package com.hassaneltantawy.ruqayyah
 
 import io.flutter.embedding.android.FlutterActivity
+import android.view.KeyEvent
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
 
 class MainActivity: FlutterActivity() {
-      private lateinit var channel: MethodChannel
+    private lateinit var channel: MethodChannel
      private var activateVolumeDispatch:Boolean = false
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
