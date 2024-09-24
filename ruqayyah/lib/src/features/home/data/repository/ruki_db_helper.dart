@@ -48,10 +48,9 @@ class RukiaDBHelper {
   Future<List<Rukia>> getRukiaListByType(RukiaTypeEnum rukiaType) async {
     final Database db = await database;
 
-    final List<Map<String, dynamic>> maps = await db
-        .rawQuery('SELECT * FROM book where ? == 1 ORDER BY `order` ASC', [
-      rukiaType.nameInDB,
-    ]);
+    final List<Map<String, dynamic>> maps = await db.rawQuery(
+      'SELECT * FROM book where ${rukiaType.nameInDB} == 1 ORDER BY `order` ASC',
+    );
 
     return List.generate(maps.length, (i) {
       return Rukia.fromMap(maps[i]);

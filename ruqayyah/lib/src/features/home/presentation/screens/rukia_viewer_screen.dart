@@ -1,21 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
-import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
+import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/home/presentation/components/rukia_card.dart';
 import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
-import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class RukiaViewerScreen extends StatefulWidget {
-  final String title;
-  final List<Rukia> rukias;
+  final RukiaTypeEnum rukiaType;
   const RukiaViewerScreen({
     super.key,
-    required this.rukias,
-    required this.title,
+    required this.rukiaType,
   });
 
   @override
@@ -26,13 +23,33 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   late final List<Rukia> rukiasToView;
   late final PageController _pageController;
 
+  int currentPage = 0;
+
+  bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
-    rukiasToView = List.from(widget.rukias.map((e) => e.copyWith()).toList());
-    _pageController = PageController();
 
+    _pageController = PageController();
     _pageController.addListener(_pageChange);
+
+    _loadData();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  Future _loadData() async {
+    rukiasToView =
+        await sl<RukiaDBHelper>().getRukiaListByType(widget.rukiaType);
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void _pageChange() {
@@ -41,54 +58,57 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     });
   }
 
-  int done = 0;
-  double totalProgress = 0.0;
+  double get done => rukiasToView.where((x) => x.count == 0).length.toDouble();
+  double get majorProgress {
+    if (rukiasToView.isEmpty) return 1;
+    return done / rukiasToView.length;
+  }
 
   Future<void> _onTap(int index) async {
-    final item = rukiasToView[index];
+    final rukia = rukiasToView[index];
 
-    final count = item.count - 1;
+    if (rukia.count > 0) {
+      rukiasToView[index] = rukia.copyWith(count: rukia.count - 1);
+      sl<EffectsManager>().onCount();
 
-    if (item.count > 0 && count >= 0) {
-      rukiasToView[index] = item.copyWith(count: count < 0 ? 0 : count);
-      if (count == 0) done += 1;
-      await sl<EffectsManager>().onCount();
+      if (rukia.count == 1) {
+        sl<EffectsManager>().onSingleDone();
+      }
+
+      if (done / rukiasToView.length == 1) {
+        sl<EffectsManager>().onAllDone();
+      }
     }
 
-    if (count <= 0) {
-      await sl<EffectsManager>().onSingleDone();
+    if (rukia.count <= 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
 
-    if (done / rukiasToView.length == 1) {
-      sl<EffectsManager>().onAllDone();
-    }
-
     setState(() {});
   }
 
-  int currentPage = 0;
-
   @override
   Widget build(BuildContext context) {
+    if (isLoading) return const SizedBox();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.rukiaType.localeName(context)),
         centerTitle: true,
         leading: const FontSettingsIconButton(),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text("${rukiasToView.length} : $currentPage"),
+            child: Text("${rukiasToView.length} : ${currentPage + 1}"),
           ),
         ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(10),
           child: LinearProgressIndicator(
-            value: done / rukiasToView.length,
+            value: majorProgress,
           ),
         ),
       ),
@@ -97,46 +117,9 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
         scrollDirection: Axis.vertical,
         itemCount: rukiasToView.length,
         itemBuilder: (context, index) {
-          final item = rukiasToView[index];
-          return GestureDetector(
-            onTap: () async => _onTap(index),
-            child: Stack(
-              children: [
-                Center(
-                  child: Text(
-                    item.count.toString(),
-                    style: TextStyle(
-                      fontSize: 450,
-                      fontWeight: FontWeight.bold,
-                      color: kAppMainColor.withOpacity(.05),
-                    ),
-                  ),
-                ),
-                ListView(
-                  padding: const EdgeInsets.all(20),
-                  physics: const ClampingScrollPhysics(),
-                  children: [
-                    RukiaContentBuilder(
-                      rukia: item,
-                      fontSize:
-                          context.watch<SettingsCubit>().state.fontSize * 10,
-                      enableDiacritics:
-                          context.watch<SettingsCubit>().state.showDiacritics,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        item.source,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          return RukiaCard(
+            rukia: rukiasToView[index],
+            onTap: () => _onTap(index),
           );
         },
       ),
