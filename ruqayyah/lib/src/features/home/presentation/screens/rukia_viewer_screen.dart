@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
+import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter.dart';
+import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter_list_extension.dart';
+import 'package:ruqayyah/src/features/azkar_filters/data/repository/azakr_filters_repo.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
@@ -70,8 +73,11 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   }
 
   Future _loadData() async {
-    rukiasToView =
+    final rukiasFromDB =
         await sl<RukiaDBHelper>().getRukiaListByType(widget.rukiaType);
+    final List<Filter> filters = sl<AzkarFiltersRepo>().getAllFilters;
+    final filteredAzkar = filters.getFilteredZikr(rukiasFromDB);
+    rukiasToView = filteredAzkar;
   }
 
   Future _reset() async {
