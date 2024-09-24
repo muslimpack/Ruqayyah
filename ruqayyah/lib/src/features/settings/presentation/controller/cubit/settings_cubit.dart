@@ -63,7 +63,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     if (activate) {
       effectsManager.onCountSound();
     }
-    await effectsRepo.changeSingleDoneSoundStatus(value: activate);
+    await effectsRepo.changeOnCountStatus(value: activate);
     emit(
       state.copyWith(
         zikrEffects: state.zikrEffects.copyWith(soundOnCount: activate),
