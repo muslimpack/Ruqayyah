@@ -140,11 +140,61 @@ class S {
     );
   }
 
+  /// `General guidelines for Ruqyah`
+  String get generalGuidelinesForRuqyah {
+    return Intl.message(
+      'General guidelines for Ruqyah',
+      name: 'generalGuidelinesForRuqyah',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Github source code`
   String get github {
     return Intl.message(
       'Github source code',
       name: 'github',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Long Rukia`
+  String get longRukia {
+    return Intl.message(
+      'Long Rukia',
+      name: 'longRukia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Long`
+  String get longRukiaShort {
+    return Intl.message(
+      'Long',
+      name: 'longRukiaShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medium Rukia`
+  String get mediumRukia {
+    return Intl.message(
+      'Medium Rukia',
+      name: 'mediumRukia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `medium`
+  String get mediumRukiaShort {
+    return Intl.message(
+      'medium',
+      name: 'mediumRukiaShort',
       desc: '',
       args: [],
     );
@@ -210,6 +260,46 @@ class S {
     );
   }
 
+  /// `Ruqyah Etiquette`
+  String get ruqyahEtiquette {
+    return Intl.message(
+      'Ruqyah Etiquette',
+      name: 'ruqyahEtiquette',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Short Rukia`
+  String get shortRukia {
+    return Intl.message(
+      'Short Rukia',
+      name: 'shortRukia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Short`
+  String get shortRukiaShort {
+    return Intl.message(
+      'Short',
+      name: 'shortRukiaShort',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Show Diacritics`
   String get showDiacritics {
     return Intl.message(
@@ -260,10 +350,10 @@ class S {
     );
   }
 
-  /// `الإصدار`
+  /// `Version`
   String get version {
     return Intl.message(
-      'الإصدار',
+      'Version',
       name: 'version',
       desc: '',
       args: [],

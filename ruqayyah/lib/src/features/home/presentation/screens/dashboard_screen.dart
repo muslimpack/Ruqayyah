@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
@@ -49,21 +50,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
             else
               RukiaViewerScreen(
                 rukias: rukias.where((e) => e.almujaza == 1).toList(),
-                title: "الرقية الموجزة",
+                title: S.of(context).shortRukia,
               ),
             if (isLoading)
               const SizedBox()
             else
               RukiaViewerScreen(
                 rukias: rukias.where((e) => e.almutawasita == 1).toList(),
-                title: "الرقية المتوسطة",
+                title: S.of(context).mediumRukia,
               ),
             if (isLoading)
               const SizedBox()
             else
               RukiaViewerScreen(
                 rukias: rukias.where((e) => e.almutawala == 1).toList(),
-                title: "الرقية المطولة",
+                title: S.of(context).longRukia,
               ),
             const SettingsScreen(),
           ],
@@ -72,12 +73,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           activeColor: kAppMainColor,
           shadowColor: kAppMainColor,
-          items: const [
-            TabItem(icon: Icons.question_mark, title: 'آداب الرقية'),
-            TabItem(icon: Icons.short_text, title: 'الموجزة'),
-            TabItem(icon: Icons.short_text, title: 'المتوسطة'),
-            TabItem(icon: Icons.short_text, title: 'المطولة'),
-            TabItem(icon: Icons.settings, title: 'الإعدادات'),
+          items: [
+            TabItem(
+              icon: Icons.question_mark,
+              title: S.of(context).ruqyahEtiquette,
+            ),
+            TabItem(
+              icon: Icons.short_text,
+              title: S.of(context).shortRukiaShort,
+            ),
+            TabItem(
+              icon: Icons.short_text,
+              title: S.of(context).mediumRukiaShort,
+            ),
+            TabItem(
+              icon: Icons.short_text,
+              title: S.of(context).longRukiaShort,
+            ),
+            TabItem(icon: Icons.settings, title: S.of(context).settings),
           ],
           onTap: (int i) {
             _controller.animateToPage(

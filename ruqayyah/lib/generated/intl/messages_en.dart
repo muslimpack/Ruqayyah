@@ -35,7 +35,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontType": MessageLookupByLibrary.simpleMessage("Font Type"),
         "freeAdFreeAndOpenSourceApp": MessageLookupByLibrary.simpleMessage(
             "Free, ad-free and open source app"),
+        "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
+            "General guidelines for Ruqyah"),
         "github": MessageLookupByLibrary.simpleMessage("Github source code"),
+        "longRukia": MessageLookupByLibrary.simpleMessage("Long Rukia"),
+        "longRukiaShort": MessageLookupByLibrary.simpleMessage("Long"),
+        "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Rukia"),
+        "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("medium"),
         "phoneVibrationAtEveryPraise": MessageLookupByLibrary.simpleMessage(
             "Phone vibration at every praise"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +54,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dr. Khalid bin Abdulrahman Al-Juraisi"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
             "Al-Ruqyah Al-Shar\'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah"),
+        "ruqyahEtiquette":
+            MessageLookupByLibrary.simpleMessage("Ruqyah Etiquette"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shortRukia": MessageLookupByLibrary.simpleMessage("Short Rukia"),
+        "shortRukiaShort": MessageLookupByLibrary.simpleMessage("Short"),
         "showDiacritics":
             MessageLookupByLibrary.simpleMessage("Show Diacritics"),
         "soundEffectAtEveryPraise": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +69,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sound Effect volume"),
         "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
             "Sound effect when all zikr end"),
-        "version": MessageLookupByLibrary.simpleMessage("الإصدار")
+        "version": MessageLookupByLibrary.simpleMessage("Version")
       };
 }

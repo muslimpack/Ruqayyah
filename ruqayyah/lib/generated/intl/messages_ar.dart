@@ -31,9 +31,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontResetSize":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين حجم الخط"),
         "fontSettings": MessageLookupByLibrary.simpleMessage("إعدادات الخط"),
+        "fontType": MessageLookupByLibrary.simpleMessage("نوع الخط"),
         "freeAdFreeAndOpenSourceApp": MessageLookupByLibrary.simpleMessage(
             "تطبيق مجاني خالي من الإعلانات ومفتوح المصدر"),
+        "generalGuidelinesForRuqyah": MessageLookupByLibrary.simpleMessage(
+            "إرشادات عامة تُراعى عند الرقية "),
         "github": MessageLookupByLibrary.simpleMessage("الكود المصدري للمشروع"),
+        "longRukia": MessageLookupByLibrary.simpleMessage("الرقية المطولة"),
+        "longRukiaShort": MessageLookupByLibrary.simpleMessage("المطولة"),
+        "mediumRukia": MessageLookupByLibrary.simpleMessage("الرقية المتوسطة"),
+        "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("المتوسطة"),
         "phoneVibrationAtEveryPraise":
             MessageLookupByLibrary.simpleMessage("اهتزاز الهاتف عند كل تسبيحة"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +53,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "د. خالد بن عبدالرحمن الجريسي"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
             "الرقية الشرعية من القرآن الكريم والسنة النبوية"),
+        "ruqyahEtiquette": MessageLookupByLibrary.simpleMessage("آداب الرقية"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "shortRukia": MessageLookupByLibrary.simpleMessage("الرقية الموجزة"),
+        "shortRukiaShort": MessageLookupByLibrary.simpleMessage("الموجزة"),
         "showDiacritics": MessageLookupByLibrary.simpleMessage("عرض التشكيل"),
         "soundEffectAtEveryPraise":
             MessageLookupByLibrary.simpleMessage("اشعار صوتي عند كل تسبيحة"),
@@ -54,6 +65,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "soundEffectVolume": MessageLookupByLibrary.simpleMessage("حجم الصوت"),
         "soundEffectWhenAllZikrEnd": MessageLookupByLibrary.simpleMessage(
             "اشعار صوتي عند انتهاء جميع الأذكار"),
-        "version": MessageLookupByLibrary.simpleMessage("Version")
+        "version": MessageLookupByLibrary.simpleMessage("الإصدار")
       };
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
@@ -31,7 +32,7 @@ class _AdabScreenState extends State<AdabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("إرشادات عامة تُراعى عند الرقية :"),
+        title: Text(S.of(context).generalGuidelinesForRuqyah),
         centerTitle: true,
       ),
       body: isLoading
