@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:ruqayyah/src/core/utils/db_helper.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
 import 'package:sqflite/sqflite.dart';
 
 class RukiaDBHelper {
@@ -38,6 +39,19 @@ class RukiaDBHelper {
 
     final List<Map<String, dynamic>> maps =
         await db.rawQuery('SELECT * FROM book ORDER BY `order` ASC');
+
+    return List.generate(maps.length, (i) {
+      return Rukia.fromMap(maps[i]);
+    });
+  }
+
+  Future<List<Rukia>> getRukiaListByType(RukiaTypeEnum rukiaType) async {
+    final Database db = await database;
+
+    final List<Map<String, dynamic>> maps = await db
+        .rawQuery('SELECT * FROM book where ? == 1 ORDER BY `order` ASC', [
+      rukiaType.nameInDB,
+    ]);
 
     return List.generate(maps.length, (i) {
       return Rukia.fromMap(maps[i]);
