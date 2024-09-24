@@ -79,6 +79,16 @@ class SettingsGeneralSection extends StatelessWidget {
         return Column(
           children: [
             SwitchListTile(
+              secondary: const Icon(Icons.volume_down),
+              value: state.praiseWithVolumeKeys,
+              title: Text(S.of(context).prefPraiseWithVolumeKeys),
+              onChanged: (value) {
+                context.read<SettingsCubit>().togglePraiseWithVolumeKeys(
+                      use: !state.praiseWithVolumeKeys,
+                    );
+              },
+            ),
+            SwitchListTile(
               secondary: const Icon(Icons.screenshot),
               value: state.enableWakeLock,
               title: Text(S.of(context).enableWakeLock),

@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Praise with volume keys`
+  String get prefPraiseWithVolumeKeys {
+    return Intl.message(
+      'Praise with volume keys',
+      name: 'prefPraiseWithVolumeKeys',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dr. Khalid bin Abdulrahman Al-Juraisi`
   String get rukiaBookAuthor {
     return Intl.message(

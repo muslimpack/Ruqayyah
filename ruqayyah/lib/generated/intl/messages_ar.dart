@@ -52,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "اهتزاز الهاتف عند انتهاء جميع الأذكار"),
         "prayForUsAndParents":
             MessageLookupByLibrary.simpleMessage("نسألكم الدعاء لنا ولوالدينا"),
+        "prefPraiseWithVolumeKeys":
+            MessageLookupByLibrary.simpleMessage("التسبيح بمفاتيح الصوت"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "د. خالد بن عبدالرحمن الجريسي"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
