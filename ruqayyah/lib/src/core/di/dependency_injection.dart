@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ruqayyah/src/core/constants/const.dart';
+import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
 import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_repo.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
@@ -26,6 +27,7 @@ Future<void> initSL() async {
 
   ///MARK: Init Manager
   sl.registerFactory(() => EffectsManager(sl()));
+  sl.registerFactory(() => VolumeButtonManager());
 
   ///MARK: Init BLOC
 

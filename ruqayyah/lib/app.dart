@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         onGenerateTitle: (context) => S.of(context).appTitle,
         scrollBehavior: AppScrollBehavior(),
         debugShowCheckedModeBanner: false,
-        locale: const Locale('ar', 'EG'),
+        locale: const Locale('ar'),
         supportedLocales: S.delegate.supportedLocales,
         localizationsDelegates: const [
           S.delegate,

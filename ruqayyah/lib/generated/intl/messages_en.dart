@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Phone vibration when all zikr end"),
         "prayForUsAndParents": MessageLookupByLibrary.simpleMessage(
             "Pray for us and our parents."),
+        "prefPraiseWithVolumeKeys":
+            MessageLookupByLibrary.simpleMessage("Praise with volume keys"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "Dr. Khalid bin Abdulrahman Al-Juraisi"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(

@@ -20,9 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text(
-          "الإعدادات",
-        ),
+        title: Text(S.of(context).settings),
       ),
       body: ListView(
         children: [
@@ -78,6 +76,16 @@ class SettingsGeneralSection extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
+            SwitchListTile(
+              secondary: const Icon(Icons.volume_down),
+              value: state.praiseWithVolumeKeys,
+              title: Text(S.of(context).prefPraiseWithVolumeKeys),
+              onChanged: (value) {
+                context.read<SettingsCubit>().togglePraiseWithVolumeKeys(
+                      use: !state.praiseWithVolumeKeys,
+                    );
+              },
+            ),
             SwitchListTile(
               secondary: const Icon(Icons.screenshot),
               value: state.enableWakeLock,
