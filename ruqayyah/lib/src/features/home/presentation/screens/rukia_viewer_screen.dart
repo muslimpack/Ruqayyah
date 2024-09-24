@@ -102,7 +102,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text("${rukiasToView.length} : ${currentPage + 1}"),
+            child: Text("${currentPage + 1} : ${rukiasToView.length}"),
           ),
         ],
         bottom: PreferredSize(
