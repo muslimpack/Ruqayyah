@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
@@ -39,6 +40,16 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
     if (sl<AppSettingsRepo>().enableWakeLock) {
       WakelockPlus.enable();
     }
+
+    sl<VolumeButtonManager>().toggleActivation(
+      activate: sl<AppSettingsRepo>().praiseWithVolumeKeys,
+    );
+
+    sl<VolumeButtonManager>().listen(
+      onVolumeUpPressed: () => _onTap(currentPage),
+      onVolumeDownPressed: () => _onTap(currentPage),
+    );
+
     _loadData();
   }
 
@@ -46,6 +57,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
   void dispose() {
     _pageController.dispose();
     WakelockPlus.disable();
+    sl<VolumeButtonManager>().dispose();
     super.dispose();
   }
 
