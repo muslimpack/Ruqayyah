@@ -176,4 +176,12 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
 
     emit(state.copyWith(currentIndex: event.index));
   }
+
+  @override
+  Future<void> close() async {
+    pageController.dispose();
+    WakelockPlus.disable();
+    volumeButtonManager.dispose();
+    return super.close();
+  }
 }
