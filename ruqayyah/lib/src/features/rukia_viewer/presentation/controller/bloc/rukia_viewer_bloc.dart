@@ -81,6 +81,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
         currentIndex: 0,
         rukiasToView: rukiasToView,
         rukias: rukias,
+        rukiaType: event.rukiaType,
       ),
     );
   }
