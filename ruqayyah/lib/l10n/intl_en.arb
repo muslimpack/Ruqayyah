@@ -24,6 +24,7 @@
   "mediumRukia": "Medium Rukia",
   "mediumRukiaShort": "medium",
   "next": "Next",
+  "no": "No",
   "phoneVibrationAtEveryPraise": "Phone vibration at every praise",
   "phoneVibrationAtSingleZikrEnd": "Phone vibration at single zikr end",
   "phoneVibrationWhenAllZikrEnd": "Phone vibration when all zikr end",
@@ -31,6 +32,7 @@
   "prefPraiseWithVolumeKeys": "Praise with volume keys",
   "previous": "Previous",
   "resetAll": "ResetAll",
+  "resumeLastSession": "Resume last session?",
   "rukiaBookAuthor": "Dr. Khalid bin Abdulrahman Al-Juraisi",
   "rukiaBookTitle": "Al-Ruqyah Al-Shar'iyyah from the Quran Al-Kareem and the Sunnah Al-Nabawiyyah",
   "ruqyahEtiquette": "Ruqyah Etiquette",
@@ -58,5 +60,6 @@
   "sourceQuran": "Quran",
   "sourceSahihBukhari": "Sahih al-Bukhari",
   "sourceSahihMuslim": "Sahih Muslim",
-  "version": "Version"
+  "version": "Version",
+  "yes": "Yes"
 }

@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mediumRukia": MessageLookupByLibrary.simpleMessage("الرقية المتوسطة"),
         "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("المتوسطة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
         "phoneVibrationAtEveryPraise":
             MessageLookupByLibrary.simpleMessage("اهتزاز الهاتف عند كل تسبيحة"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("التسبيح بمفاتيح الصوت"),
         "previous": MessageLookupByLibrary.simpleMessage("السابق"),
         "resetAll": MessageLookupByLibrary.simpleMessage("إعادة تعيين الأذكار"),
+        "resumeLastSession":
+            MessageLookupByLibrary.simpleMessage("استكمال الجلسة السابقة؟"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "د. خالد بن عبدالرحمن الجريسي"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sourceSahihBukhari":
             MessageLookupByLibrary.simpleMessage("صحيح البخاري"),
         "sourceSahihMuslim": MessageLookupByLibrary.simpleMessage("صحيح مسلم"),
-        "version": MessageLookupByLibrary.simpleMessage("الإصدار")
+        "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم")
       };
 }

@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Rukia"),
         "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("medium"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "phoneVibrationAtEveryPraise": MessageLookupByLibrary.simpleMessage(
             "Phone vibration at every praise"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -66,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Praise with volume keys"),
         "previous": MessageLookupByLibrary.simpleMessage("Previous"),
         "resetAll": MessageLookupByLibrary.simpleMessage("ResetAll"),
+        "resumeLastSession":
+            MessageLookupByLibrary.simpleMessage("Resume last session?"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "Dr. Khalid bin Abdulrahman Al-Juraisi"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
@@ -114,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sahih al-Bukhari"),
         "sourceSahihMuslim":
             MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
-        "version": MessageLookupByLibrary.simpleMessage("Version")
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }
