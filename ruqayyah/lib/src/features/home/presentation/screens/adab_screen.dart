@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
-import 'package:ruqayyah/src/features/home/data/repository/ruki_db_helper.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/instruction_card.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/repository/ruki_db_helper.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});

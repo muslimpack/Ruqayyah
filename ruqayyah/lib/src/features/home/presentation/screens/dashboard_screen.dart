@@ -2,9 +2,9 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
-import 'package:ruqayyah/src/features/home/data/models/rukia_type_enum.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/adab_screen.dart';
-import 'package:ruqayyah/src/features/home/presentation/screens/rukia_viewer_screen.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/screens/rukia_viewer_screen.dart';
 import 'package:ruqayyah/src/features/settings/presentation/screens/settings_screen.dart';
 
 class DashboardScreen extends StatefulWidget {

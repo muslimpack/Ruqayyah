@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ruqayyah/src/core/extensions/rukia_extension.dart';
-import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
-import 'package:ruqayyah/src/features/home/presentation/components/custom_text_formatter.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/custom_text_formatter.dart';
 
 class RukiaContentBuilder extends StatelessWidget {
   final Rukia rukia;

@@ -2,7 +2,7 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter_enum.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/repository/azakr_filters_repo.dart';
-import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
 
 extension FilterListExt on List<Filter> {
   List<Rukia> getFilteredZikr(List<Rukia> azkar) {

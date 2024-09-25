@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
-import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
-import 'package:ruqayyah/src/features/home/presentation/components/rukia_content_builder.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_content_builder.dart';
 import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
 
 class RukiaCard extends StatelessWidget {

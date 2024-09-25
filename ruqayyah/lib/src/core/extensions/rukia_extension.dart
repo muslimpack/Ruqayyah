@@ -5,9 +5,9 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_rich_text.dart';
 import 'package:ruqayyah/src/core/extensions/extension_string.dart';
 import 'package:ruqayyah/src/core/utils/range_text_formatter.dart';
-import 'package:ruqayyah/src/features/home/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/quran/data/models/verse_range.dart';
 import 'package:ruqayyah/src/features/quran/data/repository/uthmani_db_helper.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
 
 extension RukiaExt on Rukia {
   Future<String> toPlainText({bool enableDiacritics = true}) async {
