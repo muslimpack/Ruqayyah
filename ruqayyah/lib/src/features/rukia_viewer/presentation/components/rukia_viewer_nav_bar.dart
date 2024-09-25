@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
-import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 
 class RukiaViewerNavBar extends StatelessWidget {
   const RukiaViewerNavBar({
@@ -20,7 +19,6 @@ class RukiaViewerNavBar extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const FontSettingsIconButton(),
             IconButton(
               tooltip: S.of(context).previous,
               onPressed: () {
