@@ -1,21 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
-import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
-import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter.dart';
-import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter_list_extension.dart';
-import 'package:ruqayyah/src/features/azkar_filters/data/repository/azakr_filters_repo.dart';
-import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
-import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
-import 'package:ruqayyah/src/features/rukia_viewer/data/repository/ruki_db_helper.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_card.dart';
-import 'package:ruqayyah/src/features/settings/data/repository/app_settings_repo.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
 import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
-import 'package:wakelock_plus/wakelock_plus.dart';
 
-class RukiaViewerScreen extends StatefulWidget {
+class RukiaViewerScreen extends StatelessWidget {
   final RukiaTypeEnum rukiaType;
   const RukiaViewerScreen({
     super.key,
@@ -23,185 +16,96 @@ class RukiaViewerScreen extends StatefulWidget {
   });
 
   @override
-  State<RukiaViewerScreen> createState() => _RukiaViewerScreenState();
-}
-
-class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
-  late List<Rukia> rukiasToView;
-  late final PageController _pageController;
-
-  int currentPage = 0;
-
-  bool isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _start();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    WakelockPlus.disable();
-    sl<VolumeButtonManager>().dispose();
-    super.dispose();
-  }
-
-  Future _start() async {
-    _pageController = PageController();
-    _pageController.addListener(_pageChange);
-
-    if (sl<AppSettingsRepo>().enableWakeLock) {
-      await WakelockPlus.enable();
-    }
-
-    sl<VolumeButtonManager>().toggleActivation(
-      activate: sl<AppSettingsRepo>().praiseWithVolumeKeys,
-    );
-
-    sl<VolumeButtonManager>().listen(
-      onVolumeUpPressed: () => _onTap(currentPage),
-      onVolumeDownPressed: () => _onTap(currentPage),
-    );
-
-    await _loadData();
-
-    setState(() {
-      isLoading = false;
-    });
-  }
-
-  Future _loadData() async {
-    final rukiasFromDB =
-        await sl<RukiaDBHelper>().getRukiaListByType(widget.rukiaType);
-    final List<Filter> filters = sl<AzkarFiltersRepo>().getAllFilters;
-    final filteredAzkar = filters.getFilteredZikr(rukiasFromDB);
-    rukiasToView = filteredAzkar;
-  }
-
-  Future _reset() async {
-    await _loadData();
-    _pageController.jumpTo(0);
-    setState(() {});
-  }
-
-  void _pageChange() {
-    setState(() {
-      currentPage = _pageController.page?.toInt() ?? 0;
-    });
-  }
-
-  double get done => rukiasToView.where((x) => x.count == 0).length.toDouble();
-  double get majorProgress {
-    if (rukiasToView.isEmpty) return 1;
-    return done / rukiasToView.length;
-  }
-
-  Future<void> _onTap(int index) async {
-    final rukia = rukiasToView[index];
-
-    if (rukia.count > 0) {
-      rukiasToView[index] = rukia.copyWith(count: rukia.count - 1);
-      sl<EffectsManager>().onCount();
-
-      if (rukia.count == 1) {
-        sl<EffectsManager>().onSingleDone();
-      }
-
-      if (done / rukiasToView.length == 1) {
-        sl<EffectsManager>().onAllDone();
-      }
-    }
-
-    if (rukia.count <= 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (isLoading) return const Center(child: CircularProgressIndicator());
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.rukiaType.localeName(context)),
-        centerTitle: true,
-        leading: const FontSettingsIconButton(),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text("${currentPage + 1} : ${rukiasToView.length}"),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(10),
-          child: LinearProgressIndicator(
-            value: majorProgress,
-          ),
-        ),
-      ),
-      body: Stack(
-        children: [
-          PageView.builder(
-            controller: _pageController,
-            scrollDirection: Axis.vertical,
-            itemCount: rukiasToView.length,
-            itemBuilder: (context, index) {
-              return RukiaCard(
-                rukia: rukiasToView[index],
-                onTap: () => _onTap(index),
-              );
-            },
-          ),
-          Opacity(
-            opacity: .5,
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Card(
-                margin: const EdgeInsets.all(10).copyWith(bottom: 20),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      tooltip: S.of(context).previous,
-                      onPressed: () {
-                        _pageController.previousPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                      icon: const Icon(Icons.arrow_upward),
-                    ),
-                    IconButton(
-                      tooltip: S.of(context).resetAll,
-                      onPressed: () {
-                        _reset();
-                      },
-                      icon: const Icon(Icons.repeat),
-                    ),
-                    IconButton(
-                      tooltip: S.of(context).next,
-                      onPressed: () {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                      icon: const Icon(Icons.arrow_downward),
-                    ),
-                  ],
+    return BlocProvider(
+      create: (context) =>
+          sl<RukiaViewerBloc>()..add(RukiaViewerStartEvent(rukiaType)),
+      child: BlocBuilder<RukiaViewerBloc, RukiaViewerState>(
+        builder: (context, state) {
+          if (state is! RukiaViewerLoadedState) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(state.rukiaType.localeName(context)),
+              centerTitle: true,
+              leading: const FontSettingsIconButton(),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    "${state.currentIndex + 1} : ${state.rukiasToView.length}",
+                  ),
+                ),
+              ],
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(10),
+                child: LinearProgressIndicator(
+                  value: state.majorProgress,
                 ),
               ),
             ),
-          ),
-        ],
+            body: Stack(
+              children: [
+                PageView.builder(
+                  controller: context.read<RukiaViewerBloc>().pageController,
+                  scrollDirection: Axis.vertical,
+                  itemCount: state.rukiasToView.length,
+                  itemBuilder: (context, index) {
+                    final rukia = state.rukiasToView[index];
+                    return RukiaCard(
+                      rukia: rukia,
+                      onTap: () => context
+                          .read<RukiaViewerBloc>()
+                          .add(RukiaViewerDecreaseEvent(rukia)),
+                    );
+                  },
+                ),
+                Opacity(
+                  opacity: .5,
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Card(
+                      margin: const EdgeInsets.all(10).copyWith(bottom: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            tooltip: S.of(context).previous,
+                            onPressed: () {
+                              context
+                                  .read<RukiaViewerBloc>()
+                                  .add(const RukiaViewerPreviousZikrEvent());
+                            },
+                            icon: const Icon(Icons.arrow_upward),
+                          ),
+                          IconButton(
+                            tooltip: S.of(context).resetAll,
+                            onPressed: () {
+                              context
+                                  .read<RukiaViewerBloc>()
+                                  .add(const RukiaViewerResetAllEvent());
+                            },
+                            icon: const Icon(Icons.repeat),
+                          ),
+                          IconButton(
+                            tooltip: S.of(context).next,
+                            onPressed: () {
+                              context
+                                  .read<RukiaViewerBloc>()
+                                  .add(const RukiaViewerNextZikrEvent());
+                            },
+                            icon: const Icon(Icons.arrow_downward),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
