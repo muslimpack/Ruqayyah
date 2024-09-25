@@ -92,36 +92,41 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
   ) async {
     final state = this.state;
     if (state is! RukiaViewerLoadedState) return;
-
     final activeZikr = event.rukia;
 
-    final activeZikrIndex = state.rukiasToView.indexWhere(
-      (x) => x.id == activeZikr.id,
-    );
+    final activeZikrIndex =
+        state.rukiasToView.indexWhere((x) => x.id == activeZikr.id);
+
+    final int count = activeZikr.count;
+
     final rukiasToView = List<Rukia>.from(state.rukiasToView);
 
-    if (activeZikr.count > 0) {
-      rukiasToView[activeZikrIndex] =
-          activeZikr.copyWith(count: activeZikr.count - 1);
+    if (count > 0) {
+      rukiasToView[activeZikrIndex] = activeZikr.copyWith(count: count - 1);
+
       effectsManager.onCount();
+    }
 
-      if (activeZikr.count == 1) {
-        effectsManager.onSingleDone();
-      }
-
+    if (count == 1) {
+      effectsManager.onSingleDone();
       final totalProgress =
           rukiasToView.where((x) => x.count == 0).length / rukiasToView.length;
+
       if (totalProgress == 1) {
         effectsManager.onAllDone();
       }
     }
 
-    if (activeZikr.count <= 1) {
-      pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+    if (count <= 1) {
+      if (pageController.hasClients) {
+        pageController.nextPage(
+          curve: Curves.easeIn,
+          duration: const Duration(milliseconds: 300),
+        );
+      }
     }
+
+    emit(state.copyWith(rukiasToView: rukiasToView));
   }
 
   FutureOr<void> _decreaseActive(
