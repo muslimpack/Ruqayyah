@@ -34,7 +34,7 @@ class _AdabScreenState extends State<AdabScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).generalGuidelinesForRuqyah),
-        leading: const FontSettingsIconButton(),
+        actions: const [FontSettingsIconButton()],
         centerTitle: true,
       ),
       body: isLoading

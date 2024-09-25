@@ -8,7 +8,6 @@ import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.d
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_card.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_viewer_nav_bar.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
-import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 
 class RukiaViewerScreen extends StatelessWidget {
   final RukiaTypeEnum rukiaType;
@@ -52,7 +51,6 @@ class RukiaViewerScreen extends StatelessWidget {
             appBar: AppBar(
               title: Text(state.rukiaType.localeName(context)),
               centerTitle: true,
-              leading: const FontSettingsIconButton(),
               actions: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

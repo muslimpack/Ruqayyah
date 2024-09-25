@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/adab_screen.dart';
-import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
-import 'package:ruqayyah/src/features/rukia_viewer/presentation/screens/rukia_viewer_screen.dart';
+import 'package:ruqayyah/src/features/home/presentation/screens/ruka_screen.dart';
 import 'package:ruqayyah/src/features/settings/presentation/screens/settings_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -36,10 +35,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _controller,
-          children: [
-            const AdabScreen(),
-            ...RukiaTypeEnum.values.map((x) => RukiaViewerScreen(rukiaType: x)),
-            const SettingsScreen(),
+          children: const [
+            AdabScreen(),
+            RukaScreen(),
+            SettingsScreen(),
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
@@ -51,11 +50,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               icon: Icons.question_mark,
               title: S.of(context).ruqyahEtiquette,
             ),
-            ...RukiaTypeEnum.values.map(
-              (x) => TabItem(
-                icon: Icons.short_text,
-                title: x.localeShortName(context),
-              ),
+            TabItem(
+              icon: Icons.short_text,
+              title: S.of(context).alruka,
             ),
             TabItem(icon: Icons.settings, title: S.of(context).settings),
           ],
