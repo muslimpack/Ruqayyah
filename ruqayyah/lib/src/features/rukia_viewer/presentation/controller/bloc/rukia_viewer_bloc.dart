@@ -12,6 +12,7 @@ import 'package:ruqayyah/src/features/effects_manager/presentation/controller/ef
 import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/repository/rukia_viewer_repo.dart';
 import 'package:ruqayyah/src/features/settings/data/repository/app_settings_repo.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
@@ -25,12 +26,14 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
   final AzkarFiltersRepo azkarFiltersRepo;
   final VolumeButtonManager volumeButtonManager;
   final EffectsManager effectsManager;
+  final RukiaViewerRepo rukiaViewerRepo;
   RukiaViewerBloc(
     this.appSettingsRepo,
     this.rukiaDBHelper,
     this.azkarFiltersRepo,
     this.volumeButtonManager,
     this.effectsManager,
+    this.rukiaViewerRepo,
   ) : super(RukiaViewerLoadingState()) {
     _initHandlers();
 
@@ -45,6 +48,10 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     on<RukiaViewerNextZikrEvent>(_next);
     on<RukiaViewerPreviousZikrEvent>(_previous);
     on<RukiaViewerUpdatePageEvent>(_updatePageIndex);
+
+    on<RukiaViewerRestoreSessionEvent>(_restoreSession);
+    on<RukiaViewerSaveSessionEvent>(_saveSession);
+    on<RukiaViewerResetSessionEvent>(_resetSession);
   }
 
   void _pageChange() {
@@ -76,14 +83,78 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     final rukias = filteredAzkar;
     final rukiasToView = List<Rukia>.from(rukias);
 
+    final restoredSession =
+        await rukiaViewerRepo.getLastSession(event.rukiaType.id);
+
     emit(
       RukiaViewerLoadedState(
         currentIndex: 0,
         rukiasToView: rukiasToView,
         rukias: rukias,
         rukiaType: event.rukiaType,
+        restoredSession: restoredSession ?? {},
+        askToRestoreSession:
+            restoredSession != null && restoredSession.isNotEmpty,
       ),
     );
+  }
+
+  FutureOr<void> _restoreSession(
+    RukiaViewerRestoreSessionEvent event,
+    Emitter<RukiaViewerState> emit,
+  ) async {
+    final state = this.state;
+    if (state is! RukiaViewerLoadedState) return;
+
+    if (!event.restore) {
+      emit(state.copyWith(askToRestoreSession: false));
+      add(const RukiaViewerResetSessionEvent());
+      return;
+    }
+
+    final restoredSession = state.restoredSession;
+    if (restoredSession.isEmpty) return;
+
+    final azkarToView = List<Rukia>.from(state.rukiasToView)
+        .map((x) => x.copyWith(count: restoredSession[x.id] ?? x.count))
+        .toList();
+
+    int pageToJump = 0;
+    for (var i = 0; i < azkarToView.length; i++) {
+      if (azkarToView[i].count != 0) {
+        pageToJump = i;
+        break;
+      }
+    }
+
+    if (pageController.hasClients) {
+      pageController.jumpToPage(pageToJump);
+    }
+
+    emit(state.copyWith(rukiasToView: azkarToView, askToRestoreSession: false));
+  }
+
+  FutureOr<void> _saveSession(
+    RukiaViewerSaveSessionEvent event,
+    Emitter<RukiaViewerState> emit,
+  ) async {
+    final state = this.state;
+    if (state is! RukiaViewerLoadedState) return;
+
+    await rukiaViewerRepo.saveSession(
+      state.rukiaType.id,
+      {for (final zikr in state.rukiasToView) zikr.id: zikr.count},
+    );
+  }
+
+  FutureOr<void> _resetSession(
+    RukiaViewerResetSessionEvent event,
+    Emitter<RukiaViewerState> emit,
+  ) async {
+    final state = this.state;
+    if (state is! RukiaViewerLoadedState) return;
+
+    await rukiaViewerRepo.resetSession(state.rukiaType.id);
   }
 
   FutureOr<void> _decrease(
@@ -105,6 +176,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
       rukiasToView[activeZikrIndex] = activeZikr.copyWith(count: count - 1);
 
       effectsManager.onCount();
+      add(const RukiaViewerSaveSessionEvent());
     }
 
     if (count == 1) {
@@ -114,6 +186,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
 
       if (totalProgress == 1) {
         effectsManager.onAllDone();
+        add(const RukiaViewerResetSessionEvent());
       }
     }
 

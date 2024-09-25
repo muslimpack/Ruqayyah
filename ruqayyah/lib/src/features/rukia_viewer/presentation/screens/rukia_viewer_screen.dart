@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
+import 'package:ruqayyah/src/core/shared/dialogs/yes_no_dialog.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_card.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
@@ -20,7 +21,27 @@ class RukiaViewerScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           sl<RukiaViewerBloc>()..add(RukiaViewerStartEvent(rukiaType)),
-      child: BlocBuilder<RukiaViewerBloc, RukiaViewerState>(
+      child: BlocConsumer<RukiaViewerBloc, RukiaViewerState>(
+        listener: (context, state) async {
+          if (state is! RukiaViewerLoadedState) return;
+
+          if (!state.askToRestoreSession) return;
+
+          final bool? confirm = await showDialog(
+            context: context,
+            builder: (context) {
+              return YesOrNoDialog(
+                msg: S.of(context).resumeLastSession,
+              );
+            },
+          );
+
+          if (!context.mounted) return;
+
+          context
+              .read<RukiaViewerBloc>()
+              .add(RukiaViewerRestoreSessionEvent(confirm ?? false));
+        },
         builder: (context, state) {
           if (state is! RukiaViewerLoadedState) {
             return const Center(child: CircularProgressIndicator());

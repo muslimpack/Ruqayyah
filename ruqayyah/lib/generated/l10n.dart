@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone vibration at every praise`
   String get phoneVibrationAtEveryPraise {
     return Intl.message(
@@ -365,6 +375,16 @@ class S {
     return Intl.message(
       'ResetAll',
       name: 'resetAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resume last session?`
+  String get resumeLastSession {
+    return Intl.message(
+      'Resume last session?',
+      name: 'resumeLastSession',
       desc: '',
       args: [],
     );
@@ -645,6 +665,16 @@ class S {
     return Intl.message(
       'Version',
       name: 'version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
       desc: '',
       args: [],
     );

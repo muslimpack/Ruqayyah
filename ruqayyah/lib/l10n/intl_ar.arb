@@ -24,6 +24,7 @@
   "mediumRukia": "الرقية المتوسطة",
   "mediumRukiaShort": "المتوسطة",
   "next": "التالي",
+  "no": "لا",
   "phoneVibrationAtEveryPraise": "اهتزاز الهاتف عند كل تسبيحة",
   "phoneVibrationAtSingleZikrEnd": "اهتزاز الهاتف عند انتهاء كل ذكر",
   "phoneVibrationWhenAllZikrEnd": "اهتزاز الهاتف عند انتهاء جميع الأذكار",
@@ -31,6 +32,7 @@
   "prefPraiseWithVolumeKeys": "التسبيح بمفاتيح الصوت",
   "previous": "السابق",
   "resetAll": "إعادة تعيين الأذكار",
+  "resumeLastSession": "استكمال الجلسة السابقة؟",
   "rukiaBookAuthor": "د. خالد بن عبدالرحمن الجريسي",
   "rukiaBookTitle": "الرقية الشرعية من القرآن الكريم والسنة النبوية",
   "ruqyahEtiquette": "آداب الرقية",
@@ -58,5 +60,6 @@
   "sourceQuran": "القرآن",
   "sourceSahihBukhari": "صحيح البخاري",
   "sourceSahihMuslim": "صحيح مسلم",
-  "version": "الإصدار"
+  "version": "الإصدار",
+  "yes": "نعم"
 }

@@ -15,12 +15,16 @@ class RukiaViewerLoadedState extends RukiaViewerState {
   final List<Rukia> rukias;
   final RukiaTypeEnum rukiaType;
   final List<Rukia> rukiasToView;
+  final Map<int, int> restoredSession;
+  final bool askToRestoreSession;
 
   const RukiaViewerLoadedState({
     required this.currentIndex,
     required this.rukias,
     required this.rukiaType,
     required this.rukiasToView,
+    required this.restoredSession,
+    required this.askToRestoreSession,
   });
 
   Rukia? get activeZikr {
@@ -36,19 +40,30 @@ class RukiaViewerLoadedState extends RukiaViewerState {
   }
 
   @override
-  List<Object> get props => [rukiaType, currentIndex, rukias, rukiasToView];
+  List<Object> get props => [
+        rukiaType,
+        currentIndex,
+        rukias,
+        rukiasToView,
+        restoredSession,
+        askToRestoreSession,
+      ];
 
   RukiaViewerLoadedState copyWith({
     int? currentIndex,
     List<Rukia>? rukias,
     RukiaTypeEnum? rukiaType,
     List<Rukia>? rukiasToView,
+    Map<int, int>? restoredSession,
+    bool? askToRestoreSession,
   }) {
     return RukiaViewerLoadedState(
       currentIndex: currentIndex ?? this.currentIndex,
       rukias: rukias ?? this.rukias,
       rukiaType: rukiaType ?? this.rukiaType,
       rukiasToView: rukiasToView ?? this.rukiasToView,
+      restoredSession: restoredSession ?? this.restoredSession,
+      askToRestoreSession: askToRestoreSession ?? this.askToRestoreSession,
     );
   }
 }
