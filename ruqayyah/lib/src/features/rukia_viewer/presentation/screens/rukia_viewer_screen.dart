@@ -52,7 +52,6 @@ class RukiaViewerScreen extends StatelessWidget {
             appBar: AppBar(
               title: Text(state.rukiaType.localeName(context)),
               centerTitle: true,
-              leading: const FontSettingsIconButton(),
               actions: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
