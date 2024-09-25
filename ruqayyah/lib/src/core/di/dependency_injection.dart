@@ -42,5 +42,5 @@ Future<void> initSL() async {
   sl.registerLazySingleton(() => AzkarFiltersCubit(sl()));
 
   /// Factory BLoC
-  sl.registerFactory(() => RukiaViewerBloc(sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => RukiaViewerBloc(sl(), sl(), sl(), sl(), sl(), sl()));
 }

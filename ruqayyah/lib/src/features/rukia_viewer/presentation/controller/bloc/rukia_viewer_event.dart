@@ -51,3 +51,27 @@ class RukiaViewerUpdatePageEvent extends RukiaViewerEvent {
   @override
   List<Object> get props => [index];
 }
+
+class RukiaViewerRestoreSessionEvent extends RukiaViewerEvent {
+  final bool restore;
+  const RukiaViewerRestoreSessionEvent(
+    this.restore,
+  );
+
+  @override
+  List<Object> get props => [restore];
+}
+
+class RukiaViewerSaveSessionEvent extends RukiaViewerEvent {
+  const RukiaViewerSaveSessionEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class RukiaViewerResetSessionEvent extends RukiaViewerEvent {
+  const RukiaViewerResetSessionEvent();
+
+  @override
+  List<Object> get props => [];
+}
