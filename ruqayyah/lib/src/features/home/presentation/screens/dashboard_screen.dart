@@ -13,18 +13,19 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
-  late final PageController _controller;
+class _DashboardScreenState extends State<DashboardScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _controller = PageController();
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -32,9 +33,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _controller,
+        body: TabBarView(
+          controller: _tabController,
           children: const [
             AdabScreen(),
             RukaScreen(),
@@ -45,6 +45,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           activeColor: kAppMainColor,
           shadowColor: kAppMainColor,
+          controller: _tabController,
           items: [
             TabItem(
               icon: Icons.question_mark,
@@ -56,14 +57,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             TabItem(icon: Icons.settings, title: S.of(context).settings),
           ],
-          onTap: (int i) {
-            _controller.animateToPage(
-              i,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-            setState(() {});
-          },
         ),
       ),
     );
