@@ -10,18 +10,32 @@ class EffectsManager {
   EffectsManager(this._effectsRepo);
 
   Future<void> onCount() async {
-    await onCountVibration();
-    await onCountSound();
+    if (_effectsRepo.isOnCountVibrateAllowed) {
+      await onCountVibration();
+    }
+
+    if (_effectsRepo.isOnCountSoundAllowed) {
+      await onCountSound();
+    }
   }
 
   Future<void> onSingleDone() async {
-    await onSingleDoneVibration();
-    await onSingleDoneSound();
+    if (_effectsRepo.isSingleDoneVibrateAllowed) {
+      await onSingleDoneVibration();
+    }
+
+    if (_effectsRepo.isSingleDoneSoundAllowed) {
+      await onSingleDoneSound();
+    }
   }
 
   Future<void> onAllDone() async {
-    await onAllDoneVibration();
-    await onAllDoneSound();
+    if (_effectsRepo.isAllDoneVibrateAllowed) {
+      await onAllDoneVibration();
+    }
+    if (_effectsRepo.isAllDoneSoundAllowed) {
+      await onAllDoneSound();
+    }
   }
 
   ///**********************
