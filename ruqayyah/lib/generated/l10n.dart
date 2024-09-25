@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `al-Ruka`
+  String get alruka {
+    return Intl.message(
+      'al-Ruka',
+      name: 'alruka',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rukia`
   String get appTitle {
     return Intl.message(
