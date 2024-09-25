@@ -4,6 +4,7 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/features/home/data/models/instruction.dart';
 import 'package:ruqayyah/src/features/home/presentation/components/instruction_card.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 
 class AdabScreen extends StatefulWidget {
   const AdabScreen({super.key});
@@ -33,6 +34,7 @@ class _AdabScreenState extends State<AdabScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).generalGuidelinesForRuqyah),
+        leading: const FontSettingsIconButton(),
         centerTitle: true,
       ),
       body: isLoading
