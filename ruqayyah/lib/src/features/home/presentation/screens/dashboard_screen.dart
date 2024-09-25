@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/constants/theme_const.dart';
 import 'package:ruqayyah/src/features/home/presentation/screens/adab_screen.dart';
-import 'package:ruqayyah/src/features/home/presentation/screens/ruka_screen.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/screens/rukia_viewer_screen.dart';
 import 'package:ruqayyah/src/features/settings/presentation/screens/settings_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -20,7 +21,8 @@ class _DashboardScreenState extends State<DashboardScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController =
+        TabController(length: 2 + RukiaTypeEnum.values.length, vsync: this);
   }
 
   @override
@@ -35,10 +37,10 @@ class _DashboardScreenState extends State<DashboardScreen>
       child: Scaffold(
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            AdabScreen(),
-            RukaScreen(),
-            SettingsScreen(),
+          children: [
+            const AdabScreen(),
+            ...RukiaTypeEnum.values.map((x) => RukiaViewerScreen(rukiaType: x)),
+            const SettingsScreen(),
           ],
         ),
         bottomNavigationBar: ConvexAppBar(
@@ -51,9 +53,11 @@ class _DashboardScreenState extends State<DashboardScreen>
               icon: Icons.question_mark,
               title: S.of(context).ruqyahEtiquette,
             ),
-            TabItem(
-              icon: Icons.short_text,
-              title: S.of(context).alruka,
+            ...RukiaTypeEnum.values.map(
+              (x) => TabItem(
+                icon: Icons.short_text,
+                title: x.localeShortName(context),
+              ),
             ),
             TabItem(icon: Icons.settings, title: S.of(context).settings),
           ],
