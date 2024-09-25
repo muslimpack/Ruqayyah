@@ -108,7 +108,6 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
 
     if (!event.restore) {
       emit(state.copyWith(askToRestoreSession: false));
-      add(const RukiaViewerResetSessionEvent());
       return;
     }
 
