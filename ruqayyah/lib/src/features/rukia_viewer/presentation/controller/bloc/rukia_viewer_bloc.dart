@@ -93,7 +93,8 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
         rukias: rukias,
         rukiaType: event.rukiaType,
         restoredSession: restoredSession ?? {},
-        restoreSession: restoredSession != null && restoredSession.isNotEmpty,
+        askToRestoreSession:
+            restoredSession != null && restoredSession.isNotEmpty,
       ),
     );
   }
@@ -106,7 +107,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     if (state is! RukiaViewerLoadedState) return;
 
     if (!event.restore) {
-      emit(state.copyWith(restoreSession: false));
+      emit(state.copyWith(askToRestoreSession: false));
       return;
     }
 
@@ -129,7 +130,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
       pageController.jumpToPage(pageToJump);
     }
 
-    emit(state.copyWith(rukiasToView: azkarToView, restoreSession: false));
+    emit(state.copyWith(rukiasToView: azkarToView, askToRestoreSession: false));
   }
 
   FutureOr<void> _saveSession(

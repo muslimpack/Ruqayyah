@@ -25,7 +25,7 @@ class RukiaViewerScreen extends StatelessWidget {
         listener: (context, state) async {
           if (state is! RukiaViewerLoadedState) return;
 
-          if (!state.restoreSession) return;
+          if (!state.askToRestoreSession) return;
 
           final bool? confirm = await showDialog(
             context: context,
