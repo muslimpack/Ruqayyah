@@ -290,6 +290,16 @@ class S {
     );
   }
 
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone vibration at every praise`
   String get phoneVibrationAtEveryPraise {
     return Intl.message(
@@ -335,6 +345,26 @@ class S {
     return Intl.message(
       'Praise with volume keys',
       name: 'prefPraiseWithVolumeKeys',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ResetAll`
+  String get resetAll {
+    return Intl.message(
+      'ResetAll',
+      name: 'resetAll',
       desc: '',
       args: [],
     );

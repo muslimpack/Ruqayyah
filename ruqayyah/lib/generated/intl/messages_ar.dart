@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "longRukiaShort": MessageLookupByLibrary.simpleMessage("المطولة"),
         "mediumRukia": MessageLookupByLibrary.simpleMessage("الرقية المتوسطة"),
         "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("المتوسطة"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "phoneVibrationAtEveryPraise":
             MessageLookupByLibrary.simpleMessage("اهتزاز الهاتف عند كل تسبيحة"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -62,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسألكم الدعاء لنا ولوالدينا"),
         "prefPraiseWithVolumeKeys":
             MessageLookupByLibrary.simpleMessage("التسبيح بمفاتيح الصوت"),
+        "previous": MessageLookupByLibrary.simpleMessage("السابق"),
+        "resetAll": MessageLookupByLibrary.simpleMessage("إعادة تعيين الأذكار"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "د. خالد بن عبدالرحمن الجريسي"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(

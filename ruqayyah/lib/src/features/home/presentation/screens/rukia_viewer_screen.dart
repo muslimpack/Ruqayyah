@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:ruqayyah/generated/l10n.dart';
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter.dart';
@@ -169,6 +170,7 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
+                      tooltip: S.of(context).previous,
                       onPressed: () {
                         _pageController.previousPage(
                           duration: const Duration(milliseconds: 300),
@@ -178,12 +180,14 @@ class _RukiaViewerScreenState extends State<RukiaViewerScreen> {
                       icon: const Icon(Icons.arrow_upward),
                     ),
                     IconButton(
+                      tooltip: S.of(context).resetAll,
                       onPressed: () {
                         _reset();
                       },
                       icon: const Icon(Icons.repeat),
                     ),
                     IconButton(
+                      tooltip: S.of(context).next,
                       onPressed: () {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),

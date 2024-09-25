@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "longRukiaShort": MessageLookupByLibrary.simpleMessage("Long"),
         "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Rukia"),
         "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("medium"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "phoneVibrationAtEveryPraise": MessageLookupByLibrary.simpleMessage(
             "Phone vibration at every praise"),
         "phoneVibrationAtSingleZikrEnd": MessageLookupByLibrary.simpleMessage(
@@ -63,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Pray for us and our parents."),
         "prefPraiseWithVolumeKeys":
             MessageLookupByLibrary.simpleMessage("Praise with volume keys"),
+        "previous": MessageLookupByLibrary.simpleMessage("Previous"),
+        "resetAll": MessageLookupByLibrary.simpleMessage("ResetAll"),
         "rukiaBookAuthor": MessageLookupByLibrary.simpleMessage(
             "Dr. Khalid bin Abdulrahman Al-Juraisi"),
         "rukiaBookTitle": MessageLookupByLibrary.simpleMessage(
