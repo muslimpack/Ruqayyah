@@ -6,6 +6,7 @@ import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/shared/dialogs/yes_no_dialog.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/models/rukia_type_enum.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_card.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/components/rukia_viewer_nav_bar.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
 import 'package:ruqayyah/src/features/settings/presentation/components/font_settings_widgets.dart';
 
@@ -82,46 +83,9 @@ class RukiaViewerScreen extends StatelessWidget {
                     );
                   },
                 ),
-                Opacity(
+                const Opacity(
                   opacity: .5,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Card(
-                      margin: const EdgeInsets.all(10).copyWith(bottom: 20),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            tooltip: S.of(context).previous,
-                            onPressed: () {
-                              context
-                                  .read<RukiaViewerBloc>()
-                                  .add(const RukiaViewerPreviousZikrEvent());
-                            },
-                            icon: const Icon(Icons.arrow_upward),
-                          ),
-                          IconButton(
-                            tooltip: S.of(context).resetAll,
-                            onPressed: () {
-                              context
-                                  .read<RukiaViewerBloc>()
-                                  .add(const RukiaViewerResetAllEvent());
-                            },
-                            icon: const Icon(Icons.repeat),
-                          ),
-                          IconButton(
-                            tooltip: S.of(context).next,
-                            onPressed: () {
-                              context
-                                  .read<RukiaViewerBloc>()
-                                  .add(const RukiaViewerNextZikrEvent());
-                            },
-                            icon: const Icon(Icons.arrow_downward),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: RukiaViewerNavBar(),
                 ),
               ],
             ),
