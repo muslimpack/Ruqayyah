@@ -33,6 +33,7 @@ class RukiaViewerScreen extends StatelessWidget {
             builder: (context) {
               return YesOrNoDialog(
                 msg: S.of(context).resumeLastSession,
+                description: state.rukiaType.localeName(context),
               );
             },
           );
