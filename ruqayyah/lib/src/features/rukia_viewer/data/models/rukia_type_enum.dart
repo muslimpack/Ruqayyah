@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ruqayyah/generated/l10n.dart';
 
 enum RukiaTypeEnum {
-  short("almujaza"),
-  medium("almutawasita"),
-  long("almutawala");
+  short("almujaza", 0),
+  medium("almutawasita", 1),
+  long("almutawala", 2);
 
-  const RukiaTypeEnum(this.nameInDB);
+  const RukiaTypeEnum(this.nameInDB, this.id);
 
   final String nameInDB;
+  final int id;
 }
 
 extension RukiaTypeEnumExt on RukiaTypeEnum {
