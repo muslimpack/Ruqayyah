@@ -8,6 +8,7 @@ import 'package:ruqayyah/src/features/effects_manager/data/repository/effects_re
 import 'package:ruqayyah/src/features/effects_manager/presentation/controller/effect_manager.dart';
 import 'package:ruqayyah/src/features/quran/data/repository/uthmani_db_helper.dart';
 import 'package:ruqayyah/src/features/rukia_viewer/data/repository/ruki_db_helper.dart';
+import 'package:ruqayyah/src/features/rukia_viewer/presentation/controller/bloc/rukia_viewer_bloc.dart';
 import 'package:ruqayyah/src/features/settings/data/repository/app_settings_repo.dart';
 import 'package:ruqayyah/src/features/settings/data/repository/rukia_text_repo.dart';
 import 'package:ruqayyah/src/features/settings/presentation/controller/cubit/settings_cubit.dart';
@@ -39,4 +40,5 @@ Future<void> initSL() async {
   sl.registerLazySingleton(() => AzkarFiltersCubit(sl()));
 
   /// Factory BLoC
+  sl.registerFactory(() => RukiaViewerBloc(sl(), sl(), sl(), sl(), sl()));
 }

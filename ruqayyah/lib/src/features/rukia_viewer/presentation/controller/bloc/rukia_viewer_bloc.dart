@@ -1,9 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/utils/volume_button_manager.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter.dart';
 import 'package:ruqayyah/src/features/azkar_filters/data/models/zikr_filter_list_extension.dart';
@@ -20,7 +20,18 @@ part 'rukia_viewer_state.dart';
 
 class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
   final PageController pageController = PageController();
-  RukiaViewerBloc() : super(RukiaViewerLoadingState()) {
+  final AppSettingsRepo appSettingsRepo;
+  final RukiaDBHelper rukiaDBHelper;
+  final AzkarFiltersRepo azkarFiltersRepo;
+  final VolumeButtonManager volumeButtonManager;
+  final EffectsManager effectsManager;
+  RukiaViewerBloc(
+    this.appSettingsRepo,
+    this.rukiaDBHelper,
+    this.azkarFiltersRepo,
+    this.volumeButtonManager,
+    this.effectsManager,
+  ) : super(RukiaViewerLoadingState()) {
     _initHandlers();
 
     pageController.addListener(_pageChange);
@@ -45,22 +56,22 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     RukiaViewerStartEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
-    if (sl<AppSettingsRepo>().enableWakeLock) {
+    if (appSettingsRepo.enableWakeLock) {
       await WakelockPlus.enable();
     }
 
-    sl<VolumeButtonManager>().toggleActivation(
-      activate: sl<AppSettingsRepo>().praiseWithVolumeKeys,
+    volumeButtonManager.toggleActivation(
+      activate: appSettingsRepo.praiseWithVolumeKeys,
     );
 
-    sl<VolumeButtonManager>().listen(
+    volumeButtonManager.listen(
       onVolumeUpPressed: () => add(const RukiaViewerDecreaseActiveEvent()),
       onVolumeDownPressed: () => add(const RukiaViewerDecreaseActiveEvent()),
     );
 
     final rukiasFromDB =
-        await sl<RukiaDBHelper>().getRukiaListByType(event.rukiaType);
-    final List<Filter> filters = sl<AzkarFiltersRepo>().getAllFilters;
+        await rukiaDBHelper.getRukiaListByType(event.rukiaType);
+    final List<Filter> filters = azkarFiltersRepo.getAllFilters;
     final filteredAzkar = filters.getFilteredZikr(rukiasFromDB);
     final rukias = filteredAzkar;
     final rukiasToView = List<Rukia>.from(rukias);
@@ -91,16 +102,16 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     if (activeZikr.count > 0) {
       rukiasToView[activeZikrIndex] =
           activeZikr.copyWith(count: activeZikr.count - 1);
-      sl<EffectsManager>().onCount();
+      effectsManager.onCount();
 
       if (activeZikr.count == 1) {
-        sl<EffectsManager>().onSingleDone();
+        effectsManager.onSingleDone();
       }
 
       final totalProgress =
           rukiasToView.where((x) => x.count == 0).length / rukiasToView.length;
       if (totalProgress == 1) {
-        sl<EffectsManager>().onAllDone();
+        effectsManager.onAllDone();
       }
     }
 
