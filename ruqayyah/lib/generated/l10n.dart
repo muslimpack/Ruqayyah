@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `Rukia`
+  /// `Ruqyah`
   String get appTitle {
     return Intl.message(
-      'Rukia',
+      'Ruqyah',
       name: 'appTitle',
       desc: '',
       args: [],
@@ -260,10 +260,10 @@ class S {
     );
   }
 
-  /// `Long Rukia`
+  /// `Long Ruqyah`
   String get longRukia {
     return Intl.message(
-      'Long Rukia',
+      'Long Ruqyah',
       name: 'longRukia',
       desc: '',
       args: [],
@@ -280,10 +280,10 @@ class S {
     );
   }
 
-  /// `Medium Rukia`
+  /// `Medium Ruqyah`
   String get mediumRukia {
     return Intl.message(
-      'Medium Rukia',
+      'Medium Ruqyah',
       name: 'mediumRukia',
       desc: '',
       args: [],
@@ -460,10 +460,10 @@ class S {
     );
   }
 
-  /// `Short Rukia`
+  /// `Short Ruqyah`
   String get shortRukia {
     return Intl.message(
-      'Short Rukia',
+      'Short Ruqyah',
       name: 'shortRukia',
       desc: '',
       args: [],

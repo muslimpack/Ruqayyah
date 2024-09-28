@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
         "alruka": MessageLookupByLibrary.simpleMessage("al-Ruka"),
-        "appTitle": MessageLookupByLibrary.simpleMessage("Rukia"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("Ruqyah"),
         "azkarFilters": MessageLookupByLibrary.simpleMessage("Azkar Filters"),
         "effectManager": MessageLookupByLibrary.simpleMessage("Effect Manager"),
         "enableAzkarFilters":
@@ -50,9 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "hokmHasan": MessageLookupByLibrary.simpleMessage("Good"),
         "hokmMawdue": MessageLookupByLibrary.simpleMessage("Fabricated"),
         "hokmSahih": MessageLookupByLibrary.simpleMessage("Authentic"),
-        "longRukia": MessageLookupByLibrary.simpleMessage("Long Rukia"),
+        "longRukia": MessageLookupByLibrary.simpleMessage("Long Ruqyah"),
         "longRukiaShort": MessageLookupByLibrary.simpleMessage("Long"),
-        "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Rukia"),
+        "mediumRukia": MessageLookupByLibrary.simpleMessage("Medium Ruqyah"),
         "mediumRukiaShort": MessageLookupByLibrary.simpleMessage("medium"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -81,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectAzkarSource":
             MessageLookupByLibrary.simpleMessage("Select source of Azkar"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "shortRukia": MessageLookupByLibrary.simpleMessage("Short Rukia"),
+        "shortRukia": MessageLookupByLibrary.simpleMessage("Short Ruqyah"),
         "shortRukiaShort": MessageLookupByLibrary.simpleMessage("Short"),
         "showDiacritics":
             MessageLookupByLibrary.simpleMessage("Show Diacritics"),
