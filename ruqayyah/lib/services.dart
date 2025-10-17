@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ruqayyah/src/core/constants/const.dart';
-import 'package:ruqayyah/src/core/di/dependency_injection.dart'
-    as service_locator;
+import 'package:ruqayyah/src/core/di/dependency_injection.dart' as service_locator;
 import 'package:ruqayyah/src/core/di/dependency_injection.dart';
 import 'package:ruqayyah/src/core/extensions/extension_platform.dart';
 import 'package:ruqayyah/src/core/functions/app_print.dart';
@@ -14,7 +13,11 @@ import 'package:window_manager/window_manager.dart';
 Future initServices() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await phoneBars();
+  /// Force portrait
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   await service_locator.initSL();
 
   if (PlatformExtension.isDesktopOrWeb) {
@@ -29,16 +32,6 @@ Future initServices() async {
   }
 
   await initWindowsManager();
-}
-
-Future phoneBars() async {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-  );
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
 }
 
 Future initWindowsManager() async {
