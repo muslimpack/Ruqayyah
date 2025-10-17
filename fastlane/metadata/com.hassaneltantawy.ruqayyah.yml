@@ -18,7 +18,7 @@ Builds:
     versionCode: 3
     commit: d0e8509201e2d4f632d21a45d3304b5a8524bdca
     subdir: ruqayyah
-    output: build/app/outputs/flutter-apk/app-release.apk
+    output: build/app/outputs/flutter-apk/app-prod-release.apk
     srclibs:
       - flutter@3.10.0
     rm:
@@ -35,7 +35,7 @@ Builds:
       - ruqayyah/.pub-cache
     build:
       - export PUB_CACHE=$(pwd)/.pub-cache
-      - $$flutter$$/bin/flutter build apk --release
+      - $$flutter$$/bin/flutter build apk --release --flavor prod
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
