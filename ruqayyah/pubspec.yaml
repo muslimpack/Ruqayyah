@@ -2,7 +2,7 @@ name: ruqayyah
 description: A new Flutter project.
 publish_to: "none"
 
-version: 0.4.0+5
+version: 0.4.01+6
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
