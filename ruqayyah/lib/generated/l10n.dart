@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,32 +56,17 @@ class S {
 
   /// `About Us`
   String get aboutUs {
-    return Intl.message(
-      'About Us',
-      name: 'aboutUs',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('About Us', name: 'aboutUs', desc: '', args: []);
   }
 
   /// `al-Ruka`
   String get alruka {
-    return Intl.message(
-      'al-Ruka',
-      name: 'alruka',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('al-Ruka', name: 'alruka', desc: '', args: []);
   }
 
   /// `Ruqyah`
   String get appTitle {
-    return Intl.message(
-      'Ruqyah',
-      name: 'appTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Ruqyah', name: 'appTitle', desc: '', args: []);
   }
 
   /// `Azkar Filters`
@@ -162,12 +151,7 @@ class S {
 
   /// `Font Type`
   String get fontType {
-    return Intl.message(
-      'Font Type',
-      name: 'fontType',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Font Type', name: 'fontType', desc: '', args: []);
   }
 
   /// `Free, ad-free and open source app`
@@ -182,12 +166,7 @@ class S {
 
   /// `General`
   String get general {
-    return Intl.message(
-      'General',
-      name: 'general',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('General', name: 'general', desc: '', args: []);
   }
 
   /// `General guidelines for Ruqyah`
@@ -212,72 +191,37 @@ class S {
 
   /// `Athar`
   String get hokmAthar {
-    return Intl.message(
-      'Athar',
-      name: 'hokmAthar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Athar', name: 'hokmAthar', desc: '', args: []);
   }
 
   /// `Weak`
   String get hokmDaeif {
-    return Intl.message(
-      'Weak',
-      name: 'hokmDaeif',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Weak', name: 'hokmDaeif', desc: '', args: []);
   }
 
   /// `Good`
   String get hokmHasan {
-    return Intl.message(
-      'Good',
-      name: 'hokmHasan',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Good', name: 'hokmHasan', desc: '', args: []);
   }
 
   /// `Fabricated`
   String get hokmMawdue {
-    return Intl.message(
-      'Fabricated',
-      name: 'hokmMawdue',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Fabricated', name: 'hokmMawdue', desc: '', args: []);
   }
 
   /// `Authentic`
   String get hokmSahih {
-    return Intl.message(
-      'Authentic',
-      name: 'hokmSahih',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Authentic', name: 'hokmSahih', desc: '', args: []);
   }
 
   /// `Long Ruqyah`
   String get longRukia {
-    return Intl.message(
-      'Long Ruqyah',
-      name: 'longRukia',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Long Ruqyah', name: 'longRukia', desc: '', args: []);
   }
 
   /// `Long`
   String get longRukiaShort {
-    return Intl.message(
-      'Long',
-      name: 'longRukiaShort',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Long', name: 'longRukiaShort', desc: '', args: []);
   }
 
   /// `Medium Ruqyah`
@@ -292,32 +236,17 @@ class S {
 
   /// `medium`
   String get mediumRukiaShort {
-    return Intl.message(
-      'medium',
-      name: 'mediumRukiaShort',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('medium', name: 'mediumRukiaShort', desc: '', args: []);
   }
 
   /// `Next`
   String get next {
-    return Intl.message(
-      'Next',
-      name: 'next',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Next', name: 'next', desc: '', args: []);
   }
 
   /// `No`
   String get no {
-    return Intl.message(
-      'No',
-      name: 'no',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('No', name: 'no', desc: '', args: []);
   }
 
   /// `Phone vibration at every praise`
@@ -372,22 +301,12 @@ class S {
 
   /// `Previous`
   String get previous {
-    return Intl.message(
-      'Previous',
-      name: 'previous',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Previous', name: 'previous', desc: '', args: []);
   }
 
   /// `ResetAll`
   String get resetAll {
-    return Intl.message(
-      'ResetAll',
-      name: 'resetAll',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ResetAll', name: 'resetAll', desc: '', args: []);
   }
 
   /// `Resume last session?`
@@ -452,32 +371,17 @@ class S {
 
   /// `Settings`
   String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `Short Ruqyah`
   String get shortRukia {
-    return Intl.message(
-      'Short Ruqyah',
-      name: 'shortRukia',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Short Ruqyah', name: 'shortRukia', desc: '', args: []);
   }
 
   /// `Short`
   String get shortRukiaShort {
-    return Intl.message(
-      'Short',
-      name: 'shortRukiaShort',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Short', name: 'shortRukiaShort', desc: '', args: []);
   }
 
   /// `Show Diacritics`
@@ -572,12 +476,7 @@ class S {
 
   /// `Athr`
   String get sourceAthar {
-    return Intl.message(
-      'Athr',
-      name: 'sourceAthar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Athr', name: 'sourceAthar', desc: '', args: []);
   }
 
   /// `Sunan al-Tirmidhi`
@@ -622,12 +521,7 @@ class S {
 
   /// `IbnSunny`
   String get sourceIbnSunny {
-    return Intl.message(
-      'IbnSunny',
-      name: 'sourceIbnSunny',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('IbnSunny', name: 'sourceIbnSunny', desc: '', args: []);
   }
 
   /// `Muwatta Imam Malik`
@@ -642,12 +536,7 @@ class S {
 
   /// `Quran`
   String get sourceQuran {
-    return Intl.message(
-      'Quran',
-      name: 'sourceQuran',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Quran', name: 'sourceQuran', desc: '', args: []);
   }
 
   /// `Sahih al-Bukhari`
@@ -672,22 +561,12 @@ class S {
 
   /// `Version`
   String get version {
-    return Intl.message(
-      'Version',
-      name: 'version',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Version', name: 'version', desc: '', args: []);
   }
 
   /// `Yes`
   String get yes {
-    return Intl.message(
-      'Yes',
-      name: 'yes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
   }
 }
 

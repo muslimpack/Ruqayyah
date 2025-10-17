@@ -59,7 +59,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     add(RukiaViewerUpdatePageEvent(index: currentPage));
   }
 
-  FutureOr<void> _start(
+  Future<void> _start(
     RukiaViewerStartEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -76,15 +76,13 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
       onVolumeDownPressed: () => add(const RukiaViewerDecreaseActiveEvent()),
     );
 
-    final rukiasFromDB =
-        await rukiaDBHelper.getRukiaListByType(event.rukiaType);
+    final rukiasFromDB = await rukiaDBHelper.getRukiaListByType(event.rukiaType);
     final List<Filter> filters = azkarFiltersRepo.getAllFilters;
     final filteredAzkar = filters.getFilteredZikr(rukiasFromDB);
     final rukias = filteredAzkar;
     final rukiasToView = List<Rukia>.from(rukias);
 
-    final restoredSession =
-        await rukiaViewerRepo.getLastSession(event.rukiaType.id);
+    final restoredSession = await rukiaViewerRepo.getLastSession(event.rukiaType.id);
 
     emit(
       RukiaViewerLoadedState(
@@ -93,13 +91,12 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
         rukias: rukias,
         rukiaType: event.rukiaType,
         restoredSession: restoredSession ?? {},
-        askToRestoreSession:
-            restoredSession != null && restoredSession.isNotEmpty,
+        askToRestoreSession: restoredSession != null && restoredSession.isNotEmpty,
       ),
     );
   }
 
-  FutureOr<void> _restoreSession(
+  Future<void> _restoreSession(
     RukiaViewerRestoreSessionEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -133,7 +130,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     emit(state.copyWith(rukiasToView: azkarToView, askToRestoreSession: false));
   }
 
-  FutureOr<void> _saveSession(
+  Future<void> _saveSession(
     RukiaViewerSaveSessionEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -146,7 +143,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     );
   }
 
-  FutureOr<void> _resetSession(
+  Future<void> _resetSession(
     RukiaViewerResetSessionEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -156,7 +153,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     await rukiaViewerRepo.resetSession(state.rukiaType.id);
   }
 
-  FutureOr<void> _decrease(
+  Future<void> _decrease(
     RukiaViewerDecreaseEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -164,8 +161,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     if (state is! RukiaViewerLoadedState) return;
     final activeZikr = event.rukia;
 
-    final activeZikrIndex =
-        state.rukiasToView.indexWhere((x) => x.id == activeZikr.id);
+    final activeZikrIndex = state.rukiasToView.indexWhere((x) => x.id == activeZikr.id);
 
     final int count = activeZikr.count;
 
@@ -180,8 +176,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
 
     if (count == 1) {
       effectsManager.onSingleDone();
-      final totalProgress =
-          rukiasToView.where((x) => x.count == 0).length / rukiasToView.length;
+      final totalProgress = rukiasToView.where((x) => x.count == 0).length / rukiasToView.length;
 
       if (totalProgress == 1) {
         effectsManager.onAllDone();
@@ -201,7 +196,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     emit(state.copyWith(rukiasToView: rukiasToView));
   }
 
-  FutureOr<void> _decreaseActive(
+  Future<void> _decreaseActive(
     RukiaViewerDecreaseActiveEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -213,7 +208,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     add(RukiaViewerDecreaseEvent(activeZikr));
   }
 
-  FutureOr<void> _resetAll(
+  Future<void> _resetAll(
     RukiaViewerResetAllEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -225,7 +220,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     pageController.jumpTo(0);
   }
 
-  FutureOr<void> _next(
+  Future<void> _next(
     RukiaViewerNextZikrEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -235,7 +230,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     );
   }
 
-  FutureOr<void> _previous(
+  Future<void> _previous(
     RukiaViewerPreviousZikrEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -245,7 +240,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
     );
   }
 
-  FutureOr<void> _updatePageIndex(
+  Future<void> _updatePageIndex(
     RukiaViewerUpdatePageEvent event,
     Emitter<RukiaViewerState> emit,
   ) async {
@@ -258,7 +253,7 @@ class RukiaViewerBloc extends Bloc<RukiaViewerEvent, RukiaViewerState> {
   @override
   Future<void> close() async {
     pageController.dispose();
-    WakelockPlus.disable();
+    await WakelockPlus.disable();
     volumeButtonManager.dispose();
     return super.close();
   }

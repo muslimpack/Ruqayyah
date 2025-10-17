@@ -20,6 +20,5 @@ class RukiaTextRepo {
   static const String _showDiacriticsKey = "prefShowDiacritics";
   bool get showDiacritics => box.read(_showDiacriticsKey) ?? true;
 
-  Future<void> changDiacriticsStatus({required bool value}) async =>
-      box.write(_showDiacriticsKey, value);
+  Future<void> changDiacriticsStatus({required bool value}) => box.write(_showDiacriticsKey, value);
 }

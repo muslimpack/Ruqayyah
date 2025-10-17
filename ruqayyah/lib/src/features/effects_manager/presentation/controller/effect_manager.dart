@@ -82,10 +82,7 @@ class EffectsManager {
     if (!_effectsRepo.isOnCountVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
-        if (value!)
-          {Vibration.vibrate(duration: 100)}
-        else
-          {HapticFeedback.lightImpact()},
+        if (value) {Vibration.vibrate(duration: 100)} else {HapticFeedback.lightImpact()},
       },
     );
   }
@@ -94,10 +91,7 @@ class EffectsManager {
     if (!_effectsRepo.isSingleDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
-        if (value!)
-          {Vibration.vibrate(duration: 300)}
-        else
-          {HapticFeedback.mediumImpact()},
+        if (value) {Vibration.vibrate(duration: 300)} else {HapticFeedback.mediumImpact()},
       },
     );
   }
@@ -106,7 +100,7 @@ class EffectsManager {
     if (!_effectsRepo.isAllDoneVibrateAllowed) return;
     await Vibration.hasCustomVibrationsSupport().then(
       (value) => {
-        if (value!) {Vibration.vibrate()} else {HapticFeedback.heavyImpact()},
+        if (value) {Vibration.vibrate()} else {HapticFeedback.heavyImpact()},
       },
     );
   }

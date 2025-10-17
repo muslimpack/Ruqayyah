@@ -28,7 +28,7 @@ class RukiaCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 450,
                 fontWeight: FontWeight.bold,
-                color: kAppMainColor.withOpacity(.05),
+                color: kAppMainColor.withAlpha(255 * 0.05.toInt()),
               ),
             ),
           ),
@@ -39,8 +39,7 @@ class RukiaCard extends StatelessWidget {
               RukiaContentBuilder(
                 rukia: rukia,
                 fontSize: context.watch<SettingsCubit>().state.fontSize * 10,
-                enableDiacritics:
-                    context.watch<SettingsCubit>().state.showDiacritics,
+                enableDiacritics: context.watch<SettingsCubit>().state.showDiacritics,
               ),
               Padding(
                 padding: const EdgeInsets.all(20),

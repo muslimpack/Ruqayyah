@@ -8,31 +8,31 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  audioplayers: ^6.1.0
-  bloc: ^8.1.4
+  audioplayers: ^6.5.1
+  bloc: ^9.1.0
   convex_bottom_bar: ^3.2.0
   cupertino_icons: ^1.0.2
-  equatable: ^2.0.5
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  get_it: ^8.0.0
+  get_it: ^8.2.0
   get_storage: ^2.1.1
-  icons_launcher: ^3.0.0
+  icons_launcher: ^3.0.3
   material_design_icons_flutter: ^7.0.7296
-  path: ^1.9.0
-  path_provider: ^2.1.4
-  sqflite: ^2.3.3
-  sqflite_common_ffi: ^2.3.3
-  url_launcher: ^6.3.0
-  vibration: ^2.0.0
-  wakelock_plus: ^1.2.8
-  window_manager: ^0.4.2
+  path: ^1.9.1
+  path_provider: ^2.1.5
+  sqflite: ^2.4.2
+  sqflite_common_ffi: ^2.3.6
+  url_launcher: ^6.3.2
+  vibration: ^3.1.4
+  wakelock_plus: ^1.4.0
+  window_manager: ^0.5.1
 
 dev_dependencies:
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
   lint: ^2.3.0
@@ -45,6 +45,7 @@ flutter:
     - assets/db/
     - assets/sounds/
     - assets/images/
+    - assets/fonts/
 
   fonts:
     - family: Uthmanic

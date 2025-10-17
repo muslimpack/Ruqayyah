@@ -21,8 +21,7 @@ class AppSettingsRepo {
   static const String _enableWakeLockKey = "enableWakeLock";
   bool get enableWakeLock => box.read(_enableWakeLockKey) ?? false;
 
-  Future<void> changeEnableWakeLock({required bool use}) async =>
-      box.write(_enableWakeLockKey, use);
+  Future<void> changeEnableWakeLock({required bool use}) => box.write(_enableWakeLockKey, use);
 
   void toggleEnableWakeLock() {
     changeEnableWakeLock(use: !enableWakeLock);
@@ -34,6 +33,6 @@ class AppSettingsRepo {
 
   bool get praiseWithVolumeKeys => box.read(praiseWithVolumeKeysKey) ?? true;
 
-  Future<void> changePraiseWithVolumeKeysStatus({required bool value}) async =>
+  Future<void> changePraiseWithVolumeKeysStatus({required bool value}) =>
       box.write(praiseWithVolumeKeysKey, value);
 }

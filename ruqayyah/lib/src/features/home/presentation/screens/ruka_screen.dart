@@ -29,7 +29,7 @@ class RukaScreen extends StatelessWidget {
                     color: kAppMainColor,
                   ),
                   title: Text(x.localeShortName(context)),
-                  onTap: () async {
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
