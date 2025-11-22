@@ -14,28 +14,34 @@ RepoType: git
 Repo: https://github.com/muslimpack/Ruqayyah.git
 
 Builds:
-  - versionName: 0.3.0
-    versionCode: 3
-    commit: d0e8509201e2d4f632d21a45d3304b5a8524bdca
+  - versionName: %v
+    versionCode: %c
+    commit: %commit%
     subdir: ruqayyah
     output: build/app/outputs/flutter-apk/app-prod-release.apk
+
+    # USE FVM SDK INSIDE ruqayyah/.fvm/flutter_sdk
     srclibs:
-      - flutter@3.10.0
+      - flutter-fvm@file/ruqayyah/.fvm/flutter_sdk
+
     rm:
       - ruqayyah/ios
       - ruqayyah/web
       - ruqayyah/windows
       - ruqayyah/linux
       - ruqayyah/macos
+
     prebuild:
       - export PUB_CACHE=$(pwd)/.pub-cache
-      - $$flutter$$/bin/flutter config --no-analytics
-      - $$flutter$$/bin/flutter pub get
+      - $$flutter-fvm$$/bin/flutter config --no-analytics
+      - $$flutter-fvm$$/bin/flutter pub get
+
     scandelete:
       - ruqayyah/.pub-cache
+
     build:
       - export PUB_CACHE=$(pwd)/.pub-cache
-      - $$flutter$$/bin/flutter build apk --release --flavor prod
+      - $$flutter-fvm$$/bin/flutter build apk --release --flavor prod
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
