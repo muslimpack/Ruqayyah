@@ -14,15 +14,13 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen>
-    with SingleTickerProviderStateMixin {
+class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(length: 2 + RukiaTypeEnum.values.length, vsync: this);
+    _tabController = TabController(length: 2 + RukiaTypeEnum.values.length, vsync: this);
   }
 
   @override
@@ -33,17 +31,20 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            const AdabScreen(),
-            ...RukiaTypeEnum.values.map((x) => RukiaViewerScreen(rukiaType: x)),
-            const SettingsScreen(),
-          ],
-        ),
-        bottomNavigationBar: ConvexAppBar(
+    return Scaffold(
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          const AdabScreen(),
+          ...RukiaTypeEnum.values.map((x) => RukiaViewerScreen(rukiaType: x)),
+          const SettingsScreen(),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        elevation: 0,
+        color: Colors.transparent,
+        padding: EdgeInsets.zero,
+        child: ConvexAppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           activeColor: kAppMainColor,
           shadowColor: kAppMainColor,
