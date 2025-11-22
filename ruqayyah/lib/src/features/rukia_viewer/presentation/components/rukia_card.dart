@@ -23,12 +23,17 @@ class RukiaCard extends StatelessWidget {
       child: Stack(
         children: [
           Center(
-            child: Text(
-              rukia.count.toString(),
-              style: TextStyle(
-                fontSize: 450,
-                fontWeight: FontWeight.bold,
-                color: kAppMainColor.withAlpha(255 * 0.05.toInt()),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FittedBox(
+                child: Text(
+                  rukia.count.toString(),
+                  style: TextStyle(
+                    fontSize: 450,
+                    fontWeight: FontWeight.bold,
+                    color: kAppMainColor.withAlpha(30),
+                  ),
+                ),
               ),
             ),
           ),
