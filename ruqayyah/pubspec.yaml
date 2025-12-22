@@ -18,7 +18,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  get_it: ^8.2.0
+  get_it: ^9.2.0
   get_storage: ^2.1.1
   intl: ^0.20.2
   material_design_icons_flutter: ^7.0.7296
@@ -27,13 +27,13 @@ dependencies:
   sqflite: ^2.4.2
   sqflite_common_ffi: ^2.3.6
   url_launcher: ^6.3.2
-  vibration: ^3.1.4
+  vibration: ^3.1.5
   wakelock_plus: ^1.4.0
   window_manager: ^0.5.1
 
 dev_dependencies:
   icons_launcher: ^3.0.3
-  lint: ^2.3.0
+  lint: ^2.8.0
 
 flutter:
   uses-material-design: true
