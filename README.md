@@ -8,6 +8,17 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/muslimpack/Ruqayyah/total?color=green&label=Total%20Downloads)
 [![Downloads](https://PlayBadges.pavi2410.me/badge/downloads?id=com.hassaneltantawy.ruqayyah)](https://play.google.com/store/apps/details?id=com.hassaneltantawy.ruqayyah)
 
+
+<a href="https://apps.apple.com/us/app/rukia-%D8%B1%D9%82%D9%8A%D8%A9/id6756537897" style="display: inline-block;">
+    <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1765843200" 
+          alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
+</a>
+
+[<img src="https://user-images.githubusercontent.com/15004217/36810046-fa306856-1cc9-11e8-808e-6eb8a81783c7.png"
+      alt='Get it on Google Play' target=”_blank”
+      height="80">](https://play.google.com/store/apps/details?id=com.hassaneltantawy.ruqayyah)
+
+
 الرقية الشرعية من القرآن الكريم والسنة النبوية للدكتور خالد بن عبدالرحمن الجريسي
 
 <div align="right">
