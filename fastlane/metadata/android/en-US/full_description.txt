@@ -1,3 +1,18 @@
-- Long Ruqayyah
-- Medium Ruqayyah
-- Short Ruqayyah
+Ruqayyah brings the book "Al-Ruqyah Al-Shar'iyyah from the Holy Quran and the Prophetic Sunnah" by Dr. Khalid bin Abdulrahman Al-Juraisi to your phone. It works fully offline.
+
+<b>Content</b>
+- Etiquette and general guidelines to observe when performing Ruqyah
+- Short Ruqyah
+- Medium Ruqyah
+- Long Ruqyah
+
+<b>Features</b>
+- Counter for each dhikr, with optional vibration and sound at every count, at the end of a dhikr, or when all are done
+- Count using the volume keys
+- Resume from where you stopped last time
+- Filter adhkar by source (Quran, Sahih al-Bukhari, Sahih Muslim, the Sunan...) and by grading (authentic, good, weak...)
+- Font size and font type settings, with an option to show or hide diacritics
+- Keep the screen on while reading
+- Arabic and English interface
+
+Free, ad-free and open source. Part of Muslim Pack.
