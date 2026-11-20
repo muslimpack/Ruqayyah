@@ -13,6 +13,6 @@ Ruqayyah brings the book "Al-Ruqyah Al-Shar'iyyah from the Holy Quran and the Pr
 - Filter adhkar by source (Quran, Sahih al-Bukhari, Sahih Muslim, the Sunan...) and by grading (authentic, good, weak...)
 - Font size and font type settings, with an option to show or hide diacritics
 - Keep the screen on while reading
-- Arabic and English interface
+- Arabic interface
 
 Free, ad-free and open source. Part of Muslim Pack.
